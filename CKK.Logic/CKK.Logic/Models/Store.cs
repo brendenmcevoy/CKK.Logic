@@ -23,7 +23,7 @@ namespace CKK.Logic.Models
         }
 
         public void SetId(int id)
-        {
+        {           
             _id = id;
         }
 
@@ -54,22 +54,41 @@ namespace CKK.Logic.Models
 
         public StoreItem RemoveStoreItem(int id, int quantity)
         {
-            var itemQ = _storeItem[id].GetQuantity();
+            
+            var item = FindStoreItemById(id);
+            var itemIn = _storeItem.IndexOf(item);
+            var itemQ = _storeItem[itemIn].GetQuantity();
+            _storeItem[itemIn].SetQuantity(itemQ - quantity);
                      
-            _storeItem[id].SetQuantity(itemQ - quantity);
-
-            return _storeItem[id];
+            if (_storeItem[itemIn].GetQuantity() <= 0 )
+            {
+                _storeItem[itemIn].SetQuantity(0);
+            }
+                                                                              
+            return _storeItem[itemIn];
                        
         }
 
         public List<StoreItem> GetStoreItems()
-        {           
-            return _storeItem;                                   
+        {
+            var itemsSorted =
+                from i in _storeItem
+                orderby i
+                select i;
+
+            return (List<StoreItem>)itemsSorted;
         }
 
         public StoreItem FindStoreItemById(int id)
-        {      
-            return _storeItem[id];
+        {
+
+            var itemId =
+                from i in _storeItem
+                let productActual = i.GetProduct()
+                where productActual.GetId() == id
+                select i;
+           
+            return (StoreItem)itemId;
         }
 
         

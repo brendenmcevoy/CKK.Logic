@@ -1,0 +1,6 @@
+C:\Users\4400112807\Source\Repos\CKK.Logic2\CKK.Logic\CKK.tests\bin\Debug\net5.0\CoverletSourceRootsMapping
+C:\Users\4400112807\Source\Repos\CKK.Logic2\CKK.Logic\CKK.tests\obj\Debug\net5.0\CKK.tests.csproj.AssemblyReference.cache
+C:\Users\4400112807\Source\Repos\CKK.Logic2\CKK.Logic\CKK.tests\obj\Debug\net5.0\CKK.tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\4400112807\Source\Repos\CKK.Logic2\CKK.Logic\CKK.tests\obj\Debug\net5.0\CKK.tests.AssemblyInfoInputs.cache
+C:\Users\4400112807\Source\Repos\CKK.Logic2\CKK.Logic\CKK.tests\obj\Debug\net5.0\CKK.tests.AssemblyInfo.cs
+C:\Users\4400112807\Source\Repos\CKK.Logic2\CKK.Logic\CKK.tests\obj\Debug\net5.0\CKK.tests.csproj.CoreCompileInputs.cache

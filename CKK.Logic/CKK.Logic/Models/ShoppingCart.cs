@@ -24,7 +24,13 @@ namespace CKK.Logic.Models
 
         public ShoppingCartItem GetProductById(int id) 
         {
-            return _cartItems[id];
+            var prodId =
+                from i in _cartItems
+                let productActual = i.GetProduct()
+                where productActual.GetId() == id
+                select i;
+
+            return (ShoppingCartItem)prodId;
                                       
         }
 
@@ -46,21 +52,19 @@ namespace CKK.Logic.Models
 
         public ShoppingCartItem RemoveProduct(int id, int quantity)
         {
-            var itemQ = _cartItems[id].GetQuantity();
-            
-            if (quantity > 0)
+            var prod = GetProductById(id);
+            var prodIn = _cartItems.IndexOf(prod);
+            var prodQ = _cartItems[prodIn].GetQuantity();
+            _cartItems[prodIn].SetQuantity(prodQ - quantity);
+
+            if(_cartItems[prodIn].GetQuantity() <= 0)
             {
-                var item = _cartItems[id];
-                item.SetQuantity(itemQ - quantity);
-
-                if (item.GetQuantity() <= 0)
-                {
-                    _cartItems.RemoveAt(id);                  
-                }
-
-                return item;
+                _cartItems[prodIn].SetQuantity(0);
+                _cartItems.RemoveAt(prodIn);
             }
-            else { return null; }
+
+            return prod;
+                      
         }
 
         public decimal GetTotal()
@@ -81,7 +85,13 @@ namespace CKK.Logic.Models
 
         public List<ShoppingCartItem> GetProducts ()
         {
-            return _cartItems;
+
+            var itemsSorted =
+                from i in _cartItems
+                orderby i
+                select i;
+
+            return (List<ShoppingCartItem>) itemsSorted;
            
         }
         
