@@ -48,8 +48,8 @@ namespace CKK.Logic.Models
             }
             else { _storeItem.Add(item); }
 
-            
-                       
+            return item;
+                              
         }
 
         public StoreItem RemoveStoreItem(int id, int quantity)
@@ -57,13 +57,14 @@ namespace CKK.Logic.Models
             var itemQ = _storeItem[id].GetQuantity();
                      
             _storeItem[id].SetQuantity(itemQ - quantity);
+
+            return _storeItem[id];
                        
         }
 
         public List<StoreItem> GetStoreItems()
-        {
-            return _storeItem;
-                                    
+        {           
+            return _storeItem;                                   
         }
 
         public StoreItem FindStoreItemById(int id)

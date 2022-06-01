@@ -25,7 +25,7 @@ namespace CKK.Logic.Models
         public ShoppingCartItem GetProductById(int id) 
         {
             return _cartItems[id];
-                
+                                      
         }
 
         public ShoppingCartItem AddProduct(Product prod, int quantity)
@@ -33,16 +33,14 @@ namespace CKK.Logic.Models
             var item = new ShoppingCartItem(prod, quantity);
             var itemQ = item.GetQuantity();
 
-            if (quantity > 0)
+            if (_cartItems.Contains(item))
             {
-                if (_cartItems.Contains(item))
-                {
-                    item.SetQuantity(itemQ + quantity);
-                }else { _cartItems.Add(item); }
+                item.SetQuantity(itemQ + quantity);
             }
-            else { return null; }
-            
-                                                                                                   
+            else { _cartItems.Add(item); }
+
+            return item;
+                                                                                          
         }
 
 
@@ -59,6 +57,8 @@ namespace CKK.Logic.Models
                 {
                     _cartItems.RemoveAt(id);                  
                 }
+
+                return item;
             }
             else { return null; }
         }
