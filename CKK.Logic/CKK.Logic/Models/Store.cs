@@ -10,11 +10,12 @@ namespace CKK.Logic.Models
     {
         private int _id;
         private string _name;
-        private List<StoreItem> _storeItem;
+        private List<StoreItem> _items;
 
-        public Store(StoreItem storeItem)
+        public Store ()
         {
-            _storeItem = new List<StoreItem>();
+            _items = new List<StoreItem>();
+            
         }
 
         public int GetId()
@@ -42,11 +43,11 @@ namespace CKK.Logic.Models
             var item = new StoreItem(prod, quantity);
             var itemQ = item.GetQuantity();
 
-            if (_storeItem.Contains(item))
+            if (_items.Contains(item))
             {
                 item.SetQuantity(itemQ + quantity);
             }
-            else { _storeItem.Add(item); }
+            else { _items.Add(item); }
 
             return item;
                               
@@ -56,23 +57,23 @@ namespace CKK.Logic.Models
         {
             
             var item = FindStoreItemById(id);
-            var itemIn = _storeItem.IndexOf(item);
-            var itemQ = _storeItem[itemIn].GetQuantity();
-            _storeItem[itemIn].SetQuantity(itemQ - quantity);
+            var itemIn = _items.IndexOf(item);
+            var itemQ = _items[itemIn].GetQuantity();
+            _items[itemIn].SetQuantity(itemQ - quantity);
                      
-            if (_storeItem[itemIn].GetQuantity() <= 0 )
+            if (_items[itemIn].GetQuantity() <= 0 )
             {
-                _storeItem[itemIn].SetQuantity(0);
+                _items[itemIn].SetQuantity(0);
             }
                                                                               
-            return _storeItem[itemIn];
+            return _items[itemIn];
                        
         }
 
         public List<StoreItem> GetStoreItems()
         {
             var itemsSorted =
-                from i in _storeItem
+                from i in _items
                 orderby i
                 select i;
 
@@ -83,7 +84,7 @@ namespace CKK.Logic.Models
         {
 
             var itemId =
-                from i in _storeItem
+                from i in _items
                 let productActual = i.GetProduct()
                 where productActual.GetId() == id
                 select i;

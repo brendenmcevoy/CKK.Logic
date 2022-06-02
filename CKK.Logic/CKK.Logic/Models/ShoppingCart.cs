@@ -9,12 +9,12 @@ namespace CKK.Logic.Models
     public class ShoppingCart
     {
         private Customer _customer;
-        private List<ShoppingCartItem> _cartItems;
+        private List<ShoppingCartItem> _products;
 
-        public ShoppingCart(Customer customer, ShoppingCartItem cartItem)
+        public ShoppingCart(Customer customer)
         {
             _customer = customer;
-            _cartItems = new List<ShoppingCartItem>();
+            _products = new List<ShoppingCartItem>();
         }
 
         public int GetCustomerId()
@@ -25,7 +25,7 @@ namespace CKK.Logic.Models
         public ShoppingCartItem GetProductById(int id) 
         {
             var prodId =
-                from i in _cartItems
+                from i in _products
                 let productActual = i.GetProduct()
                 where productActual.GetId() == id
                 select i;
@@ -39,11 +39,11 @@ namespace CKK.Logic.Models
             var item = new ShoppingCartItem(prod, quantity);
             var itemQ = item.GetQuantity();
 
-            if (_cartItems.Contains(item))
+            if (_products.Contains(item))
             {
                 item.SetQuantity(itemQ + quantity);
             }
-            else { _cartItems.Add(item); }
+            else { _products.Add(item); }
 
             return item;
                                                                                           
@@ -53,14 +53,14 @@ namespace CKK.Logic.Models
         public ShoppingCartItem RemoveProduct(int id, int quantity)
         {
             var prod = GetProductById(id);
-            var prodIn = _cartItems.IndexOf(prod);
-            var prodQ = _cartItems[prodIn].GetQuantity();
-            _cartItems[prodIn].SetQuantity(prodQ - quantity);
+            var prodIn = _products.IndexOf(prod);
+            var prodQ = _products[prodIn].GetQuantity();
+            _products[prodIn].SetQuantity(prodQ - quantity);
 
-            if(_cartItems[prodIn].GetQuantity() <= 0)
+            if(_products[prodIn].GetQuantity() <= 0)
             {
-                _cartItems[prodIn].SetQuantity(0);
-                _cartItems.RemoveAt(prodIn);
+                _products[prodIn].SetQuantity(0);
+                _products.RemoveAt(prodIn);
             }
 
             return prod;
@@ -69,13 +69,13 @@ namespace CKK.Logic.Models
 
         public decimal GetTotal()
         {
-            var param = _cartItems.Count();
+            var param = _products.Count();
             decimal total = 0;
             
 
             for(int count = 0; count <= param; count++)
             {
-                var price = _cartItems[count].GetTotal();
+                var price = _products[count].GetTotal();
                 total += price;
             }
 
@@ -87,7 +87,7 @@ namespace CKK.Logic.Models
         {
 
             var itemsSorted =
-                from i in _cartItems
+                from i in _products
                 orderby i
                 select i;
 
