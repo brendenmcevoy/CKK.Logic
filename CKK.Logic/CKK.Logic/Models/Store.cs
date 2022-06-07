@@ -40,33 +40,41 @@ namespace CKK.Logic.Models
 
         public StoreItem AddStoreItem(Product prod, int quantity)
         {
-            var item = new StoreItem(prod, quantity);
-            var itemQ = item.GetQuantity();
-
-            if (_items.Contains(item))
+            if (quantity > 0)
             {
-                item.SetQuantity(itemQ + quantity);
-            }
-            else { _items.Add(item); }
+                var item = new StoreItem(prod, quantity);
+                var itemQ = item.GetQuantity();
 
-            return item;
+                if (_items.Contains(item))
+                {
+                    var itemIn = _items.IndexOf(item);
+                    _items[itemIn].SetQuantity(quantity + itemQ);
+                }else { _items.Add(item); }
+
+                var itemIndex = _items.IndexOf(item);
+                return _items[itemIndex];
+            }
+            else { return null; }
                               
         }
 
         public StoreItem RemoveStoreItem(int id, int quantity)
         {
-            
-            var item = FindStoreItemById(id);
-            var itemIn = _items.IndexOf(item);
-            var itemQ = _items[itemIn].GetQuantity();
-            _items[itemIn].SetQuantity(itemQ - quantity);
-                     
-            if (_items[itemIn].GetQuantity() <= 0 )
+            if (quantity > 0)
             {
-                _items[itemIn].SetQuantity(0);
+                var item = FindStoreItemById(id);
+                var itemIn = _items.IndexOf(item);
+                var itemQ = _items[itemIn].GetQuantity();
+
+                if((itemQ - quantity) <= 0)
+                {
+                    _items[itemIn].SetQuantity(0);
+                }
+                else { _items[itemIn].SetQuantity(itemQ - quantity); }
+
+                return _items[itemIn];
             }
-                                                                              
-            return _items[itemIn];
+            else { return null; }            
                        
         }
 
