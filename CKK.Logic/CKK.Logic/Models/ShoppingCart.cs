@@ -22,36 +22,33 @@ namespace CKK.Logic.Models
             return  _customer.GetId();
         }
 
-        public ShoppingCartItem GetProductById(int id) 
-        {
-            var prodId =
-                from i in _products
-                let productActual = i.GetProduct()
-                where productActual.GetId() == id
-                select i;
-            
-            return (ShoppingCartItem)prodId;
-                                      
-        }
-
+        
         public ShoppingCartItem AddProduct(Product prod, int quantity)
         {
             if (quantity > 0)
             {
-                var item = new ShoppingCartItem(prod, quantity);
-                var itemQ = item.GetQuantity();
 
-                if (_products.Contains(item))
+                var findProd =
+                    from p in _products
+                    let isProd = p.GetProduct()
+                    where isProd == prod
+                    select isProd;
+              
+                if (findProd != null)
                 {
-                    var itemIn = _products.IndexOf(item);
-                    _products[itemIn].SetQuantity(quantity + itemQ);
-                    return _products[itemIn];
+                    var _index = _products.IndexOf((ShoppingCartItem)findProd);
+                    var prodQ = _products[_index].GetQuantity();
+                    _products[_index].SetQuantity(prodQ + quantity);
+
+                    return _products[_index];
                 }
                 else 
                 {
-                  _products.Add(item);
-                  var itemIn = _products.IndexOf(item);
-                  return _products[itemIn];
+                    var p1 = new ShoppingCartItem(prod, quantity);
+                    _products.Add(p1);
+                    
+
+                    return p1;
                 }                
             }
             else { return null; }
@@ -64,19 +61,37 @@ namespace CKK.Logic.Models
             if (quantity > 0)
             {
                 var item = GetProductById(id);
-                var itemIn = _products.IndexOf(item);
-                var itemQ = _products[itemIn].GetQuantity();
+                var _index = _products.IndexOf(item);
+                var itemQ = _products[_index].GetQuantity();
 
                 if ((itemQ - quantity) <= 0)
                 {
-                    _products.RemoveAt(itemIn);
+                    _products.RemoveAt(_index);
+                    item.SetQuantity(0);
 
                     return item;
                 }
-                else { _products[itemIn].SetQuantity(itemQ - quantity); return _products[itemIn]; }                
+                else 
+                {
+                    _products[_index].SetQuantity(itemQ - quantity);
+
+                    return _products[_index];
+                }                
             }
             else { return null; }
 
+
+        }
+
+        public ShoppingCartItem GetProductById(int id)
+        {
+            var prodId =
+                from i in _products
+                let productActual = i.GetProduct()
+                where productActual.GetId() == id
+                select productActual;
+
+            return (ShoppingCartItem)prodId;
 
         }
 

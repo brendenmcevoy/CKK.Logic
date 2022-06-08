@@ -42,17 +42,29 @@ namespace CKK.Logic.Models
         {
             if (quantity > 0)
             {
-                var item = new StoreItem(prod, quantity);
-                var itemQ = item.GetQuantity();
-
-                if (_items.Contains(item))
+                var findProd =
+                    from i in _items
+                    let isProd = i.GetProduct()
+                    where isProd == prod
+                    select isProd;
+                              
+                if (findProd != null)
                 {
-                    var itemIn = _items.IndexOf(item);
-                    _items[itemIn].SetQuantity(quantity + itemQ);
-                }else { _items.Add(item); }
+                    var _index = _items.IndexOf((StoreItem)findProd);
+                    var prodQ = _items[_index].GetQuantity();
+                    _items[_index].SetQuantity(prodQ + quantity);
 
-                var itemIndex = _items.IndexOf(item);
-                return _items[itemIndex];
+                    return _items[_index];
+                }
+                else 
+                {
+                    var item = new StoreItem(prod, quantity);
+                    _items.Add(item);
+
+                    return item;
+                }
+
+                
             }
             else { return null; }
                               
@@ -63,16 +75,23 @@ namespace CKK.Logic.Models
             if (quantity > 0)
             {
                 var item = FindStoreItemById(id);
-                var itemIn = _items.IndexOf(item);
-                var itemQ = _items[itemIn].GetQuantity();
+                var _index = _items.IndexOf(item);
+                var itemQ = _items[_index].GetQuantity();
 
                 if((itemQ - quantity) <= 0)
                 {
-                    _items[itemIn].SetQuantity(0);
-                }
-                else { _items[itemIn].SetQuantity(itemQ - quantity); }
+                    _items[_index].SetQuantity(0);
 
-                return _items[itemIn];
+                    return _items[_index];
+                }
+                else 
+                { 
+                    _items[_index].SetQuantity(itemQ - quantity);
+
+                    return _items[_index];
+                }
+
+                
             }
             else { return null; }            
                        
@@ -95,7 +114,7 @@ namespace CKK.Logic.Models
                 from i in _items
                 let productActual = i.GetProduct()
                 where productActual.GetId() == id
-                select i;
+                select productActual;
            
             return (StoreItem)itemId;
         }
