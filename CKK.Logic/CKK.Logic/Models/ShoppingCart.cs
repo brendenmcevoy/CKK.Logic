@@ -25,7 +25,7 @@ namespace CKK.Logic.Models
         
         public ShoppingCartItem AddProduct(Product prod, int quantity)
         {
-            if (quantity > 0)
+            if (quantity >= 0)
             {
 
                 var findProd =
@@ -34,7 +34,7 @@ namespace CKK.Logic.Models
                     where isProd == prod
                     select isProd;
               
-                if (findProd != null)
+                if (_products.Contains((ShoppingCartItem)findProd))
                 {
                     var _index = _products.IndexOf((ShoppingCartItem)findProd);
                     var prodQ = _products[_index].GetQuantity();
