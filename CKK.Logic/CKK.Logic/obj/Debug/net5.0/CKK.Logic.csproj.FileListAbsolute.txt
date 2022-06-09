@@ -10,3 +10,15 @@ C:\Users\4400112807\Source\Repos\CKK.Logic2\CKK.Logic\CKK.Logic\obj\Debug\net5.0
 C:\Users\4400112807\Source\Repos\CKK.Logic2\CKK.Logic\CKK.Logic\obj\Debug\net5.0\CKK.Logic.dll
 C:\Users\4400112807\Source\Repos\CKK.Logic2\CKK.Logic\CKK.Logic\obj\Debug\net5.0\ref\CKK.Logic.dll
 C:\Users\4400112807\Source\Repos\CKK.Logic2\CKK.Logic\CKK.Logic\obj\Debug\net5.0\CKK.Logic.pdb
+C:\Users\beanwater\Source\Repos\CKK.Logic2\CKK.Logic\CKK.Logic\bin\Debug\net5.0\CKK.Logic.deps.json
+C:\Users\beanwater\Source\Repos\CKK.Logic2\CKK.Logic\CKK.Logic\bin\Debug\net5.0\CKK.Logic.dll
+C:\Users\beanwater\Source\Repos\CKK.Logic2\CKK.Logic\CKK.Logic\bin\Debug\net5.0\CKK.Logic.pdb
+C:\Users\beanwater\Source\Repos\CKK.Logic2\CKK.Logic\CKK.Logic\obj\Debug\net5.0\CKK.Logic.csproj.AssemblyReference.cache
+C:\Users\beanwater\Source\Repos\CKK.Logic2\CKK.Logic\CKK.Logic\obj\Debug\net5.0\CKK.Logic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\beanwater\Source\Repos\CKK.Logic2\CKK.Logic\CKK.Logic\obj\Debug\net5.0\CKK.Logic.AssemblyInfoInputs.cache
+C:\Users\beanwater\Source\Repos\CKK.Logic2\CKK.Logic\CKK.Logic\obj\Debug\net5.0\CKK.Logic.AssemblyInfo.cs
+C:\Users\beanwater\Source\Repos\CKK.Logic2\CKK.Logic\CKK.Logic\obj\Debug\net5.0\CKK.Logic.csproj.CoreCompileInputs.cache
+C:\Users\beanwater\Source\Repos\CKK.Logic2\CKK.Logic\CKK.Logic\obj\Debug\net5.0\CKK.Logic.dll
+C:\Users\beanwater\Source\Repos\CKK.Logic2\CKK.Logic\CKK.Logic\obj\Debug\net5.0\refint\CKK.Logic.dll
+C:\Users\beanwater\Source\Repos\CKK.Logic2\CKK.Logic\CKK.Logic\obj\Debug\net5.0\CKK.Logic.pdb
+C:\Users\beanwater\Source\Repos\CKK.Logic2\CKK.Logic\CKK.Logic\obj\Debug\net5.0\ref\CKK.Logic.dll

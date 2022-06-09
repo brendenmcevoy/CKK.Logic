@@ -43,14 +43,15 @@ namespace CKK.Logic.Models
             if (quantity >= 0)
             {
                 var findProd =
-                    from i in _items
-                    let isProd = i.GetProduct()
-                    where isProd == prod
-                    select isProd;                
+                    from i in _items                    
+                    where i.GetProduct() == prod
+                    select i; 
+                
+                var foundProd = findProd.FirstOrDefault();
 
-                if ( _items.Contains((StoreItem)findProd))
+                if ( _items.Contains(foundProd))
                 {
-                    var _index = _items.IndexOf((StoreItem)findProd);
+                    var _index = _items.IndexOf(foundProd);
                     var prodQ = _items[_index].GetQuantity();
                     _items[_index].SetQuantity(prodQ + quantity);
 
@@ -99,7 +100,7 @@ namespace CKK.Logic.Models
                 orderby i
                 select i;
 
-            return (List<StoreItem>)itemsSorted;
+            return itemsSorted.ToList();
         }
 
         public StoreItem FindStoreItemById(int id)
@@ -107,11 +108,10 @@ namespace CKK.Logic.Models
 
             var itemId =
                 from i in _items
-                let productActual = i.GetProduct()
-                where productActual.GetId() == id
-                select productActual;
+                where i.GetProduct().GetId() == id
+                select i;
            
-            return (StoreItem)itemId;
+            return itemId.FirstOrDefault();
         }
 
         

@@ -29,14 +29,15 @@ namespace CKK.Logic.Models
             {
 
                 var findProd =
-                    from p in _products
-                    let isProd = p.GetProduct()
-                    where isProd == prod
-                    select isProd;
+                    from p in _products                    
+                    where p.GetProduct() == prod
+                    select p;
+
+                var foundProd = findProd.FirstOrDefault();
               
-                if (_products.Contains((ShoppingCartItem)findProd))
+                if (_products.Contains(foundProd))
                 {
-                    var _index = _products.IndexOf((ShoppingCartItem)findProd);
+                    var _index = _products.IndexOf(foundProd);
                     var prodQ = _products[_index].GetQuantity();
                     _products[_index].SetQuantity(prodQ + quantity);
 
@@ -47,7 +48,6 @@ namespace CKK.Logic.Models
                     var p1 = new ShoppingCartItem(prod, quantity);
                     _products.Add(p1);
                     
-
                     return p1;
                 }                
             }
@@ -86,12 +86,11 @@ namespace CKK.Logic.Models
         public ShoppingCartItem GetProductById(int id)
         {
             var prodId =
-                from i in _products
-                let productActual = i.GetProduct()
-                where productActual.GetId() == id
-                select productActual;
+                from i in _products                
+                where i.GetProduct().GetId() == id
+                select i;
 
-            return (ShoppingCartItem)prodId;
+            return prodId.FirstOrDefault();
 
         }
 
@@ -119,7 +118,7 @@ namespace CKK.Logic.Models
                 orderby i
                 select i;
 
-            return (List<ShoppingCartItem>) itemsSorted;
+            return itemsSorted.ToList();
            
         }
         

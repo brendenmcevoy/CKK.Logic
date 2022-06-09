@@ -8,25 +8,25 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\4400112807\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\beanwater\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\4400112807\\Source\\Repos\\CKK.Logic2\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj",
+      "projectUniqueName": "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic2\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj",
       "projectName": "CKK.Logic",
-      "projectPath": "C:\\Users\\4400112807\\Source\\Repos\\CKK.Logic2\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj",
-      "packagesPath": "C:\\Users\\4400112807\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\4400112807\\Source\\Repos\\CKK.Logic2\\CKK.Logic\\CKK.Logic\\obj\\",
+      "projectPath": "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic2\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj",
+      "packagesPath": "C:\\Users\\beanwater\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic2\\CKK.Logic\\CKK.Logic\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\4400112807\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\beanwater\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -65,7 +65,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
