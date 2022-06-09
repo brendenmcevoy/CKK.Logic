@@ -84,14 +84,11 @@ namespace CKK.Logic.Models
 
         public decimal GetTotal()
         {
-            var param = _products.Count();
             decimal total = 0;
-            
-
-            for(int count = 0; count <= param; count++)
+                       
+            foreach (var i in _products)
             {
-                var price = _products[count].GetTotal();
-                total += price;
+                total =+ i.GetTotal();
             }
 
             return total;
