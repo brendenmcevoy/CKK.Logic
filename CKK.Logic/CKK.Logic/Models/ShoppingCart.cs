@@ -25,33 +25,27 @@ namespace CKK.Logic.Models
         
         public ShoppingCartItem AddProduct(Product prod, int quantity)
         {
-            if (quantity >= 0)
+            if (quantity > 0)
             {
-
-                var findProd =
-                    from p in _products                    
-                    where p.GetProduct() == prod
-                    select p;
-
-                var foundProd = findProd.FirstOrDefault();
-              
-                if (_products.Contains(foundProd))
+                foreach (var i in _products)
                 {
-                    var _index = _products.IndexOf(foundProd);
-                    var prodQ = _products[_index].GetQuantity();
-                    _products[_index].SetQuantity(prodQ + quantity);
+                    if (i.GetProduct() == prod)
+                    {
+                        i.SetQuantity(i.GetQuantity() + quantity);
 
-                    return _products[_index];
-                }
-                else 
-                {
-                    var p1 = new ShoppingCartItem(prod, quantity);
-                    _products.Add(p1);
-                    
-                    return p1;
-                }                
+                        return i;
+                    }else
+                    {
+                        _products.Add(new ShoppingCartItem(prod, quantity));
+
+                        return i;
+                    }
+                } 
+                             
             }
             else { return null; }
+
+            return null;
 
         }
 
@@ -60,25 +54,30 @@ namespace CKK.Logic.Models
         {
             if (quantity > 0)
             {
-                var item = GetProductById(id);
-                var _index = _products.IndexOf(item);
-                var itemQ = _products[_index].GetQuantity();
-
-                if ((itemQ - quantity) <= 0)
+                foreach (var i in _products)
                 {
-                    _products.RemoveAt(_index);
-                    item.SetQuantity(0);
+                    if (i.GetProduct().GetId() == id)
+                    {
+                        if(i.GetQuantity() > 0)
+                        {
+                            i.SetQuantity(i.GetQuantity() - quantity);
 
-                    return item;
-                }
-                else 
-                {
-                    _products[_index].SetQuantity(itemQ - quantity);
+                            return i;
+                        }
+                        else
+                        {
+                            i.SetQuantity(0);
+                            _products.Remove(i);
 
-                    return _products[_index];
-                }                
+                            return i;
+                        }
+                    }
+                    else { return null; }
+                }               
             }
             else { return null; }
+
+            return null;
 
 
         }
@@ -111,15 +110,8 @@ namespace CKK.Logic.Models
         }
 
         public List<ShoppingCartItem> GetProducts()
-        {
-
-            var itemsSorted =
-                from i in _products
-                orderby i
-                select i;
-
-            return itemsSorted.ToList();
-           
+        {            
+            return _products ;          
         }
         
     }
