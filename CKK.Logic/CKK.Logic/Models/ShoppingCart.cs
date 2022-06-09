@@ -34,19 +34,15 @@ namespace CKK.Logic.Models
                         i.SetQuantity(i.GetQuantity() + quantity);
 
                         return i;
-                    }else
-                    {
-                        _products.Add(new ShoppingCartItem(prod, quantity));
-
-                        return i;
-                    }
+                    }                    
                 } 
-                             
+
+                ShoppingCartItem newItem = new ShoppingCartItem(prod, quantity);
+                _products.Add(newItem);
+                return newItem;                             
             }
-            else { return null; }
-
             return null;
-
+                        
         }
 
 
@@ -72,14 +68,10 @@ namespace CKK.Logic.Models
                             return i;
                         }
                     }
-                    else { return null; }
+                    
                 }               
             }
-            else { return null; }
-
-            return null;
-
-
+            return null;          
         }
 
         public ShoppingCartItem GetProductById(int id)

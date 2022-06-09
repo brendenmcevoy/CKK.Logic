@@ -51,16 +51,13 @@ namespace CKK.Logic.Models
                         i.SetQuantity(i.GetQuantity() + quantity);
                         return i;
                     }
-                    else
-                    {
-                        _items.Add(new StoreItem(prod, quantity));
-                        return i;
-                    }
                 }
-                { return null; }
 
+                StoreItem newItem = new StoreItem(prod, quantity);
+                _items.Add(newItem);
+                return newItem;            
             }
-            else { return null; }
+            return null;
 
         }
 
@@ -83,14 +80,11 @@ namespace CKK.Logic.Models
                             return i;
                         }
                     }
-                    else { return null; }
+                                                                         
+                }                
 
-                                                         
-                }
-                { return null; }
-
-            }
-            else { return null; }
+            } return null;
+            
            
             
         }
