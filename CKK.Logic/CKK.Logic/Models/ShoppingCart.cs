@@ -57,23 +57,16 @@ namespace CKK.Logic.Models
                         if(i.GetQuantity() - quantity > 0)
                         {
                             i.SetQuantity(i.GetQuantity() - quantity);
-
                             return i;
                         } else
                         {
                             i.SetQuantity(0);
+                            _products.Remove(i); 
                             return i;
                         }                      
                     }                    
                 }
-                foreach (var i in _products)
-                {
-                    if (i.GetQuantity() <= 0)
-                    {
-                        _products.Remove(i);
-                        return i;
-                    }
-                }
+                
             }
             return null;          
         }
