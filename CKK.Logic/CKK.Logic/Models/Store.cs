@@ -40,27 +40,28 @@ namespace CKK.Logic.Models
 
         public StoreItem AddStoreItem(Product prod, int quantity)
         {
+
             if (quantity > 0)
             {
-                                             
-                foreach(StoreItem i in _items)
+
+                foreach (StoreItem i in _items)
                 {
-                    if(i.GetProduct() == prod)
+                    if (i.GetProduct() == prod)
                     {
                         i.SetQuantity(i.GetQuantity() + quantity);
-
                         return i;
-                    }else
+                    }
+                    else
                     {
                         _items.Add(new StoreItem(prod, quantity));
-
                         return i;
                     }
                 }
-                
-            }else { return null; }   
-            
-            return null;
+                { return null; }
+
+            }
+            else { return null; }
+
         }
 
         public StoreItem RemoveStoreItem(int id, int quantity)
@@ -74,13 +75,11 @@ namespace CKK.Logic.Models
                         if (i.GetQuantity() - quantity > 0)
                         {
                             i.SetQuantity(i.GetQuantity() - quantity);
-
                             return i;
                         }
                         else
                         {
                             i.SetQuantity(0);
-
                             return i;
                         }
                     }
@@ -88,11 +87,12 @@ namespace CKK.Logic.Models
 
                                                          
                 }
+                { return null; }
 
             }
             else { return null; }
            
-            return null;
+            
         }
 
         public List<StoreItem> GetStoreItems()
