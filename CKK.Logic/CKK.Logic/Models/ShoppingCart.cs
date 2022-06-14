@@ -84,11 +84,13 @@ namespace CKK.Logic.Models
 
         public decimal GetTotal()
         {
+            _products.TrimExcess();
+
             decimal total = 0;
                        
             foreach (var i in _products)
             {
-                total =+ i.GetTotal();
+                total = total + i.GetTotal();
             }
 
             return total;
