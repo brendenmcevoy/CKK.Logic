@@ -86,13 +86,13 @@ namespace CKK.Logic.Models
         {
             decimal total = 0;
             
-            
-            for(int c = 0; c <= _products.Count(); c++)
+            foreach (var i in _products)
             {
-                total += _products[c].GetTotal();
+                total += i.GetTotal();
             }
 
             return total;
+                       
         }
 
         public List<ShoppingCartItem> GetProducts()
