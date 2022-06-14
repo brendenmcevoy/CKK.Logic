@@ -90,7 +90,7 @@ namespace CKK.Logic.Models
                        
             foreach (var i in _products)
             {
-                total = total + i.GetTotal();
+                total =+ i.GetTotal();
             }
 
             return total;
@@ -98,8 +98,13 @@ namespace CKK.Logic.Models
         }
 
         public List<ShoppingCartItem> GetProducts()
-        {            
-            return _products ;          
+        {
+            var productsSorted =
+                from i in _products
+                orderby i
+                select i;
+
+            return productsSorted.ToList();          
         }
         
     }
