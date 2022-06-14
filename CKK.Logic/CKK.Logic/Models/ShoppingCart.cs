@@ -84,27 +84,20 @@ namespace CKK.Logic.Models
 
         public decimal GetTotal()
         {
-            _products.TrimExcess();
-
             decimal total = 0;
-                       
-            foreach (var i in _products)
+            
+            
+            for(int c = 0; c <= _products.Count(); c++)
             {
-                total =+ i.GetTotal();
+                total += _products[c].GetTotal();
             }
 
             return total;
-            
         }
 
         public List<ShoppingCartItem> GetProducts()
         {
-            var productsSorted =
-                from i in _products
-                orderby i
-                select i;
-
-            return productsSorted.ToList();          
+            return _products;          
         }
         
     }
