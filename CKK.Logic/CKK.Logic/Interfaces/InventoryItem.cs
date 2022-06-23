@@ -7,11 +7,17 @@ using CKK.Logic.Models;
 
 namespace CKK.Logic.Interfaces
 {
-    abstract class InventoryItem
+    public abstract class InventoryItem
     {
         private Product product;
         private int quantity;
 
+        public InventoryItem(Product Product, int Quantity)
+        {
+            product = Product;
+            quantity = Quantity;
+        }
+     
         public Product Product
         {
             get

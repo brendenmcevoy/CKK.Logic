@@ -8,8 +8,8 @@ namespace CKK.Logic.Models
 {
     public class ShoppingCart
     {
-        private Customer _customer;
-        private List<ShoppingCartItem> _products;
+        private readonly Customer _customer;
+        private readonly List<ShoppingCartItem> _products;
 
         public ShoppingCart(Customer customer)
         {
@@ -19,7 +19,7 @@ namespace CKK.Logic.Models
 
         public int GetCustomerId()
         {
-            return  _customer.GetId();
+            return  _customer.Id;
         }
 
         
@@ -29,15 +29,15 @@ namespace CKK.Logic.Models
             {
                 foreach (var i in _products)
                 {
-                    if (i.GetProduct() == prod)
+                    if (i.Product == prod)
                     {
-                        i.SetQuantity(i.GetQuantity() + quantity);
+                        i.Quantity += + quantity;
 
                         return i;
                     }                    
                 } 
 
-                ShoppingCartItem newItem = new ShoppingCartItem(prod, quantity);
+                ShoppingCartItem newItem = new(prod, quantity);
                 _products.Add(newItem);
                 return newItem;                             
             }
@@ -52,15 +52,15 @@ namespace CKK.Logic.Models
             {
                 foreach (var i in _products)
                 {
-                    if (i.GetProduct().GetId() == id)
+                    if (i.Product.Id == id)
                     {
-                        if(i.GetQuantity() - quantity > 0)
+                        if(i.Quantity - quantity > 0)
                         {
-                            i.SetQuantity(i.GetQuantity() - quantity);
+                            i.Quantity -= ( - quantity);
                             return i;
                         } else
                         {
-                            i.SetQuantity(0);
+                            i.Quantity = 0;
                             _products.Remove(i); 
                             return i;
                         }                      
@@ -75,7 +75,7 @@ namespace CKK.Logic.Models
         {
             var prodId =
                 from i in _products                
-                where i.GetProduct().GetId() == id
+                where i.Product.Id == id
                 select i;
 
             return prodId.FirstOrDefault();

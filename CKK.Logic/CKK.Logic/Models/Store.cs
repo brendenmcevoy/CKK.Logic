@@ -3,41 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CKK.Logic.Interfaces;
 
 namespace CKK.Logic.Models
 {
-    public class Store
+    public class Store : Entity
     {
-        private int _id;
-        private string _name;
-        private List<StoreItem> _items;
+        
+        private readonly List<StoreItem> _items;
+
 
         public Store ()
         {
             _items = new List<StoreItem>();
             
         }
-
-        public int GetId()
-        {
-            return _id;
-        }
-
-        public void SetId(int id)
-        {           
-            _id = id;
-        }
-
-        public string GetName()
-        {
-            return _name;
-        }
-
-        public void SetName(string name)
-        {
-            _name = name;
-        }
-
+        
         public StoreItem AddStoreItem(Product prod, int quantity)
         {
 
@@ -46,14 +27,14 @@ namespace CKK.Logic.Models
 
                 foreach (StoreItem i in _items)
                 {
-                    if (i.GetProduct() == prod)
+                    if (i.Product == prod)
                     {
-                        i.SetQuantity(i.GetQuantity() + quantity);
+                        i.Quantity +=  + quantity;
                         return i;
                     }
                 }
 
-                StoreItem newItem = new StoreItem(prod, quantity);
+                StoreItem newItem = new(prod, quantity);
                 _items.Add(newItem);
                 return newItem;            
             }
@@ -67,16 +48,16 @@ namespace CKK.Logic.Models
             {
                 foreach (var i in _items)
                 {
-                    if (i.GetProduct().GetId() == id)
+                    if (i.Product.Id == id)
                     {
-                        if (i.GetQuantity() - quantity > 0)
+                        if (i.Quantity - quantity > 0)
                         {
-                            i.SetQuantity(i.GetQuantity() - quantity);
+                            i.Quantity -= quantity;
                             return i;
                         }
                         else
                         {
-                            i.SetQuantity(0);
+                            i.Quantity = 0;
                             return i;
                         }
                     }
@@ -84,9 +65,7 @@ namespace CKK.Logic.Models
                 }                
 
             } return null;
-            
-           
-            
+                              
         }
 
         public List<StoreItem> GetStoreItems()
@@ -99,7 +78,7 @@ namespace CKK.Logic.Models
 
             var itemId =
                 from i in _items
-                where i.GetProduct().GetId() == id
+                where i.Product.Id == id
                 select i;
            
             return itemId.FirstOrDefault();
