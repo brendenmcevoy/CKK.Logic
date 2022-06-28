@@ -10,17 +10,17 @@ namespace CKK.Logic.Interfaces
     internal interface IShoppingCart
     {
 
-        public abstract int GetCustomerId();
+        public int GetCustomerId();
 
-        public abstract ShoppingCartItem AddProduct(Product prod, int id);
+        public ShoppingCartItem AddProduct(Product prod, int id);
+        
+        public  ShoppingCartItem RemoveProduct(int id, int quantity);
 
-        public abstract ShoppingCartItem RemoveProduct(int id, int quantity);
+        public  decimal GetTotal();
 
-        public abstract decimal GetTotal();
+        public  ShoppingCartItem GetProductById(int id);
 
-        public abstract ShoppingCartItem GetProductById(int id);
-
-        public abstract List<ShoppingCartItem> GetProducts();
+        public  List<ShoppingCartItem> GetProducts();
         
             
         
