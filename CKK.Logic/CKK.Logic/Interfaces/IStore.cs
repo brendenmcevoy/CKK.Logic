@@ -7,7 +7,7 @@ using CKK.Logic.Models;
 
 namespace CKK.Logic.Interfaces
 {
-    internal interface IStore
+    public interface IStore
     {
         public  StoreItem AddStoreItem(Product prod, int quantity);
 
