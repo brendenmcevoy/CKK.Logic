@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CKK.Logic.Exceptions;
 
 namespace CKK.Logic.Interfaces
 {
@@ -18,7 +19,12 @@ namespace CKK.Logic.Interfaces
             }
             set
             {
-                id = value;
+                if (id < 0)
+                {
+                    throw new InvalidIdException();
+                }
+                else { id = value; }
+
             }
         }
 

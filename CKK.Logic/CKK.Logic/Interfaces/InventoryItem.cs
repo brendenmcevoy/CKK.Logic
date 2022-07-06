@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CKK.Logic.Models;
+using CKK.Logic.Exceptions;
 
 namespace CKK.Logic.Interfaces
 {
@@ -41,7 +42,12 @@ namespace CKK.Logic.Interfaces
 
             set
             {
-                quantity = value;
+                if (value < 0)
+                {
+                    throw new InventoryItemStockTooLowException();
+                }
+                else { quantity = value; }
+                
             }
         }
     }
