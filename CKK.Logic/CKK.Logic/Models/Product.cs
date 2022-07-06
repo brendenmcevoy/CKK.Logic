@@ -14,7 +14,19 @@ namespace CKK.Logic.Models
         public decimal Price
         {
             get { return _price; }
-            set { _price = value; }
+            set
+            {
+                try { _price = value; }
+                catch(ArgumentOutOfRangeException argumentOutOfRangeException)
+                {
+                    Console.WriteLine($"\n{argumentOutOfRangeException.Message}");
+                }
+
+                if(value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value), _price, "Price must be greater than zero.");
+                }
+            }
         }
     }
 

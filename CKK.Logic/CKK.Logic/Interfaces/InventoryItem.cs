@@ -42,11 +42,17 @@ namespace CKK.Logic.Interfaces
 
             set
             {
+                try { quantity = value; }
+                catch(InventoryItemStockTooLowException inventoryItemStockTooLowException)
+                {
+                    Console.WriteLine($"\n{inventoryItemStockTooLowException.Message}");                   
+                }
+
                 if (value < 0)
                 {
                     throw new InventoryItemStockTooLowException();
                 }
-                else { quantity = value; }
+                
                 
             }
         }

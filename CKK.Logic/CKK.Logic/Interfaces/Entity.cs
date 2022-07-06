@@ -19,11 +19,17 @@ namespace CKK.Logic.Interfaces
             }
             set
             {
+                try { id = value; }
+                catch (InvalidIdException invalidIdException)
+                {
+                    Console.Write($"\n{invalidIdException.Message}");                   
+                }
+
                 if (id < 0)
                 {
                     throw new InvalidIdException();
                 }
-                else { id = value; }
+                
 
             }
         }

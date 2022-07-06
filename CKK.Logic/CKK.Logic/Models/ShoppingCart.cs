@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CKK.Logic.Interfaces;
+using CKK.Logic.Exceptions;
 
 namespace CKK.Logic.Models
 {
@@ -28,59 +29,96 @@ namespace CKK.Logic.Models
         {
             if (quantity > 0)
             {
-                foreach (var i in _products)
+                try
                 {
-                    if (i.Product == prod)
+                    foreach (var i in _products)
                     {
-                        i.Quantity += + quantity;
+                        if (i.Product == prod)
+                        {
+                            i.Quantity += +quantity;
 
-                        return i;
-                    }                    
-                } 
+                            return i;
+                        }
+                    }
 
-                ShoppingCartItem newItem = new(prod, quantity);
-                _products.Add(newItem);
-                return newItem;                             
+                    ShoppingCartItem newItem = new(prod, quantity);
+                    _products.Add(newItem);
+                    return newItem;
+                }
+
+                catch (InventoryItemStockTooLowException inventoryItemStocktooLowException)
+                {
+                    Console.WriteLine($"\n{inventoryItemStocktooLowException.Message}");                    
+                }
+            }
+            else 
+            {                
+                throw new InventoryItemStockTooLowException();
             }
             return null;
-                        
         }
 
 
         public ShoppingCartItem RemoveProduct(int id, int quantity)
         {
-            if (quantity > 0)
+            if (quantity < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(quantity), quantity, "Quantity must be greater than zero.");
+            }
+            try
             {
                 foreach (var i in _products)
                 {
                     if (i.Product.Id == id)
                     {
-                        if(i.Quantity - quantity > 0)
+                        if (i.Quantity - quantity > 0)
                         {
-                            i.Quantity -= ( - quantity);
+                            i.Quantity -= (-quantity);
                             return i;
-                        } else
+                        }
+                        else
                         {
                             i.Quantity = 0;
-                            _products.Remove(i); 
+                            _products.Remove(i);
                             return i;
-                        }                      
-                    }                    
+                        }
+                    }
+                    else { throw new ProductDoesNotExistException(); }
+
                 }
-                
+            }catch (ArgumentOutOfRangeException argumentOutOfRangeException)
+            {
+                Console.WriteLine($"\n{argumentOutOfRangeException.Message}");
+
             }
+            catch (ProductDoesNotExistException productDoesNotExistException)
+            {
+                Console.WriteLine($"\n{productDoesNotExistException.Message}");
+            }                           
             return null;          
         }
 
         public ShoppingCartItem GetProductById(int id)
         {
-            var prodId =
-                from i in _products                
-                where i.Product.Id == id
-                select i;
+            if (id < 0)
+            {
+                throw new InvalidIdException();
+            }
 
-            return prodId.FirstOrDefault();
+            try
+            {
+                var prodId =
+                    from i in _products
+                    where i.Product.Id == id
+                    select i;
 
+                return prodId.FirstOrDefault();
+
+            }catch(InvalidIdException invalidIdException)
+            {
+                Console.WriteLine($"\n {invalidIdException.Message}");                
+            }
+            return null;
         }
 
         public decimal GetTotal()

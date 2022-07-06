@@ -8,7 +8,7 @@ namespace CKK.Logic.Exceptions
 {
     class ProductDoesNotExistException : Exception
     {
-        public ProductDoesNotExistException() : base()
+        public ProductDoesNotExistException() : base("Product does not exist.")
         {
 
         }
