@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace CKK.Logic.Exceptions
 {
-    class InvalidIdException : Exception
-    {public InvalidIdException() : base("Id must be greater than zero.")
+    public class InvalidIdException : Exception
+    {
+        public InvalidIdException() : base("Id must be greater than zero.")
         {
 
         }
