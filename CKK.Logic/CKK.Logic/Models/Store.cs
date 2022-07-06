@@ -49,8 +49,16 @@ namespace CKK.Logic.Models
 
         public StoreItem RemoveStoreItem(int id, int quantity)
         {
+            var item = FindStoreItemById(id);
+
             if (quantity <= 0)
             { throw new ArgumentOutOfRangeException(nameof(quantity), quantity, "Quantity must be greater than zero."); }
+
+            if (_items.Contains(item) == false)
+            {
+                throw new ProductDoesNotExistException();
+            }
+
             try
             {
                 foreach (var i in _items)
@@ -67,9 +75,7 @@ namespace CKK.Logic.Models
                             i.Quantity = 0;
                             return i;
                         }
-                    }
-                    else { throw new ProductDoesNotExistException(); }
-
+                    }                  
                 }
             }catch(ArgumentOutOfRangeException argumentOutOfRangeException)
             {
