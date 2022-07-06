@@ -81,10 +81,9 @@ namespace CKK.Logic.Models
                     {
                         if (i.Quantity - quantity > 0)
                         {
-                            i.Quantity -= (-quantity);
+                            i.Quantity -= (quantity);
                             return i;
-                        }
-                        else
+                        }else                        
                         {
                             i.Quantity = 0;
                             _products.Remove(i);
