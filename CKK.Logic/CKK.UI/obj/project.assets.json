@@ -1,33 +1,49 @@
 {
   "version": 3,
   "targets": {
-    "net5.0-windows7.0": {}
+    "net5.0-windows7.0": {
+      "CKK.Logic/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/CKK.Logic.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CKK.Logic.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "CKK.Logic/1.0.0": {
+      "type": "project",
+      "path": "../CKK.Logic/CKK.Logic.csproj",
+      "msbuildProject": "../CKK.Logic/CKK.Logic.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0-windows7.0": []
+    "net5.0-windows7.0": [
+      "CKK.Logic >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\4400112807\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\4400112807\\Source\\Repos\\CKK.Logic2\\CKK.Logic\\CKK.UI\\CKK.UI.csproj",
+      "projectUniqueName": "C:\\Users\\4400112807\\source\\repos\\CKK.Logic2\\CKK.Logic\\CKK.UI\\CKK.UI.csproj",
       "projectName": "CKK.UI",
-      "projectPath": "C:\\Users\\4400112807\\Source\\Repos\\CKK.Logic2\\CKK.Logic\\CKK.UI\\CKK.UI.csproj",
+      "projectPath": "C:\\Users\\4400112807\\source\\repos\\CKK.Logic2\\CKK.Logic\\CKK.UI\\CKK.UI.csproj",
       "packagesPath": "C:\\Users\\4400112807\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\4400112807\\Source\\Repos\\CKK.Logic2\\CKK.Logic\\CKK.UI\\obj\\",
+      "outputPath": "C:\\Users\\4400112807\\source\\repos\\CKK.Logic2\\CKK.Logic\\CKK.UI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
         "C:\\Users\\4400112807\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -36,13 +52,16 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\4400112807\\source\\repos\\CKK.Logic2\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj": {
+              "projectPath": "C:\\Users\\4400112807\\source\\repos\\CKK.Logic2\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -68,11 +87,11 @@
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           },
-          "Microsoft.WindowsDesktop.App.WindowsForms": {
+          "Microsoft.WindowsDesktop.App.WPF": {
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.411\\RuntimeIdentifierGraph.json"
       }
     }
   }

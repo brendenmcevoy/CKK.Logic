@@ -1,0 +1,15 @@
+﻿<Window x:Class="CKK.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CKK.UI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" FontFamily="Verdana" FontSize="14" FontWeight="Bold">
+    <Grid>
+        <Button Content="Add Item(s)" Name="addButton" Margin="10,10,0,0" FontFamily="Verdana" FontSize="14" FontWeight="Bold" Width="131" Height="50" Click="addButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button Content="Remove Item(s)" Name="removeButton" HorizontalAlignment="Left" Margin="156,10,0,0" VerticalAlignment="Top" Width="139" Height="50" FontFamily="Verdana"/>
+        <Border BorderThickness="1" BorderBrush="Black" Margin="10,66,10,10">
+        </Border>
+    </Grid>
+</Window>
