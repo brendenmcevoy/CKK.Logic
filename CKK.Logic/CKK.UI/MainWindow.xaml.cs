@@ -29,7 +29,7 @@ namespace CKK.UI
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-            itemBox itembox = new itemBox();
+           
  
         }      
     }

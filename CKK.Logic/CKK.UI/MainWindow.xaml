@@ -5,11 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CKK.UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" FontFamily="Verdana" FontSize="14" FontWeight="Bold">
-    <Grid>
-        <Button Content="Add Item(s)" Name="addButton" Margin="10,10,0,0" FontFamily="Verdana" FontSize="14" FontWeight="Bold" Width="131" Height="50" Click="addButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Button Content="Remove Item(s)" Name="removeButton" HorizontalAlignment="Left" Margin="156,10,0,0" VerticalAlignment="Top" Width="139" Height="50" FontFamily="Verdana"/>
-        <Border BorderThickness="1" BorderBrush="Black" Margin="10,66,10,10">
-        </Border>
+        Title="MainWindow" Height="560" Width="825" FontFamily="Verdana" FontSize="14" FontWeight="Bold">
+    <Grid Margin="0,0,10,3">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Button Content="Add Item(s)" 
+                Name="addButton" 
+                Margin="0,0,0,0" 
+                FontFamily="Verdana" 
+                FontSize="14" 
+                FontWeight="Bold" 
+                Width="130" 
+                Height="50" 
+                Click="addButton_Click" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"
+                BorderThickness="3" 
+                Grid.Column="2"
+                Grid.Row="2"/>
+
+        <Button Content="Remove Item(s)" 
+                Name="removeButton" 
+                HorizontalAlignment="Left" 
+                Margin="10,0,0,0" 
+                VerticalAlignment="Top" 
+                Width="140" 
+                Height="50" 
+                FontFamily="Verdana"
+                BorderThickness="3"
+                Grid.Column="3"
+                Grid.Row="2"/>
+
+        <!-- <Border BorderThickness="2" 
+                BorderBrush="Black" 
+                Margin="10,65,10,11">  -->
     </Grid>
 </Window>
