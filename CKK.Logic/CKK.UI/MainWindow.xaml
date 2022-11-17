@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CKK.UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="560" Width="825" FontFamily="Verdana" FontSize="14" FontWeight="Bold">
+        Title="MainWindow" Height="600" Width="1000" FontFamily="Verdana" FontSize="14" FontWeight="Bold">
     <Grid Margin="0,0,10,3">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -50,6 +50,8 @@
                 BorderThickness="3"
                 Grid.Column="3"
                 Grid.Row="2"/>
+        <local:AddItemUC Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" Width="600" Height="50"/>
+
 
         <!-- <Border BorderThickness="2" 
                 BorderBrush="Black" 

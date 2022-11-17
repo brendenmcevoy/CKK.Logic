@@ -19,10 +19,10 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Rectangle Grid.Column="0" Grid.ColumnSpan="5" Width="900" Height="40" Opacity="0.5" 
-                   Fill="#FFEAE4E4"/>
+        <Rectangle Grid.Column="0" Grid.ColumnSpan="5" Width="600" Height="40" Opacity="0.5" 
+                   Fill="#FF676565"/>
 
-        <TextBox Name="idBox" Grid.Column="0" Grid.Row="0" Width="120" Height="20" 
+        <TextBox Name="idBox" Grid.Column="0" Grid.Row="0" Width="80" Height="20" 
                 Text="ID" FontFamily="Verdana" FontWeight="Bold" FontSize="14" TextAlignment="Center" />
 
         <TextBox Name="nameBox" Grid.Column="1" Grid.Row="0" Width="140" Height="20" 
