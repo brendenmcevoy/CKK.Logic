@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CKK.Logic.Models;
 using CKK.Logic.Interfaces;
+using System.Collections.ObjectModel;
 
 namespace CKK.UI
 {
@@ -22,9 +23,24 @@ namespace CKK.UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private IStore _Store;
+        public ObservableCollection<StoreItem> _Items { get; private set;}
+        public MainWindow(Store store)
         {
+            _Store = store;
             InitializeComponent();
+            _Items = new ObservableCollection<StoreItem>();
+            lbInventoryList.ItemsSource = _Items;
+            RefreshList();
+        }
+
+        private void RefreshList()
+        {
+            _Items.Clear();
+            foreach (StoreItem si in new ObservableCollection<StoreItem>(_Store.GetStoreItems()))
+            {
+                _Items.Add(si);
+            }
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)

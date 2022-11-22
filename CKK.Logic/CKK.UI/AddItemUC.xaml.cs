@@ -24,8 +24,9 @@ namespace CKK.UI
     {
         public AddItemUC()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
+
      
         private void submitButon_Click(object sender, RoutedEventArgs e)
         {
@@ -35,6 +36,7 @@ namespace CKK.UI
             prod.Price = decimal.Parse(priceBox.Text);
    
             StoreItem item= new StoreItem(prod, int.Parse(qBox.Text));
+            
         }
     }
 }

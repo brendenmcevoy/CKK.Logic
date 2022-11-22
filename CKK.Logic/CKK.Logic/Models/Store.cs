@@ -22,6 +22,11 @@ namespace CKK.Logic.Models
         
         public StoreItem AddStoreItem(Product prod, int quantity)
         {
+            Random rnd = new Random();
+            if(prod.Id == 0)
+            {
+                prod.Id = rnd.Next();
+            }
 
             if (quantity <= 0)
             { throw new InventoryItemStockTooLowException(); }
@@ -86,6 +91,12 @@ namespace CKK.Logic.Models
                 Console.WriteLine($"\n{productDoesNotExistException.Message}");
             }
             return null;                             
+        }
+
+        public void DeleteStoreItem(int id)
+        {
+            
+            _items.Remove(FindStoreItemById(id));
         }
 
         public List<StoreItem> GetStoreItems()

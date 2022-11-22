@@ -50,11 +50,9 @@
                 BorderThickness="3"
                 Grid.Column="3"
                 Grid.Row="2"/>
-        <local:AddItemUC Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" Width="600" Height="50"/>
+        <ListBox x:Name="lbInventoryList" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" 
+                 Height="500" Width="900" BorderThickness="5" Margin="5"
+                 ItemsSource="{Binding _Items, Mode=OneWay}"/>
 
-
-        <!-- <Border BorderThickness="2" 
-                BorderBrush="Black" 
-                Margin="10,65,10,11">  -->
     </Grid>
 </Window>
