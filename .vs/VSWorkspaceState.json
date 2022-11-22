@@ -1,9 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\CKK.Logic",
-    "\\CKK.Logic\\CKK.UI"
+    ""
   ],
-  "SelectedNode": "\\CKK.Logic\\CKK.UI\\MainWindow.xaml",
+  "SelectedNode": "\\CKK.Logic.sln",
   "PreviewInSolutionExplorer": false
 }

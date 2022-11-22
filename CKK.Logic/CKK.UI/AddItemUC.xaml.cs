@@ -24,7 +24,7 @@ namespace CKK.UI
     {
         public AddItemUC()
         {
-            InitializeComponent();           
+            InitializeComponent();
         }
 
      
@@ -34,9 +34,13 @@ namespace CKK.UI
             prod.Name = nameBox.Text;
             prod.Id = int.Parse(idBox.Text);
             prod.Price = decimal.Parse(priceBox.Text);
-   
-            StoreItem item= new StoreItem(prod, int.Parse(qBox.Text));
-            
+
+            StoreItem item= new StoreItem(prod, int.Parse(qBox.Text));            
+        }
+
+        public void Show()
+        {
+            Visibility = Visibility.Visible;
         }
     }
 }
