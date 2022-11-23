@@ -10,12 +10,18 @@
     <Compile Update="AddItemUC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Login.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="AddItemUC.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MainWindow.xaml">
+    <Page Update="Login.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="InventoryManager.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

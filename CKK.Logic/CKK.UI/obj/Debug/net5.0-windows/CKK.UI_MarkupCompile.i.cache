@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\4400112807\Source\Repos\brendenmcevoy\CKK.Logic2\CKK.Logic\CKK.UI\App.xaml
-21093048218
+3103844207
 
-61413779369
+7-1368975859
 194-1208112761
-AddItemUC.xaml;MainWindow.xaml;
+AddItemUC.xaml;InventoryManager.xaml;Login.xaml;
 
-True
+False
 

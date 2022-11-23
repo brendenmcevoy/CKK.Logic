@@ -21,11 +21,11 @@ namespace CKK.UI
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class InventoryManager : Window
     {
         private IStore _Store;
         public ObservableCollection<StoreItem> _Items { get; private set;}
-        public MainWindow(Store store)
+        public InventoryManager(Store store)
         {
             _Store = store;
             InitializeComponent();
@@ -45,7 +45,7 @@ namespace CKK.UI
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-            AddItemUC.Show();
+
         }      
     }
 }
