@@ -19,23 +19,28 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Rectangle Grid.Column="0" Grid.ColumnSpan="5" Width="600" Height="40" Opacity="0.5" 
-                   Fill="#FF676565"/>
+        <Rectangle Grid.Column="0" Grid.ColumnSpan="5" Width="600" Height="40" 
+                   Opacity="0.5" Fill="#FF676565"/>
 
         <TextBox Name="idBox" Grid.Column="0" Grid.Row="0" Width="80" Height="20" 
-                Text="ID" FontFamily="Verdana" FontWeight="Bold" FontSize="14" TextAlignment="Center" />
+                Text="ID" FontFamily="Verdana" FontWeight="Bold"  FontSize="14"
+                 TextAlignment="Center"/>
 
         <TextBox Name="nameBox" Grid.Column="1" Grid.Row="0" Width="140" Height="20" 
-                Text="Name" FontFamily="Verdana" FontWeight="Bold" FontSize="14" TextAlignment="Center"/>
+                Text="Name" FontFamily="Verdana" FontWeight="Bold" FontSize="14" 
+                 TextAlignment="Center"/>
         
         <TextBox Name="qBox" Grid.Column="2" Grid.Row="0" Width="120" Height="20" 
-                Text="Quantity" FontFamily="Verdana" FontWeight="Bold" FontSize="14" TextAlignment="Center" />
+                Text="Quantity" FontFamily="Verdana" FontWeight="Bold" FontSize="14" 
+                 TextAlignment="Center" />
         
-        <TextBox Name="priceBox" Grid.Column="3" Grid.Row="0" Width="60" Height="20" Text="Price" FontFamily="Verdana"
-                FontWeight="Bold" FontSize="14" TextAlignment="Center"/>
+        <TextBox Name="priceBox" Grid.Column="3" Grid.Row="0" Width="60" Height="20" 
+                 Text="Price" FontFamily="Verdana" FontWeight="Bold" FontSize="14" 
+                 TextAlignment="Center"/>
 
-        <Button Name="submitButon" Grid.Column="4" Grid.Row="0" Width="70" Height="35" Content="Submit" 
-                FontFamily="Verdana" FontWeight="Bold" FontSize="14"/>
+        <Button Name="submitButon" Grid.Column="4" Grid.Row="0" Width="70" 
+                Height="35" Content="Submit" FontFamily="Verdana" FontWeight="Bold" 
+                FontSize="14" Click="submitButon_Click"/>
 
     </Grid>
 </UserControl>

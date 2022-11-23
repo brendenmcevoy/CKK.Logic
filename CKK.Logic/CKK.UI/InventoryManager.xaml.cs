@@ -46,8 +46,17 @@ namespace CKK.UI
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
+            AddItem add = new AddItem();
+
             add.Show();
+            this.Close();
         }
+
+       
+
+        
+
+        
 
     }
 }

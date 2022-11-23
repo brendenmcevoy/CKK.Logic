@@ -22,25 +22,28 @@ namespace CKK.UI
     /// </summary>
     public partial class AddItemUC : UserControl
     {
+        
         public AddItemUC()
         {
             InitializeComponent();
         }
-
-     
-        /*private void submitButon_Click(object sender, RoutedEventArgs e)
+      
+        public void Show()
         {
-            Product prod= new Product();
+            Visibility = Visibility.Visible; //open addBar
+        }
+
+        private void submitButon_Click(object sender, RoutedEventArgs e)
+        {
+            Product prod = new Product();
             prod.Name = nameBox.Text;
             prod.Id = int.Parse(idBox.Text);
             prod.Price = decimal.Parse(priceBox.Text);
-           
-            store.AddStoreItem(prod, int.Parse(qBox.Text));           
-        }*/
+            int quantity = int.Parse(qBox.Text);
 
-        public void Show()
-        {
-            this.Visibility = Visibility.Visible;                       
+            
+
+            Visibility = Visibility.Collapsed; //close addBar
         }
     }
 }

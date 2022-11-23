@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:CKK.UI"
              xmlns:Logic="clr-namespace:CKK.Logic.Models;assembly=CKK.Logic"
-             StartupUri="MainWindow.xaml">
+             StartupUri="Login.xaml">
     <Application.Resources>
         <Logic:Store x:Key="globStore"></Logic:Store>
     </Application.Resources>
