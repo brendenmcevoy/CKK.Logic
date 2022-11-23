@@ -35,7 +35,7 @@
                 FontWeight="Bold" FontSize="14" TextAlignment="Center"/>
 
         <Button Name="submitButon" Grid.Column="4" Grid.Row="0" Width="70" Height="35" Content="Submit" 
-                FontFamily="Verdana" FontWeight="Bold" FontSize="14" Click="submitButon_Click"/>
+                FontFamily="Verdana" FontWeight="Bold" FontSize="14"/>
 
     </Grid>
 </UserControl>

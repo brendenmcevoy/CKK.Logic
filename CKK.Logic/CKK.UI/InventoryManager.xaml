@@ -62,6 +62,6 @@
         </ListBox>
 
         <local:AddItemUC Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" 
-                         Visibility="Collapsed"/>
+                         x:Name ="add" Visibility="Collapsed"/>
     </Grid>
 </Window>

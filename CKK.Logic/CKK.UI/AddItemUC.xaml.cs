@@ -28,19 +28,19 @@ namespace CKK.UI
         }
 
      
-        private void submitButon_Click(object sender, RoutedEventArgs e)
+        /*private void submitButon_Click(object sender, RoutedEventArgs e)
         {
             Product prod= new Product();
             prod.Name = nameBox.Text;
             prod.Id = int.Parse(idBox.Text);
             prod.Price = decimal.Parse(priceBox.Text);
-
-            StoreItem item= new StoreItem(prod, int.Parse(qBox.Text));            
-        }
+           
+            store.AddStoreItem(prod, int.Parse(qBox.Text));           
+        }*/
 
         public void Show()
         {
-            Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Visible;                       
         }
     }
 }

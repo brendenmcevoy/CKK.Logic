@@ -37,6 +37,7 @@ namespace CKK.UI
         private void RefreshList()
         {
             _Items.Clear();
+
             foreach (StoreItem si in new ObservableCollection<StoreItem>(_Store.GetStoreItems()))
             {
                 _Items.Add(si);
@@ -45,7 +46,8 @@ namespace CKK.UI
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
+            add.Show();
+        }
 
-        }      
     }
 }
