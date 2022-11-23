@@ -50,6 +50,19 @@ namespace CKK.UI
 
             add.Show();
             this.Close();
+           
+        }
+
+        public void addItem(Product prod, int quantity)
+        {
+            _Store.AddStoreItem(prod, quantity);
+            RefreshList();
+        }
+
+        public void removeItem(int id, int quantity)
+        {
+            _Store.RemoveStoreItem(id, quantity);
+            RefreshList();
         }
 
        

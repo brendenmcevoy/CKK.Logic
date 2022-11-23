@@ -60,10 +60,7 @@
                  Grid.ColumnSpan="3" Height="475" Width="900" BorderThickness="5" 
                  Margin="5">
         </ListBox>
-
-        <!-- maybe use new window instead of custom control
-        
-            <local:AddItemUC Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" 
-                         x:Name ="add" Visibility="Collapsed"/> -->
+       
+            
     </Grid>
 </Window>

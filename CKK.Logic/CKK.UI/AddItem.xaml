@@ -53,6 +53,6 @@
 
         <Button x:Name="submitButton" Content="Submit" Grid.Column="2"
                 Grid.Row="5" Height="80" Width="200" Background="Black" Foreground="White"
-                FontFamily="Verdana" FontSize="26" FontWeight="Bold" Margin="40"/>
+                FontFamily="Verdana" FontSize="26" FontWeight="Bold" Margin="40" Click="submitButton_Click"/>
     </Grid>
 </Window>

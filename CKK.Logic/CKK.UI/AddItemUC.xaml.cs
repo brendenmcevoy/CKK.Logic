@@ -35,14 +35,16 @@ namespace CKK.UI
 
         private void submitButon_Click(object sender, RoutedEventArgs e)
         {
+            Store tp = (Store)Application.Current.FindResource("globStore");
+            InventoryManager inv = new InventoryManager(tp);
+
             Product prod = new Product();
             prod.Name = nameBox.Text;
             prod.Id = int.Parse(idBox.Text);
             prod.Price = decimal.Parse(priceBox.Text);
-            int quantity = int.Parse(qBox.Text);
 
-            
-
+            inv.addItem(prod, int.Parse(qBox.Text));
+                        
             Visibility = Visibility.Collapsed; //close addBar
         }
     }

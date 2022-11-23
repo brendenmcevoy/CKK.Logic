@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CKK.Logic.Models;
+using CKK.Logic.Interfaces;
 
 namespace CKK.UI
 {
@@ -22,6 +24,23 @@ namespace CKK.UI
         public AddItem()
         {
             InitializeComponent();
+        }
+
+        private void submitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Store tp = (Store)Application.Current.FindResource("globStore");
+            InventoryManager inv = new InventoryManager(tp);
+
+            Product prod = new Product();
+            prod.Id = int.Parse(idBox.Text);
+            prod.Name = nameBox.Text;
+            prod.Price = int.Parse(priceBox.Text);
+
+            inv.addItem(prod, int.Parse(quantityBox.Text));
+
+            inv.Show();
+            this.Close();
+          
         }
     }
 }
