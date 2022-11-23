@@ -17,7 +17,7 @@ namespace CKK.Logic.Models
 
         public override string ToString()
         {
-            return $"{Product.Id}       {Product.Name}      {Quantity}      {Product.Price}";
+            return $"{Product.Id}       {Product.Name}      {Quantity}      {"$"}{Product.Price}";
         }
 
     }

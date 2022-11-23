@@ -65,11 +65,12 @@ namespace CKK.UI
             RefreshList();
         }
 
-       
+        private void removeButton_Click(object sender, RoutedEventArgs e)
+        {
+            RemoveItem remove = new RemoveItem();
 
-        
-
-        
-
+            remove.Show();
+            this.Close();
+        }
     }
 }

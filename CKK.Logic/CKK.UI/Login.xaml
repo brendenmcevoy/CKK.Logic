@@ -23,6 +23,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
+        
         <Label Content="CKK" Grid.Column ="2" Grid.ColumnSpan="2" Grid.Row="1" 
                Grid.RowSpan="2" Height="150" Width="350" Background="Black" 
                Foreground="White" FontFamily="Verdana" FontSize="80" FontWeight="Bold" 
@@ -30,10 +31,12 @@
                />
         <TextBox Name ="usernameBox" Grid.Row="3" Grid.RowSpan="2" Grid.Column="2" 
                  Grid.ColumnSpan="2" Height="50" Width="350" Margin="0,30,0,0" 
-                 BorderThickness="3"/>
-        <TextBox Name ="passwordBox" Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" 
+                 BorderThickness="3" FontFamily="Verdana" FontSize="26" 
+                 TextAlignment="Center"/>
+        <PasswordBox Name ="passwordBox" Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" 
                  Grid.ColumnSpan="2" Height="50" Width="350" Margin="0,40,0,40" 
-                 BorderThickness="3"/>
+                 BorderThickness="3" FontFamily="Verdana" FontSize="26"
+                 PasswordChar="*" HorizontalContentAlignment="Center"/>
         <Button Name="loginButton" Content ="Sign In" Grid.Column="3" Grid.Row="5" 
                 Height="50" Width="175" Background="Black" Foreground="White"
                 FontFamily="Verdana" FontSize="16" HorizontalContentAlignment="Center"

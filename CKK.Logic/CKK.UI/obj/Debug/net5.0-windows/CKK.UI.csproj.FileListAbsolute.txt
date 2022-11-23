@@ -86,3 +86,4 @@ C:\Users\4400112807\Source\Repos\brendenmcevoy\CKK.Logic2\CKK.Logic\CKK.UI\obj\D
 C:\Users\4400112807\Source\Repos\brendenmcevoy\CKK.Logic2\CKK.Logic\CKK.UI\obj\Debug\net5.0-windows\AddItem.baml
 C:\Users\4400112807\Source\Repos\brendenmcevoy\CKK.Logic2\CKK.Logic\CKK.UI\obj\Debug\net5.0-windows\RemoveItem.g.cs
 C:\Users\4400112807\Source\Repos\brendenmcevoy\CKK.Logic2\CKK.Logic\CKK.UI\obj\Debug\net5.0-windows\RemoveItem.baml
+C:\Users\4400112807\Source\Repos\brendenmcevoy\CKK.Logic2\CKK.Logic\CKK.UI\obj\Debug\net5.0-windows\App.baml

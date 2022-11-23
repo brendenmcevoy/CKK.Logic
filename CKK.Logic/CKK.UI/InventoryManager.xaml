@@ -55,7 +55,7 @@
                 Foreground="White"
                 BorderThickness="3"
                 Grid.Column="3"
-                Grid.Row="2"/>
+                Grid.Row="2" Click="removeButton_Click"/>
         <ListBox x:Name="lbInventoryList" Grid.Row="3" Grid.Column="2" 
                  Grid.ColumnSpan="3" Height="475" Width="900" BorderThickness="5" 
                  Margin="5">

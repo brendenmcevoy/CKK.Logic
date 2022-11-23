@@ -25,7 +25,7 @@ namespace CKK.Logic.Models
             Random rnd = new Random();
             if(prod.Id == 0)
             {
-                prod.Id = rnd.Next();
+                prod.Id = rnd.Next(0,100);
             }
 
             if (quantity <= 0)

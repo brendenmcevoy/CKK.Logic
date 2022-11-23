@@ -93,7 +93,7 @@ namespace CKK.UI {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CKK.UI_jdsprajt_wpftmp;component/additemuc.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/CKK.UI;component/additemuc.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\AddItemUC.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

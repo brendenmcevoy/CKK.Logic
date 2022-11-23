@@ -28,13 +28,18 @@ namespace CKK.UI
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
-            if(passwordBox.Text != null & usernameBox.Text != null)
+            if (passwordBox.Password == string.Empty)
+            {
+                MessageBox.Show("Must enter a password");
+            }
+            else
             {
                 Store tp = (Store)Application.Current.FindResource("globStore");
                 InventoryManager inv = new InventoryManager(tp);
                 inv.Show();
                 this.Close();
             }
+            
             
         }
     }
