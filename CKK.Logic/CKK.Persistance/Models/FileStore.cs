@@ -14,8 +14,7 @@ namespace CKK.Persistance.Models
     public class FileStore : IStore,ISavable,ILoadable
     {
         private readonly List<StoreItem> _items;
-        private BinaryFormatter formatter;
-        
+        private BinaryFormatter formatter = new BinaryFormatter();      
         private FileStream stream;
         public FileStore()
         {
