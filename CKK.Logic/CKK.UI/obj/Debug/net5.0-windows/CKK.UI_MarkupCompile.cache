@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\beanwater\Source\Repos\CKK.Logic\CKK.Logic\CKK.UI\obj\Debug\net5.0-windows\
+C:\Users\4400112807\source\repos\CKK.Logic\CKK.Logic\CKK.UI\obj\Debug\net5.0-windows\
 CKK.UI
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
-C:\Users\beanwater\Source\Repos\CKK.Logic\CKK.Logic\CKK.UI\App.xaml
+C:\Users\4400112807\source\repos\CKK.Logic\CKK.Logic\CKK.UI\App.xaml
 5-829816806
 
 7-518632262
-194-101076030
+194-261095748
 AddItem.xaml;AddItemUC.xaml;InventoryManager.xaml;Login.xaml;RemoveItem.xaml;
 
-False
+True
 

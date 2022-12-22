@@ -20,9 +20,11 @@ namespace CKK.Persistance.Models
         {
             _items = new List<StoreItem>();
             CreatePath();
+            Load();
         }
 
         public readonly string FilePath = @"C:\Users\beanwater\Documents\Persistance\StoreItems.dat";
+        private int idCounter;
         public StoreItem AddStoreItem(Product prod, int quantity)
         {
             Random rnd = new Random();
@@ -46,14 +48,13 @@ namespace CKK.Persistance.Models
 
                 StoreItem newItem = new(prod, quantity);
                 _items.Add(newItem);
-                return newItem;
                 Save();
-
+                return newItem;              
             }
             catch (InventoryItemStockTooLowException inventoryItemStockTooLowException)
-            {
-                Console.WriteLine($"\n{inventoryItemStockTooLowException.Message}");
-            }
+            {                
+                Console.WriteLine($"\n{inventoryItemStockTooLowException.Message}");                
+            }   
             return null;
         }
         public StoreItem RemoveStoreItem(int id, int quantity)
@@ -77,22 +78,21 @@ namespace CKK.Persistance.Models
                         if (i.Quantity - quantity > 0)
                         {
                             i.Quantity -= quantity;
-                            return i;
-                            Save();
+                            Save(); 
+                            return i;                           
                         }
                         else
                         {
                             i.Quantity = 0;
-                            return i;
                             Save();
+                            return i;                       
                         }
                     }
                 }
             }
             catch (ArgumentOutOfRangeException argumentOutOfRangeException)
             {
-                Console.WriteLine($"\n{argumentOutOfRangeException.Message}");
-
+                Console.WriteLine($"\n{argumentOutOfRangeException.Message}");               
             }
             catch (ProductDoesNotExistException productDoesNotExistException)
             {
@@ -114,7 +114,6 @@ namespace CKK.Persistance.Models
                     select i;
 
                 return itemId.FirstOrDefault();
-
             }
             catch (InvalidIdException invalidIdException)
             {
@@ -143,7 +142,6 @@ namespace CKK.Persistance.Models
         public void Load()
         {
              List<StoreItem> _items = (List<StoreItem>)formatter.Deserialize(stream); 
-
         }
     }
 }
