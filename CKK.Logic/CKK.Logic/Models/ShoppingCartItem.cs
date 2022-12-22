@@ -7,10 +7,9 @@ using CKK.Logic.Interfaces;
 
 namespace CKK.Logic.Models
 {
+    [Serializable]
     public class ShoppingCartItem : InventoryItem
-    {
-        
-
+    {        
         public ShoppingCartItem(Product product, int quantity) : base(product, quantity)  
         {
             

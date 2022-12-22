@@ -9,7 +9,6 @@ namespace CKK.Logic.Interfaces
 {
     public interface IShoppingCart
     {
-
         public int GetCustomerId();
 
         public ShoppingCartItem AddProduct(Product prod, int id);
@@ -20,12 +19,6 @@ namespace CKK.Logic.Interfaces
 
         public  ShoppingCartItem GetProductById(int id);
 
-        public  List<ShoppingCartItem> GetProducts();
-        
-            
-        
-        
-
-        
+        public  List<ShoppingCartItem> GetProducts();                                         
     }
 }
