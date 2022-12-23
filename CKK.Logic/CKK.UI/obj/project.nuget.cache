@@ -1,23 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7R0QorGBWNHx05IhL0vJENAlxg1mKOcOgxZzKz8/VeMiQqnGYMT+H9diYtZB0tLpvt5siRWkkZxqH81d+sEVnw==",
-  "success": false,
-  "projectFilePath": "C:\\Users\\4400112807\\source\\repos\\CKK.Logic\\CKK.Logic\\CKK.UI\\CKK.UI.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\4400112807\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512",
-    "C:\\Users\\4400112807\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\4400112807\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\4400112807\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
-  ],
-  "logs": [
-    {
-      "code": "NU1201",
-      "level": "Error",
-      "message": "Project CKK.Persistance is not compatible with net5.0-windows7.0 (.NETCoreApp,Version=v5.0). Project CKK.Persistance supports: net6.0 (.NETCoreApp,Version=v6.0)",
-      "libraryId": "CKK.Persistance",
-      "targetGraphs": [
-        "net5.0-windows7.0"
-      ]
-    }
-  ]
+  "dgSpecHash": "+0fU9P5IEfzkHmsNpryYKIJlYVH5a6n4Gn/e7cfKuDqIOh8J02NvS0+SsUmOK2S+SR1JluIZ3h4fr631OctiXA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.UI\\CKK.UI.csproj",
+  "expectedPackageFiles": [],
+  "logs": []
 }
