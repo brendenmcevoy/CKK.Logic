@@ -44,13 +44,14 @@ namespace CKK.Persistance.Models
                     if (i.Product == prod)
                     {
                         i.Quantity += +quantity;
+                        //Save();
                         return i;
                     }
                 }
 
                 StoreItem newItem = new(prod, quantity);
                 _items.Add(newItem);
-                Save();
+                //Save();
                 return newItem;
             }
             catch (InventoryItemStockTooLowException inventoryItemStockTooLowException)
@@ -80,13 +81,13 @@ namespace CKK.Persistance.Models
                         if (i.Quantity - quantity > 0)
                         {
                             i.Quantity -= quantity;
-                            Save();
+                            //Save();
                             return i;
                         }
                         else
                         {
                             i.Quantity = 0;
-                            Save();
+                            //Save();
                             return i;
                         }
                     }
@@ -130,7 +131,7 @@ namespace CKK.Persistance.Models
         public void DeleteStoreItem(int id)
         {
             _items.Remove(FindStoreItemById(id));
-            Save();
+            //Save();
         }
         public void CreatePath()
         {
@@ -143,7 +144,16 @@ namespace CKK.Persistance.Models
         }
         public void Load()
         {
-            List<StoreItem> _items = (List<StoreItem>)formatter.Deserialize(stream);
+            if (File.Exists(FilePath))
+            {
+                List<StoreItem> _items = (List<StoreItem>)formatter.Deserialize(stream);
+            }
+            
+        }
+        public void Close()
+        {
+            Save();
+            stream.Close();
         }
     }
 }

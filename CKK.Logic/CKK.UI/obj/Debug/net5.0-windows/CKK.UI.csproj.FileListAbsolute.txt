@@ -133,3 +133,5 @@ C:\Users\4400112807\source\repos\CKK.Logic\CKK.Logic\CKK.UI\obj\Debug\net5.0-win
 C:\Users\4400112807\source\repos\CKK.Logic\CKK.Logic\CKK.UI\obj\Debug\net5.0-windows\CKK.UI.dll
 C:\Users\4400112807\source\repos\CKK.Logic\CKK.Logic\CKK.UI\obj\Debug\net5.0-windows\refint\CKK.UI.dll
 C:\Users\4400112807\source\repos\CKK.Logic\CKK.Logic\CKK.UI\obj\Debug\net5.0-windows\CKK.UI.pdb
+C:\Users\beanwater\Source\Repos\CKK.Logic\CKK.Logic\CKK.UI\bin\Debug\net5.0-windows\CKK.Persistance.dll
+C:\Users\beanwater\Source\Repos\CKK.Logic\CKK.Logic\CKK.UI\bin\Debug\net5.0-windows\CKK.Persistance.pdb

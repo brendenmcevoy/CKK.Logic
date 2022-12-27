@@ -11,6 +11,19 @@
         "runtime": {
           "bin/placeholder/CKK.Logic.dll": {}
         }
+      },
+      "CKK.Persistance/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "CKK.Logic": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CKK.Persistance.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CKK.Persistance.dll": {}
+        }
       }
     }
   },
@@ -19,11 +32,17 @@
       "type": "project",
       "path": "../CKK.Logic/CKK.Logic.csproj",
       "msbuildProject": "../CKK.Logic/CKK.Logic.csproj"
+    },
+    "CKK.Persistance/1.0.0": {
+      "type": "project",
+      "path": "../CKK.Per/CKK.Persistance.csproj",
+      "msbuildProject": "../CKK.Per/CKK.Persistance.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
-      "CKK.Logic >= 1.0.0"
+      "CKK.Logic >= 1.0.0",
+      "CKK.Persistance >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -61,6 +80,9 @@
           "projectReferences": {
             "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj": {
               "projectPath": "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj"
+            },
+            "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.Per\\CKK.Persistance.csproj": {
+              "projectPath": "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.Per\\CKK.Persistance.csproj"
             }
           }
         }

@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:CKK.UI"
              xmlns:Logic="clr-namespace:CKK.Logic.Models;assembly=CKK.Logic"
+             xmlns:Persistance="clr-namespace:CKK.Persistance.Models;assembly=CKK.Persistance"
              StartupUri="Login.xaml">
     <Application.Resources>
-        <Logic:Store x:Key="globStore"></Logic:Store>
+        <Persistance:FileStore x:Key="globStore"></Persistance:FileStore>
     </Application.Resources>
 </Application>

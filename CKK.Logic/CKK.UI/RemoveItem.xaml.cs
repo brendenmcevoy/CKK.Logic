@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CKK.Logic.Interfaces;
 using CKK.Logic.Models;
+using CKK.Persistance.Models;
+using CKK.Persistance.Interfaces;
    
 
 namespace CKK.UI
@@ -29,7 +31,7 @@ namespace CKK.UI
 
         private void submitButton_Click(object sender, RoutedEventArgs e)
         {
-            Store tp = (Store)Application.Current.FindResource("globStore");
+            FileStore tp = (FileStore)Application.Current.FindResource("globStore");
             InventoryManager inv = new InventoryManager(tp);
 
             int id = int.Parse(idBox.Text);

@@ -13,6 +13,7 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
@@ -45,7 +46,7 @@
         <Button Content="Remove Item" 
                 Name="removeButton" 
                 HorizontalAlignment="Left" 
-                Margin="10,0,0,0" 
+                Margin="0,0,0,0" 
                 VerticalAlignment="Top" 
                 Width="140" 
                 Height="50" 
@@ -56,6 +57,17 @@
                 BorderThickness="3"
                 Grid.Column="3"
                 Grid.Row="2" Click="removeButton_Click"/>
+        <Button Content="Exit" 
+                x:Name="exitButton"
+                Grid.Column="4" 
+                Grid.Row="2"
+                Width="140"
+                Height="50"
+                FontFamily="Verdana"
+                FontWeight="Bold"
+                Background="Black"
+                Foreground="white"
+                BorderThickness="3" Click="exitButton_Click"/>
         <ListBox x:Name="lbInventoryList" Grid.Row="3" Grid.Column="2" 
                  Grid.ColumnSpan="3" Height="475" Width="900" BorderThickness="5" 
                  Margin="5">
