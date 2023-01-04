@@ -5,11 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CKK.UI"
         mc:Ignorable="d"
-        Title="InventoryManager" Height="650" Width="1000" FontFamily="Verdana" 
+        Title="InventoryManager" Height="661" Width="950" FontFamily="Verdana" 
         FontSize="14" FontWeight="Bold">
+    <Window.Resources>
+        <Style x:Key="buttonStyle" TargetType="Button">
+            <Setter Property="Width" Value="130"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="FontFamily" Value="Verdana"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="smallButton" TargetType="Button">
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontFamily" Value="Verdana"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Window.Resources>
     <Grid Margin="0,0,10,3">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
@@ -28,51 +51,53 @@
         </Grid.RowDefinitions>
         <Button Content="Add Item" 
                 Name="addButton" 
-                Margin="16,0,0,0" 
-                FontFamily="Verdana" 
-                FontSize="14" 
-                FontWeight="Bold"
-                Background="Black"
-                Foreground="White"
-                Width="130" 
-                Height="50" 
-                Click="addButton_Click" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Top"
-                BorderThickness="3" 
-                Grid.Column="2"
+                Style="{StaticResource buttonStyle}"                                              
+                Click="addButton_Click"                
+                Grid.Column="1"
                 Grid.Row="2"/>
 
         <Button Content="Remove Item" 
-                Name="removeButton" 
-                HorizontalAlignment="Left" 
-                Margin="0,0,0,0" 
-                VerticalAlignment="Top" 
-                Width="140" 
-                Height="50" 
-                FontFamily="Verdana"
-                FontWeight="Bold"
-                Background="Black"
-                Foreground="White"
-                BorderThickness="3"
-                Grid.Column="3"
+                Name="removeButton"
+                Style="{StaticResource buttonStyle}"
+                Grid.Column="2"
                 Grid.Row="2" Click="removeButton_Click"/>
-        <Button Content="Exit" 
+        <Button Content="Save and Exit" 
                 x:Name="exitButton"
-                Grid.Column="4" 
+                Style="{StaticResource buttonStyle}"
+                Grid.Column="5" 
                 Grid.Row="2"
-                Width="140"
-                Height="50"
-                FontFamily="Verdana"
-                FontWeight="Bold"
-                Background="Black"
-                Foreground="white"
-                BorderThickness="3" Click="exitButton_Click"/>
-        <ListBox x:Name="lbInventoryList" Grid.Row="3" Grid.Column="2" 
-                 Grid.ColumnSpan="3" Height="475" Width="900" BorderThickness="5" 
-                 Margin="5">
-        </ListBox>
-       
-            
+                Click="exitButton_Click"/>
+        <TextBox x:Name="searchBox"                  
+                 Grid.Row="2" 
+                 Grid.Column="3"
+                 Grid.ColumnSpan="2"
+                 Width="200"
+                 Height="40"
+                 BorderThickness="3"/>
+        <Button x:Name="searchButton"
+                Content="Search"
+                Grid.Column="4"
+                Grid.Row="2"
+                Style="{StaticResource smallButton}" 
+                Grid.ColumnSpan="2"
+                Margin="0,0,80,0" Click="searchButton_Click"/>
+        <ListBox x:Name="lbInventoryList" 
+                 Grid.Row="3" 
+                 Grid.Column="1" 
+                 Grid.ColumnSpan="5" 
+                 Height="475" 
+                 Width="900" 
+                 BorderThickness="5" 
+                 Margin="5"/>
+        <Button x:Name="sortQ"
+                Content="Quantity Sort"
+                Style="{StaticResource buttonStyle}"
+                Grid.Column="1"
+                Grid.Row="4" Click="sortQ_Click"/>
+        <Button x:Name="sortP"
+                Content="Price Sort"
+                Style="{StaticResource buttonStyle}"
+                Grid.Column="2"
+                Grid.Row="4" Click="sortP_Click"/>
     </Grid>
 </Window>

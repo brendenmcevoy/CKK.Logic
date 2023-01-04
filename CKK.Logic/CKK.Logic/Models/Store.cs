@@ -124,6 +124,62 @@ namespace CKK.Logic.Models
                 Console.WriteLine($"\n{invalidIdException.Message}");
             }
             return null;
-        }                        
+        }
+        public List<StoreItem> GetAllProductsByName(string name)
+        {
+            List<StoreItem> searchList = new List<StoreItem>();
+
+            for (var index = 0; index < _items.Count; ++index)
+            {
+                string temp = _items[index].Product.Name;
+
+                if (temp.Substring(0, 3) == name.Substring(0, 3))
+                {
+                    searchList.Add(_items[index]);
+                    return searchList;
+                }
+            }
+            return searchList;
+        }
+        public List<StoreItem> GetProductsByQuantity()
+        {
+            int length = _items.Count;
+            bool sorted = false;
+            while (!sorted)
+            {
+                sorted = true;
+                for (int i = 0; i < length - 1; i++)
+                {
+                    if (_items[i].Quantity < _items[i + 1].Quantity)
+                    {
+                        var temp = _items[i];
+                        _items[i] = _items[i + 1];
+                        _items[i + 1] = temp;
+                        sorted = false;
+                    }
+                }
+            }
+            return _items;
+        }
+        public List<StoreItem> GetProductsByPrice()
+        {
+            int length = _items.Count;
+            bool sorted = false;
+            while (!sorted)
+            {
+                sorted = true;
+                for (int i = 0; i < length - 1; i++)
+                {
+                    if (_items[i].Product.Price < _items[i + 1].Product.Price)
+                    {
+                        var temp = _items[i];
+                        _items[i] = _items[i + 1];
+                        _items[i + 1] = temp;
+                        sorted = false;
+                    }
+                }
+            }
+            return _items;
+        }
     }
 }

@@ -81,5 +81,23 @@ namespace CKK.UI
             _Store.Close();
             this.Close();
         }
+
+        private void sortQ_Click(object sender, RoutedEventArgs e)
+        {
+            _Store.GetProductsByQuantity();
+            RefreshList();
+        }
+
+        private void sortP_Click(object sender, RoutedEventArgs e)
+        {
+            _Store.GetProductsByPrice();
+            RefreshList();
+        }
+
+        private void searchButton_Click(object sender, RoutedEventArgs e)
+        {
+            _Store.GetAllProductsByName(searchBox.Text);
+            RefreshList();
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,9 @@ namespace CKK.Logic.Interfaces
         public  List<StoreItem> GetStoreItems();
 
         public void DeleteStoreItem(int id);
+        public List<StoreItem> GetAllProductsByName(string name);
+        public List<StoreItem> GetProductsByQuantity();
+        public List<StoreItem> GetProductsByPrice();
     } 
     
 }
