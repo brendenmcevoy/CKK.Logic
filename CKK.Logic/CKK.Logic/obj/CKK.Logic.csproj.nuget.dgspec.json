@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj": {}
+    "C:\\Users\\beanwater\\source\\repos\\CKK.Logic\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj": {}
   },
   "projects": {
-    "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj": {
+    "C:\\Users\\beanwater\\source\\repos\\CKK.Logic\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj",
+        "projectUniqueName": "C:\\Users\\beanwater\\source\\repos\\CKK.Logic\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj",
         "projectName": "CKK.Logic",
-        "projectPath": "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj",
+        "projectPath": "C:\\Users\\beanwater\\source\\repos\\CKK.Logic\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj",
         "packagesPath": "C:\\Users\\beanwater\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.Logic\\obj\\",
         "projectStyle": "PackageReference",

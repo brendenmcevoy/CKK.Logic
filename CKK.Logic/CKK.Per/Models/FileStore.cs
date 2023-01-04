@@ -15,18 +15,20 @@ namespace CKK.Persistance.Models
 {
     public class FileStore : IStore, ISavable, ILoadable
     {
-        private readonly List<StoreItem> _items;
+        private List<StoreItem> _items;
         private BinaryFormatter formatter = new BinaryFormatter();
         private FileStream stream;
         public FileStore()
         {
             _items = new List<StoreItem>();
-            CreatePath();
             Load();
+            CreatePath();  
         }
 
-        public readonly string FilePath = @"C:\Users\beanwater\Documents\Persistance\StoreItems.dat";
-        private int idCounter;
+        public readonly string FilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + 
+            Path.DirectorySeparatorChar + "Persistance" + Path.DirectorySeparatorChar + "StoreItems.dat";
+            
+        //private int idCounter;
         public StoreItem AddStoreItem(Product prod, int quantity)
         {
             Random rnd = new Random();
@@ -44,14 +46,14 @@ namespace CKK.Persistance.Models
                     if (i.Product == prod)
                     {
                         i.Quantity += +quantity;
-                        //Save();
+                        Save();
                         return i;
                     }
                 }
 
                 StoreItem newItem = new(prod, quantity);
                 _items.Add(newItem);
-                //Save();
+                Save();
                 return newItem;
             }
             catch (InventoryItemStockTooLowException inventoryItemStockTooLowException)
@@ -81,13 +83,13 @@ namespace CKK.Persistance.Models
                         if (i.Quantity - quantity > 0)
                         {
                             i.Quantity -= quantity;
-                            //Save();
+                            Save();
                             return i;
                         }
                         else
                         {
                             i.Quantity = 0;
-                            //Save();
+                            Save();
                             return i;
                         }
                     }
@@ -131,24 +133,30 @@ namespace CKK.Persistance.Models
         public void DeleteStoreItem(int id)
         {
             _items.Remove(FindStoreItemById(id));
-            //Save();
+            Save();
         }
         public void CreatePath()
         {
             stream = new FileStream(FilePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            stream.Close();
         }
 
         public void Save()
         {
-            formatter.Serialize(stream, _items);
+            using (FileStream stream = new FileStream(FilePath, FileMode.Open, FileAccess.Write))
+            {
+                formatter.Serialize(stream, _items);
+            }                        
         }
         public void Load()
         {
             if (File.Exists(FilePath))
             {
-                List<StoreItem> _items = (List<StoreItem>)formatter.Deserialize(stream);
-            }
-            
+                using (FileStream stream = new FileStream(FilePath, FileMode.Open, FileAccess.Read))
+                {
+                    _items = (List<StoreItem>)formatter.Deserialize(stream);
+                }
+            }                      
         }
         public void Close()
         {
