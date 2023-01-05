@@ -96,7 +96,13 @@ namespace CKK.UI
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
-            _Store.GetAllProductsByName(searchBox.Text);
+            lbInventoryList.ItemsSource = _Store.GetAllProductsByName(searchBox.Text);
+                
+        }
+
+        private void clearButton_Click(object sender, RoutedEventArgs e)
+        {
+            lbInventoryList.ItemsSource = _Items;
             RefreshList();
         }
     }

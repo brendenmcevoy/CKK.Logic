@@ -61,12 +61,14 @@
                 Style="{StaticResource buttonStyle}"
                 Grid.Column="2"
                 Grid.Row="2" Click="removeButton_Click"/>
+        
         <Button Content="Save and Exit" 
                 x:Name="exitButton"
                 Style="{StaticResource buttonStyle}"
                 Grid.Column="5" 
-                Grid.Row="2"
+                Grid.Row="4"
                 Click="exitButton_Click"/>
+        
         <TextBox x:Name="searchBox"                  
                  Grid.Row="2" 
                  Grid.Column="3"
@@ -74,6 +76,7 @@
                  Width="200"
                  Height="40"
                  BorderThickness="3"/>
+        
         <Button x:Name="searchButton"
                 Content="Search"
                 Grid.Column="4"
@@ -81,6 +84,7 @@
                 Style="{StaticResource smallButton}" 
                 Grid.ColumnSpan="2"
                 Margin="0,0,80,0" Click="searchButton_Click"/>
+        
         <ListBox x:Name="lbInventoryList" 
                  Grid.Row="3" 
                  Grid.Column="1" 
@@ -89,15 +93,23 @@
                  Width="900" 
                  BorderThickness="5" 
                  Margin="5"/>
+        
         <Button x:Name="sortQ"
                 Content="Quantity Sort"
                 Style="{StaticResource buttonStyle}"
                 Grid.Column="1"
                 Grid.Row="4" Click="sortQ_Click"/>
+        
         <Button x:Name="sortP"
                 Content="Price Sort"
                 Style="{StaticResource buttonStyle}"
                 Grid.Column="2"
                 Grid.Row="4" Click="sortP_Click"/>
+
+        <Button x:Name="clearButton"
+                Content="Clear Results"
+                Style="{StaticResource buttonStyle}"
+                Grid.Column="5"
+                Grid.Row="2" Click="clearButton_Click"/>
     </Grid>
 </Window>

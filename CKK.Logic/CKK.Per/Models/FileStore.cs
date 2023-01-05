@@ -27,7 +27,8 @@ namespace CKK.Persistance.Models
 
         public readonly string FilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + 
             Path.DirectorySeparatorChar + "Persistance" + Path.DirectorySeparatorChar + "StoreItems.dat";
-            
+        
+
         //private int idCounter;
         public StoreItem AddStoreItem(Product prod, int quantity)
         {
@@ -160,22 +161,18 @@ namespace CKK.Persistance.Models
         }
         public List<StoreItem> GetAllProductsByName(string name)
         {
-            //need to create a way to show seachList and keep full _items list
-            //perhaps a temp list?
-            //also want to implement dynamic search results with backspace 
-            List<StoreItem> searchList = new List<StoreItem>();
+            List<StoreItem> searchList= new List<StoreItem>();
 
-            for(var index = 0; index < _items.Count; ++index)
+            var key = name;
+            for(var i = 0; i < _items.Count; i++)
             {
-                string temp = _items[index].Product.Name;
-
-                if (temp.Substring(0,3) == name.Substring(0,3))
+                var itemName = _items[i].Product.Name;
+                if (itemName.Contains(key))
                 {
-                    searchList.Add(_items[index]);
-                    _items = searchList;
-                    return searchList;
-                }
-            } _items = searchList; return searchList;
+                    searchList.Add(_items[i]);
+                }                
+            } 
+            return searchList;
         }
         public List<StoreItem> GetProductsByQuantity()
         {
@@ -217,7 +214,7 @@ namespace CKK.Persistance.Models
             }
             return _items;
         }
-       
+        
         public void Close()
         {
             Save();
