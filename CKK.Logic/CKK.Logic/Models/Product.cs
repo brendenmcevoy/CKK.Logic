@@ -10,25 +10,7 @@ namespace CKK.Logic.Models
     [Serializable]
     public class Product : Entity
     {    
-        private decimal _price;
-        
-        public decimal Price
-        {
-            get { return _price; }
-            set
-            {
-                try { _price = value; }
-                catch(ArgumentOutOfRangeException argumentOutOfRangeException)
-                {
-                    Console.WriteLine($"\n{argumentOutOfRangeException.Message}");
-                }
-
-                if(value < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value), _price, "Price must be greater than zero.");
-                }
-            }
-        }
+        public decimal Price { get; set; }
     }
 
 }

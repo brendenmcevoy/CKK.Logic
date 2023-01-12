@@ -10,12 +10,10 @@ namespace CKK.Logic.Models
     [Serializable]
     public class Customer : Entity
     {
-        private string _address;
-        public string Address
-        {
-            get { return _address; }
-            set { _address = value; }
-        }
+        public int CustomerId { get; set; }
+        public string Address { get; set; }
+        public int ShoppingCartId { get; set; }
+        public ShoppingCart Cart { get; set; }
     }     
 
 }
