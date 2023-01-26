@@ -77,7 +77,7 @@ namespace CKK.UI {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CKK.UI;component/removeitem.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/CKK.UI;V1.0.0.0;component/removeitem.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\RemoveItem.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
