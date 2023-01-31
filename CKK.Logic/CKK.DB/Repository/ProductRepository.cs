@@ -1,4 +1,5 @@
 ﻿using CKK.DB.Interfaces;
+using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,29 +10,77 @@ namespace CKK.DB.Repository
 {
     public class ProductRepository<Product> : IProductRepository<Product>
     {
+        private readonly IConnectionFactory _connectionFactory;
+        public ProductRepository(IConnectionFactory Conn)
+        {
+            _connectionFactory = Conn;
+        }
+
         public int Add(Product entity)
         {
-            throw new NotImplementedException();
+            var sql = "Insert into Products (Price,Quantity,Name) VALUES (@Price,@Quantity,@Name)";
+
+            using (var connection = _connectionFactory.GetConnection)
+            {
+                connection.Open();
+                var result = connection.Execute(sql, entity);
+                return result;
+            }
         }
 
         public int Delete(int id)
         {
-            throw new NotImplementedException();
+            var sql = "DELETE FROM Products WHERE Id = @Id";
+
+            using (var connection = _connectionFactory.GetConnection)
+            {
+                connection.Open();
+                connection.QuerySingleOrDefault<Product>(sql, new { Id = id });
+                return id;
+            }
         }
 
         public List<Product> GetAll()
         {
-            throw new NotImplementedException();
+            List<Product> products = new List<Product>();
+
+            var sql = "SELECT * From Products";
+
+            using (var connection = _connectionFactory.GetConnection)
+            {
+                connection.Open();
+                var result = connection.QuerySingleOrDefault<Product>(sql);
+                products.Add(result);
+                return products;
+            }
+
         }
 
         public Product GetById(int id)
         {
-            throw new NotImplementedException();
+            var sql = "Select * From Products WHERE Id = @Id";
+
+            using (var connection = _connectionFactory.GetConnection)
+            {
+                connection.Open();
+                var result = connection.QuerySingleOrDefault<Product>(sql, new { Id = id });
+                return result;
+            }
         }
 
         public List<Product> GetByName(string name)
         {
-            throw new NotImplementedException();
+            List<Product> products = new List<Product>();
+
+            var sql = "Select * From Products WHERE Name = @Name";
+
+            using (var connection = _connectionFactory.GetConnection)
+            {
+                connection.Open();
+                var result = connection.QuerySingleOrDefault<Product>(sql, new { Name = name});
+                products.Add(result);
+                return products;
+            }
         }
 
         public int Update(Product entity)

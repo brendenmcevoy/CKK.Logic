@@ -1,5 +1,6 @@
 ﻿using CKK.DB.Interfaces;
 using CKK.Logic.Models;
+using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,21 @@ namespace CKK.DB.Repository
 {
     public class ShoppingCartRepository : IShoppingCartRepository
     {
+        private readonly IConnectionFactory _connectionFactory;
+        public ShoppingCartRepository(IConnectionFactory Conn)
+        {
+            _connectionFactory = Conn;
+        }
         public int Add(ShoppingCartItem entity)
         {
-            throw new NotImplementedException();
+            var sql = "Insert into ShoppingCartItems (ShoppingCartId, ProductId, Quantity) VALUES (@ShoppingCartId, @ProductId, @Quantity)";
+
+            using (var connection = _connectionFactory.GetConnection)
+            {
+                connection.Open();
+                var result = connection.Execute(sql, entity);
+                return result;
+            }
         }
 
         public ShoppingCartItem AddToCart(string itemName, int quantity)
