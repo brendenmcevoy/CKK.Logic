@@ -18,7 +18,7 @@ namespace CKK.DB.Repository
         }
         public int Add(Order entity)
         {
-            var sql = "Insert into Orders (OrderNumber,CustomerId,ShoppingCartId) VALUES (@OrderNumber,@CustomerId,@ShoppingCartId)";
+            var sql = "INSERT into Orders (OrderNumber,CustomerId,ShoppingCartId) VALUES (@OrderNumber,@CustomerId,@ShoppingCartId)";
 
             using (var connection = _connectionFactory.GetConnection)
             {
@@ -44,7 +44,7 @@ namespace CKK.DB.Repository
         {
             List<Order> products = new List<Order>();
 
-            var sql = "SELECT * From Orders";
+            var sql = "SELECT * FROM Orders";
 
             using (var connection = _connectionFactory.GetConnection)
             {
@@ -57,7 +57,7 @@ namespace CKK.DB.Repository
 
         public Order GetById(int id)
         {
-            var sql = "Select * From Orders WHERE Id = @Id";
+            var sql = "SELECT * FROM Orders WHERE Id = @Id";
 
             using (var connection = _connectionFactory.GetConnection)
             {
@@ -69,7 +69,7 @@ namespace CKK.DB.Repository
 
         public Order GetOrderByCustomerId(int id)
         {
-            var sql = "Select * from Orders WHERE CustomerId = @Id";
+            var sql = "SELECT * FROM Orders WHERE CustomerId = @Id";
 
             using (var connection = _connectionFactory.GetConnection) 
             {
@@ -82,7 +82,14 @@ namespace CKK.DB.Repository
 
         public int Update(Order entity)
         {
-            throw new NotImplementedException();
+            var sql = "UPDATE Orders (OrderNumber,CustomerId,ShoppingCartId) VALUES (@OrderNumber,@CustomerId,@ShoppingCartId)";
+
+            using (var connection = _connectionFactory.GetConnection)
+            {
+                connection.Open();
+                var result = connection.Execute(sql, entity);
+                return result;
+            }
         }
     }
 }

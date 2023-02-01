@@ -18,7 +18,7 @@ namespace CKK.DB.Repository
 
         public int Add(Product entity)
         {
-            var sql = "Insert into Products (Price,Quantity,Name) VALUES (@Price,@Quantity,@Name)";
+            var sql = "INSERT into Products (Price,Quantity,Name) VALUES (@Price,@Quantity,@Name)";
 
             using (var connection = _connectionFactory.GetConnection)
             {
@@ -58,7 +58,7 @@ namespace CKK.DB.Repository
 
         public Product GetById(int id)
         {
-            var sql = "Select * From Products WHERE Id = @Id";
+            var sql = "SELECT * FROM Products WHERE Id = @Id";
 
             using (var connection = _connectionFactory.GetConnection)
             {
@@ -72,7 +72,7 @@ namespace CKK.DB.Repository
         {
             List<Product> products = new List<Product>();
 
-            var sql = "Select * From Products WHERE Name = @Name";
+            var sql = "SELECT * FROM Products WHERE Name = @Name";
 
             using (var connection = _connectionFactory.GetConnection)
             {
@@ -85,7 +85,14 @@ namespace CKK.DB.Repository
 
         public int Update(Product entity)
         {
-            throw new NotImplementedException();
+            var sql = "UPDATE Products (Price,Quantity,Name) VALUES (@Price,@Quantity,@Name)";
+
+            using (var connection = _connectionFactory.GetConnection)
+            {
+                connection.Open();
+                var result = connection.Execute(sql, entity);
+                return result;
+            }
         }
     }
 }

@@ -18,7 +18,7 @@ namespace CKK.DB.Repository
         }
         public int Add(ShoppingCartItem entity)
         {
-            var sql = "Insert into ShoppingCartItems (ShoppingCartId, ProductId, Quantity) VALUES (@ShoppingCartId, @ProductId, @Quantity)";
+            var sql = "INSERT into ShoppingCartItems (ShoppingCartId, ProductId, Quantity) VALUES (@ShoppingCartId, @ProductId, @Quantity)";
 
             using (var connection = _connectionFactory.GetConnection)
             {
@@ -55,7 +55,14 @@ namespace CKK.DB.Repository
 
         public int Update(ShoppingCartItem entity)
         {
-            throw new NotImplementedException();
+            var sql = "UPDATE ShoppingCartItems (ShoppingCartId, ProductId, Quantity) VALUES (@ShoppingCartId, @ProductId, @Quantity)";
+
+            using (var connection = _connectionFactory.GetConnection)
+            {
+                connection.Open();
+                var result = connection.Execute(sql, entity);
+                return result;
+            }
         }
     }
 }

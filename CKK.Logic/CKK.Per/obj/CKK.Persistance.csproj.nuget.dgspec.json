@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.Per\\CKK.Persistance.csproj": {}
+    "C:\\Users\\4400112807\\Source\\Repos\\brendenmcevoy\\CKK.Logic\\CKK.Logic\\CKK.Per\\CKK.Persistance.csproj": {}
   },
   "projects": {
-    "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj": {
+    "C:\\Users\\4400112807\\Source\\Repos\\brendenmcevoy\\CKK.Logic\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj",
+        "projectUniqueName": "C:\\Users\\4400112807\\Source\\Repos\\brendenmcevoy\\CKK.Logic\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj",
         "projectName": "CKK.Logic",
-        "projectPath": "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj",
-        "packagesPath": "C:\\Users\\beanwater\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.Logic\\obj\\",
+        "projectPath": "C:\\Users\\4400112807\\Source\\Repos\\brendenmcevoy\\CKK.Logic\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj",
+        "packagesPath": "C:\\Users\\4400112807\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\4400112807\\Source\\Repos\\brendenmcevoy\\CKK.Logic\\CKK.Logic\\CKK.Logic\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\beanwater\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\4400112807\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -73,30 +68,40 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.Per\\CKK.Persistance.csproj": {
+    "C:\\Users\\4400112807\\Source\\Repos\\brendenmcevoy\\CKK.Logic\\CKK.Logic\\CKK.Per\\CKK.Persistance.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.Per\\CKK.Persistance.csproj",
+        "projectUniqueName": "C:\\Users\\4400112807\\Source\\Repos\\brendenmcevoy\\CKK.Logic\\CKK.Logic\\CKK.Per\\CKK.Persistance.csproj",
         "projectName": "CKK.Persistance",
-        "projectPath": "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.Per\\CKK.Persistance.csproj",
-        "packagesPath": "C:\\Users\\beanwater\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.Per\\obj\\",
+        "projectPath": "C:\\Users\\4400112807\\Source\\Repos\\brendenmcevoy\\CKK.Logic\\CKK.Logic\\CKK.Per\\CKK.Persistance.csproj",
+        "packagesPath": "C:\\Users\\4400112807\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\4400112807\\Source\\Repos\\brendenmcevoy\\CKK.Logic\\CKK.Logic\\CKK.Per\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\beanwater\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\4400112807\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -104,15 +109,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj": {
-                "projectPath": "C:\\Users\\beanwater\\Source\\Repos\\CKK.Logic\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj"
+              "C:\\Users\\4400112807\\Source\\Repos\\brendenmcevoy\\CKK.Logic\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj": {
+                "projectPath": "C:\\Users\\4400112807\\Source\\Repos\\brendenmcevoy\\CKK.Logic\\CKK.Logic\\CKK.Logic\\CKK.Logic.csproj"
               }
             }
           }
@@ -137,12 +141,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
