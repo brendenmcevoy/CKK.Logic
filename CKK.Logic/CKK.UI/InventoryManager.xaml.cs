@@ -18,7 +18,6 @@ using System.Collections.ObjectModel;
 using CKK.Persistance.Interfaces;
 using CKK.Persistance.Models;
 
-
 namespace CKK.UI
 {
     /// <summary>
@@ -27,7 +26,7 @@ namespace CKK.UI
     public partial class InventoryManager : Window
     {
         private FileStore _Store;
-        public ObservableCollection<StoreItem> _Items { get; private set;}
+        public ObservableCollection<StoreItem> _Items { get; private set; }
         public InventoryManager(FileStore store)
         {
             _Store = store;
@@ -39,6 +38,7 @@ namespace CKK.UI
 
         private void RefreshList()
         {
+            
             _Items.Clear();
 
             foreach (StoreItem si in new ObservableCollection<StoreItem>(_Store.GetStoreItems()))
@@ -53,7 +53,7 @@ namespace CKK.UI
 
             add.Show();
             this.Close();
-           
+
         }
 
         public void addItem(Product prod, int quantity)
@@ -97,7 +97,7 @@ namespace CKK.UI
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
             lbInventoryList.ItemsSource = _Store.GetAllProductsByName(searchBox.Text);
-                
+
         }
 
         private void clearButton_Click(object sender, RoutedEventArgs e)

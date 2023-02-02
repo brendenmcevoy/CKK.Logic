@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace CKK.DB.Repository
 {
@@ -35,12 +36,27 @@ namespace CKK.DB.Repository
 
         public int ClearCart(int shoppingCartId)
         {
-            throw new NotImplementedException();
+            var sql = "DELETE ProductId, Quantity FROM ShoppingCartItems WHERE ShoppingCartId = @shoppingCartId";
+
+            using (var connection = _connectionFactory.GetConnection)
+            {
+                connection.Open();
+                connection.QuerySingleOrDefault<Product>(sql, new { ShoppingCartId = shoppingCartId });
+                return shoppingCartId;
+            }
         }
 
         public List<ShoppingCartItem> GetProducts(int shoppingCartId)
         {
-            throw new NotImplementedException();
+            var sql = "SELECT * FROM Products JOIN ShoppingCartId USING ShoppingCartId = Id WHERE ShoppingCartId = @shoppingCartId";
+            List<ShoppingCartItem> items = new List<ShoppingCartItem>();
+            using(var connection = _connectionFactory.GetConnection)
+            {
+                connection.Open();
+                var result = connection.QuerySingleOrDefault<ShoppingCartItem>(sql, new { ShoppingCartId = shoppingCartId });
+                items.Add(result);
+                return items;
+            }
         }
 
         public decimal GetTotal(int shoppingCartId)
