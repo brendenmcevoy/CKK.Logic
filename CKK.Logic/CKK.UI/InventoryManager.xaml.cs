@@ -16,7 +16,9 @@ using CKK.Logic.Models;
 using CKK.Logic.Interfaces;
 using System.Collections.ObjectModel;
 using CKK.Persistance.Interfaces;
-using CKK.Persistance.Models;
+//using CKK.Persistance.Models;
+using CKK.DB.UOW;
+using CKK.DB.Interfaces;
 
 namespace CKK.UI
 {
@@ -25,13 +27,17 @@ namespace CKK.UI
     /// </summary>
     public partial class InventoryManager : Window
     {
-        private FileStore _Store;
-        public ObservableCollection<StoreItem> _Items { get; private set; }
-        public InventoryManager(FileStore store)
+        //private FileStore _Store;
+        private IConnectionFactory conn;
+        private UnitOfWork uow;
+        public ObservableCollection<Product> _Items { get; private set; }
+        public InventoryManager() //FileStore store)
         {
-            _Store = store;
+            //_Store = store;
+            conn = new DatabaseConnectionFactory();
+             uow = new UnitOfWork(conn);
             InitializeComponent();
-            _Items = new ObservableCollection<StoreItem>();
+            _Items = new ObservableCollection<Product>();
             lbInventoryList.ItemsSource = _Items;
             RefreshList();
         }
@@ -41,9 +47,9 @@ namespace CKK.UI
             
             _Items.Clear();
 
-            foreach (StoreItem si in new ObservableCollection<StoreItem>(_Store.GetStoreItems()))
+            foreach (Product p in new ObservableCollection<Product>(uow.Products.GetAll()))
             {
-                _Items.Add(si);
+                _Items.Add(p);
             }
         }
 
@@ -56,15 +62,17 @@ namespace CKK.UI
 
         }
 
-        public void addItem(Product prod, int quantity)
+        public void addItem(Product prod) // int quantity)
         {
-            _Store.AddStoreItem(prod, quantity);
+            //_Store.AddStoreItem(prod, quantity);
+            uow.Products.Add(prod);
             RefreshList();
         }
 
-        public void removeItem(int id, int quantity)
+        public void removeItem(int id) //, int quantity)
         {
-            _Store.RemoveStoreItem(id, quantity);
+            //_Store.RemoveStoreItem(id, quantity);
+            uow.Products.Delete(id);
             RefreshList();
         }
 
@@ -78,25 +86,28 @@ namespace CKK.UI
 
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
-            _Store.Close();
+            //_Store.Close();
             this.Close();
         }
 
         private void sortQ_Click(object sender, RoutedEventArgs e)
         {
-            _Store.GetProductsByQuantity();
-            RefreshList();
+            //_Store.GetProductsByQuantity();
+            //RefreshList();
+            throw new NotImplementedException();
         }
 
         private void sortP_Click(object sender, RoutedEventArgs e)
         {
-            _Store.GetProductsByPrice();
-            RefreshList();
+            //_Store.GetProductsByPrice();
+            //RefreshList();
+            throw new NotImplementedException();
         }
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
-            lbInventoryList.ItemsSource = _Store.GetAllProductsByName(searchBox.Text);
+            //lbInventoryList.ItemsSource = _Store.GetAllProductsByName(searchBox.Text);
+            throw new NotImplementedException();
 
         }
 

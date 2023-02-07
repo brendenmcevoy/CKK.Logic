@@ -12,8 +12,13 @@ namespace CKK.Logic.Models
     {    
         public int Id { get; set; }
         public string Name { get; set; }
-        private decimal price;
+        //private decimal price;
         public decimal Price { get; set; }
-        public int Quantity { get; set; }   
+        public int Quantity { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Id}  {Name}  {Quantity}  ${Price}";
+        }
     }
 }

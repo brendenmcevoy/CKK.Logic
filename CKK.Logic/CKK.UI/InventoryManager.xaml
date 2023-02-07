@@ -76,15 +76,16 @@
                  Width="200"
                  Height="40"
                  BorderThickness="3"/>
-        
+
         <Button x:Name="searchButton"
                 Content="Search"
                 Grid.Column="4"
                 Grid.Row="2"
                 Style="{StaticResource smallButton}" 
                 Grid.ColumnSpan="2"
-                Margin="0,0,80,0" Click="searchButton_Click"/>
-        
+                Margin="0,0,80,0"
+                Click="searchButton_Click"/>
+
         <ListBox x:Name="lbInventoryList" 
                  Grid.Row="3" 
                  Grid.Column="1" 
@@ -92,19 +93,26 @@
                  Height="475" 
                  Width="900" 
                  BorderThickness="5" 
-                 Margin="5"/>
-        
+                 Margin="5">
+            <!--<ListBox.ItemTemplate>
+                <DataTemplate>
+                    
+                </DataTemplate>
+            </ListBox.ItemTemplate>-->
+        </ListBox>
+
         <Button x:Name="sortQ"
                 Content="Quantity Sort"
                 Style="{StaticResource buttonStyle}"
                 Grid.Column="1"
                 Grid.Row="4" Click="sortQ_Click"/>
-        
+
         <Button x:Name="sortP"
                 Content="Price Sort"
                 Style="{StaticResource buttonStyle}"
                 Grid.Column="2"
-                Grid.Row="4" Click="sortP_Click"/>
+                Grid.Row="4"
+                Click="sortP_Click"/>
 
         <Button x:Name="clearButton"
                 Content="Clear Results"

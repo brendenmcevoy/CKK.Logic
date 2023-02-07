@@ -13,8 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CKK.Logic.Models;
 using CKK.Logic.Interfaces;
-using CKK.Persistance.Models;
+//using CKK.Persistance.Models;
 using CKK.Persistance.Interfaces;
+using CKK.DB.UOW;
+
 namespace CKK.UI
 {
     /// <summary>
@@ -35,8 +37,8 @@ namespace CKK.UI
             }
             else
             {
-                FileStore tp = (FileStore)Application.Current.FindResource("globStore");
-                InventoryManager inv = new InventoryManager(tp);
+                //UnitOfWork tp = (UnitOfWork)Application.Current.FindResource("globStore");
+                InventoryManager inv = new();
                 inv.Show();
                 this.Close();
             }

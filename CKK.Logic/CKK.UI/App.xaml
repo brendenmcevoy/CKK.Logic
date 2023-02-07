@@ -3,9 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:CKK.UI"
              xmlns:Logic="clr-namespace:CKK.Logic.Models;assembly=CKK.Logic"
-             xmlns:Persistance="clr-namespace:CKK.Persistance.Models;assembly=CKK.Persistance"
+             xmlns:DB="clr-namespace:CKK.DB.UOW;assembly=CKK.DB" 
              StartupUri="Login.xaml">
+
+    <!--"clr-namespace:CKK.Persistance.Models;assembly=CKK.Persistance"-->
+    
     <Application.Resources>
-        <Persistance:FileStore x:Key="globStore"></Persistance:FileStore>
+        <!--<DB:UnitOfWork x:Key="globStore"></DB:UnitOfWork>
+            <Persistance:FileStore x:Key="globStore"></Persistance:FileStore>-->
     </Application.Resources>
 </Application>

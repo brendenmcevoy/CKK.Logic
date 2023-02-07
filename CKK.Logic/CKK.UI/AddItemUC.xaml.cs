@@ -14,8 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using CKK.Persistance.Models;
+//using CKK.Persistance.Models;
 using CKK.Persistance.Interfaces;
+using CKK.DB.UOW;
 
 namespace CKK.UI
 {
@@ -37,15 +38,16 @@ namespace CKK.UI
 
         private void submitButon_Click(object sender, RoutedEventArgs e)
         {
-            FileStore tp = (FileStore)Application.Current.FindResource("globStore");
-            InventoryManager inv = new InventoryManager(tp);
+            UnitOfWork tp = (UnitOfWork)Application.Current.FindResource("globStore");
+            InventoryManager inv = new InventoryManager();
 
             Product prod = new Product();
             prod.Name = nameBox.Text;
             prod.Id = int.Parse(idBox.Text);
             prod.Price = decimal.Parse(priceBox.Text);
+            prod.Quantity = int.Parse(qBox.Text);
 
-            inv.addItem(prod, int.Parse(qBox.Text));
+            inv.addItem(prod); //, int.Parse(qBox.Text));
                         
             Visibility = Visibility.Collapsed; //close addBar
         }

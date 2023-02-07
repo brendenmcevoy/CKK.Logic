@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "pWNva1a8zMHX6tjrKi2JrKj1BAXTbVFDdCwXEHRi6Sko0B08rCUi0Nc7PtZD3bMcIO3f8JrSPqpmuSaKkZ6/cw==",
+  "dgSpecHash": "9X2MbVifgnYLPOl59slKlgOWOn3WYRcuzHxe3T1Y7lLnkxvHfLoGnyWVMavmIADtflakNm2bErcaaTdanlCOjA==",
   "success": true,
   "projectFilePath": "C:\\Users\\beanwater\\Source\\Repos\\brendenmcevoy\\CKK.Logic\\CKK.Logic\\CKK.UI\\CKK.UI.csproj",
   "expectedPackageFiles": [
@@ -20,11 +20,7 @@
     "C:\\Users\\beanwater\\.nuget\\packages\\system.security.accesscontrol\\6.0.0\\system.security.accesscontrol.6.0.0.nupkg.sha512",
     "C:\\Users\\beanwater\\.nuget\\packages\\system.security.cryptography.protecteddata\\7.0.0\\system.security.cryptography.protecteddata.7.0.0.nupkg.sha512",
     "C:\\Users\\beanwater\\.nuget\\packages\\system.security.permissions\\7.0.0\\system.security.permissions.7.0.0.nupkg.sha512",
-    "C:\\Users\\beanwater\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
-    "C:\\Users\\beanwater\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\beanwater\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\beanwater\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\beanwater\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+    "C:\\Users\\beanwater\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

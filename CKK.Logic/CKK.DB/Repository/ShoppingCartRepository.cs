@@ -31,25 +31,34 @@ namespace CKK.DB.Repository
 
         public ShoppingCartItem AddToCart(string itemName, int quantity)
         {
-            throw new NotImplementedException();
-        }
-
-        public int ClearCart(int shoppingCartId)
-        {
-            var sql = "DELETE ProductId, Quantity FROM ShoppingCartItems WHERE ShoppingCartId = @shoppingCartId";
+            var sql = $"INSERT into ShoppingCartItems (ProductId, Quantity) FROM Products WHERE Name = {itemName} AND Quantity = @Quantity";
 
             using (var connection = _connectionFactory.GetConnection)
             {
                 connection.Open();
-                connection.QuerySingleOrDefault<Product>(sql, new { ShoppingCartId = shoppingCartId });
-                return shoppingCartId;
+                var result = connection.QuerySingleOrDefault<ShoppingCartItem>(sql, new {Quantity = quantity});
+                return result;
+            }
+        }
+
+        public int ClearCart(int shoppingCartId)
+        {
+            var sql = "UPDATE ShoppingCartItems SET Quantity = 0 WHERE ShoppingCartId = @shoppingCartId";
+
+            using (var connection = _connectionFactory.GetConnection)
+            {
+                connection.Open();
+                var result = connection.Execute(sql, new {ShoppingCartId = shoppingCartId });
+                return result;
             }
         }
 
         public List<ShoppingCartItem> GetProducts(int shoppingCartId)
         {
-            var sql = "SELECT * FROM Products JOIN ShoppingCartId USING ShoppingCartId = Id WHERE ShoppingCartId = @shoppingCartId";
+            var sql = "SELECT * FROM Products JOIN ShoppingCartItems ON ProductId = Products.Id WHERE ShoppingCartId = @shoppingCartId";
+
             List<ShoppingCartItem> items = new List<ShoppingCartItem>();
+
             using(var connection = _connectionFactory.GetConnection)
             {
                 connection.Open();
@@ -61,7 +70,14 @@ namespace CKK.DB.Repository
 
         public decimal GetTotal(int shoppingCartId)
         {
-            throw new NotImplementedException();
+            var sql = "SELECT Price * ShoppingCartItems.Quantity FROM Products JOIN ShoppingCartItems ON ProductId = Products.Id WHERE ShoppingCartId = @shoppingCartId";
+
+            using (var connection = _connectionFactory.GetConnection)
+            {
+                connection.Open();
+                var result = connection.QuerySingleOrDefault<Decimal>(sql, new {ShoppingCartId = shoppingCartId}); 
+                return result;
+            }
         }
 
         public void Ordered(int shoppingCartId)

@@ -35,8 +35,8 @@ namespace CKK.DB.Repository
             using (var connection = _connectionFactory.GetConnection)
             {
                 connection.Open();
-                connection.QuerySingleOrDefault<Order>(sql, new { Id = id });
-                return id;
+                var result =connection.Execute(sql, new {Id = id});
+                return result;
             }
         }
 
@@ -75,7 +75,6 @@ namespace CKK.DB.Repository
             {
                 connection.Open();
                 var result = connection.QuerySingleOrDefault<Order>(sql, new { Id = id });
-
                 return result;
             }
         }

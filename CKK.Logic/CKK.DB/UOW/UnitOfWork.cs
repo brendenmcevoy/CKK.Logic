@@ -18,6 +18,7 @@ namespace CKK.DB.UOW
             Orders = new OrderRepository<Order>(Conn);
             ShoppingCarts = new ShoppingCartRepository(Conn);
         }
+        
         public IProductRepository<Product> Products { get; private set; }
         public IOrderRepository<Order> Orders { get; private set; }
         public IShoppingCartRepository ShoppingCarts { get; private set;}
