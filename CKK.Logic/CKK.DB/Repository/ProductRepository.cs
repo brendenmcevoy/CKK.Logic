@@ -88,12 +88,16 @@ namespace CKK.DB.Repository
 
         public int Update(Product entity)
         {
-            var sql = "UPDATE Products (Price,Quantity,Name) VALUES (@Price,@Quantity,@Name)";
-
+            var sql = "UPDATE Products SET Quantity = @Quantity WHERE Id= @Id";
             using (var connection = _connectionFactory.GetConnection)
             {
                 connection.Open();
-                var result = connection.Execute(sql, entity);
+                var result = connection.Execute(sql, new
+                {
+                    Quantity = entity,
+                    Id = entity
+
+                }); ;
                 return result;
             }
         }

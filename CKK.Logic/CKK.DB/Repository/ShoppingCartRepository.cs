@@ -17,26 +17,25 @@ namespace CKK.DB.Repository
         {
             _connectionFactory = Conn;
         }
-        public int Add(ShoppingCartItem entity)
+        //public int Add(ShoppingCartItem entity)
+        //{
+        //    var sql = "INSERT into ShoppingCartItems (ShoppingCartId, ProductId, Quantity) VALUES (@ShoppingCartId, @ProductId, @Quantity)";
+
+        //    using (var connection = _connectionFactory.GetConnection)
+        //    {
+        //        connection.Open();
+        //        var result = connection.Execute(sql, entity);
+        //        return result;
+        //    }
+        //}
+
+        public ShoppingCartItem AddToCart(int ShoppingCartId, int ProductId, int quantity)
         {
             var sql = "INSERT into ShoppingCartItems (ShoppingCartId, ProductId, Quantity) VALUES (@ShoppingCartId, @ProductId, @Quantity)";
-
             using (var connection = _connectionFactory.GetConnection)
             {
                 connection.Open();
-                var result = connection.Execute(sql, entity);
-                return result;
-            }
-        }
-
-        public ShoppingCartItem AddToCart(string itemName, int quantity)
-        {
-            var sql = $"INSERT into ShoppingCartItems (ProductId, Quantity) FROM Products WHERE Name = {itemName} AND Quantity = @Quantity";
-
-            using (var connection = _connectionFactory.GetConnection)
-            {
-                connection.Open();
-                var result = connection.QuerySingleOrDefault<ShoppingCartItem>(sql, new {Quantity = quantity});
+                var result = connection.QuerySingleOrDefault<ShoppingCartItem>(sql, new {Quantity = quantity, ShoppingCartId = ShoppingCartId, ProductId = ProductId});
                 return result;
             }
         }
@@ -82,19 +81,25 @@ namespace CKK.DB.Repository
 
         public void Ordered(int shoppingCartId)
         {
-            throw new NotImplementedException();
-        }
-
-        public int Update(ShoppingCartItem entity)
-        {
-            var sql = "UPDATE ShoppingCartItems (ShoppingCartId, ProductId, Quantity) VALUES (@ShoppingCartId, @ProductId, @Quantity)";
+            var sql = "DELETE FROM ShoppingCartItems WHERE ShoppingCartId = @ShoppingCartId";
 
             using (var connection = _connectionFactory.GetConnection)
             {
                 connection.Open();
-                var result = connection.Execute(sql, entity);
-                return result;
+                connection.Execute(sql, new { ShoppingCartId = shoppingCartId });                
             }
         }
+
+        //public int Update(ShoppingCartItem entity)
+        //{
+        //    var sql = "UPDATE ShoppingCartItems (ShoppingCartId, ProductId, Quantity) VALUES (@ShoppingCartId, @ProductId, @Quantity)";
+
+        //    using (var connection = _connectionFactory.GetConnection)
+        //    {
+        //        connection.Open();
+        //        var result = connection.Execute(sql, entity);
+        //        return result;
+        //    }
+        //}
     }
 }

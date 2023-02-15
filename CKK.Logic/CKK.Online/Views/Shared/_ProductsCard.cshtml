@@ -1,0 +1,13 @@
+﻿@model Product
+<div class="card" style"width: 18 rem; padding: 5px;">
+    <div class="card-body">
+        <h5 class="card-title text-center">@Model.Name</h5>
+        <p class="card-text">@Model.Price.ToString("c")</p>
+        <p class="card-text">Quantity Avalible: @Model.Quantity</p>
+        <br />
+    </div>
+</div>
+<div class="card-footer">
+    <input class="num-spinner" id="spinner-@Model.Id" style="padding: 10px; width: 75%;"
+    type="number" value="0" min="0" max="@Model.Quantity" step="1"/>
+</div>

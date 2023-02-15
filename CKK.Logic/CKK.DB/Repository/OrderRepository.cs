@@ -18,7 +18,7 @@ namespace CKK.DB.Repository
         }
         public int Add(Order entity)
         {
-            var sql = "INSERT into Orders (OrderNumber,CustomerId,ShoppingCartId) VALUES (@OrderNumber,@CustomerId,@ShoppingCartId)";
+            var sql = "INSERT into Orders (OrderId,OrderNumber,CustomerId,ShoppingCartId) VALUES (@OrderId,@OrderNumber,@CustomerId,@ShoppingCartId)";
 
             using (var connection = _connectionFactory.GetConnection)
             {
@@ -30,12 +30,12 @@ namespace CKK.DB.Repository
 
         public int Delete(int id)
         {
-            var sql = "DELETE FROM Orders WHERE Id = @Id";
+            var sql = "DELETE FROM Orders WHERE OrderId = @OrderId";
 
             using (var connection = _connectionFactory.GetConnection)
             {
                 connection.Open();
-                var result =connection.Execute(sql, new {Id = id});
+                var result =connection.Execute(sql, new {OrderId = id});
                 return result;
             }
         }
@@ -57,12 +57,12 @@ namespace CKK.DB.Repository
 
         public Order GetById(int id)
         {
-            var sql = "SELECT * FROM Orders WHERE Id = @Id";
+            var sql = "SELECT * FROM Orders WHERE OrderId = @OrderId";
 
             using (var connection = _connectionFactory.GetConnection)
             {
                 connection.Open();
-                var result = connection.QuerySingleOrDefault<Order>(sql, new { Id = id });
+                var result = connection.QuerySingleOrDefault<Order>(sql, new { OrderId = id });
                 return result;
             }
         }
@@ -81,7 +81,7 @@ namespace CKK.DB.Repository
 
         public int Update(Order entity)
         {
-            var sql = "UPDATE Orders (OrderNumber,CustomerId,ShoppingCartId) VALUES (@OrderNumber,@CustomerId,@ShoppingCartId)";
+            var sql = "UPDATE Orders SET OrderNumber = @OrderNumber, CustomerId = @CustomerId, ShoppingCartId = @ ShoppingCartId VALUES (@OrderNumber,@CustomerId,@ShoppingCartId)";
 
             using (var connection = _connectionFactory.GetConnection)
             {
