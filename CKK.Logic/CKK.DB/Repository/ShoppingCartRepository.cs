@@ -32,10 +32,16 @@ namespace CKK.DB.Repository
         public ShoppingCartItem AddToCart(int ShoppingCartId, int ProductId, int quantity)
         {
             var sql = "INSERT into ShoppingCartItems (ShoppingCartId, ProductId, Quantity) VALUES (@ShoppingCartId, @ProductId, @Quantity)";
+
             using (var connection = _connectionFactory.GetConnection)
             {
                 connection.Open();
-                var result = connection.QuerySingleOrDefault<ShoppingCartItem>(sql, new {Quantity = quantity, ShoppingCartId = ShoppingCartId, ProductId = ProductId});
+                var result = connection.QueryFirstOrDefault<ShoppingCartItem>(sql, new 
+                {
+                    Quantity = quantity, 
+                    ShoppingCartId = ShoppingCartId,
+                    ProductId = ProductId
+                });
                 return result;
             }
         }
@@ -54,27 +60,22 @@ namespace CKK.DB.Repository
 
         public List<ShoppingCartItem> GetProducts(int shoppingCartId)
         {
-            var sql = "SELECT * FROM Products JOIN ShoppingCartItems ON ProductId = Products.Id WHERE ShoppingCartId = @shoppingCartId";
-
-            List<ShoppingCartItem> items = new List<ShoppingCartItem>();
-
             using(var connection = _connectionFactory.GetConnection)
             {
-                connection.Open();
-                var result = connection.QuerySingleOrDefault<ShoppingCartItem>(sql, new { ShoppingCartId = shoppingCartId });
-                items.Add(result);
-                return items;
+                var sql = "SELECT * FROM ShoppingCartItems WHERE ShoppingCartId = @ShoppingCartId";
+                var result = SqlMapper.Query<ShoppingCartItem>(connection,sql, new { ShoppingCartId = shoppingCartId }).ToList();
+                return result;
             }
         }
 
         public decimal GetTotal(int shoppingCartId)
         {
-            var sql = "SELECT Price * ShoppingCartItems.Quantity FROM Products JOIN ShoppingCartItems ON ProductId = Products.Id WHERE ShoppingCartId = @shoppingCartId";
+            var sql = "SELECT sum (Price * ShoppingCartItems.Quantity) FROM Products JOIN ShoppingCartItems On ProductId = Products.Id WHERE ShoppingCartId = @shoppingCartId";
 
             using (var connection = _connectionFactory.GetConnection)
             {
                 connection.Open();
-                var result = connection.QuerySingleOrDefault<Decimal>(sql, new {ShoppingCartId = shoppingCartId}); 
+                var result = connection.QuerySingleOrDefault<decimal>(sql, new {ShoppingCartId = shoppingCartId}); 
                 return result;
             }
         }

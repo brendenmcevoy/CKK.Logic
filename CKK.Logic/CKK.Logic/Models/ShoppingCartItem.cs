@@ -9,12 +9,8 @@ using CKK.Logic.Interfaces;
 namespace CKK.Logic.Models
 {
     [Serializable]
-    public class ShoppingCartItem : InventoryItem
+    public class ShoppingCartItem
     {
-        public ShoppingCartItem(Product Product, int Quantity) : base(Product, Quantity)
-        {
-        }
-
         public Product Product { get; set; }
         public int ShoppingCartId { get; set; }
         public int CustomerId { get; set; } 

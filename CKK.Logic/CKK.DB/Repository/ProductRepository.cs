@@ -42,19 +42,11 @@ namespace CKK.DB.Repository
 
         public List<Product> GetAll()
         {
-            List<Product> products = new List<Product>();
-
-            var sql = "SELECT * From Products";
-
             using (var connection = _connectionFactory.GetConnection)
             {
-                connection.Open();
-                var result = connection.Query<Product>(sql);
-                foreach(var r in result)
-                {
-                    products.Add(r);
-                }
-                return products;
+                var sql = "SELECT * From Products";
+                var result = SqlMapper.Query<Product>(connection,sql).ToList();
+                return result;
             }
 
         }
@@ -73,31 +65,23 @@ namespace CKK.DB.Repository
 
         public List<Product> GetByName(string name)
         {
-            List<Product> products = new List<Product>();
-
-            var sql = "SELECT * FROM Products WHERE Name = @Name";
+            
 
             using (var connection = _connectionFactory.GetConnection)
             {
-                connection.Open();
-                var result = connection.QuerySingleOrDefault<Product>(sql, new { Name = name});
-                products.Add(result);
-                return products;
+                var sql = "SELECT * FROM Products WHERE Name = @Name";
+                var result = SqlMapper.Query<Product>(connection,sql, new { Name = name}).ToList();
+                return result;
             }
         }
 
         public int Update(Product entity)
         {
-            var sql = "UPDATE Products SET Quantity = @Quantity WHERE Id= @Id";
+            var sql = "UPDATE Products SET Quantity = (Products.Quantity - ShoppingCartItems.Quantity) FROM Products JOIN ShoppingCartItems ON ProductId = ShoppingCartItems.ProductId";
             using (var connection = _connectionFactory.GetConnection)
             {
                 connection.Open();
-                var result = connection.Execute(sql, new
-                {
-                    Quantity = entity,
-                    Id = entity
-
-                }); ;
+                var result = connection.Execute(sql, entity);
                 return result;
             }
         }

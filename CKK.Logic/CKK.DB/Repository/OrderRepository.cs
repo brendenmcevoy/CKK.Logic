@@ -35,23 +35,18 @@ namespace CKK.DB.Repository
             using (var connection = _connectionFactory.GetConnection)
             {
                 connection.Open();
-                var result =connection.Execute(sql, new {OrderId = id});
+                var result = connection.Execute(sql, new {OrderId = id});
                 return result;
             }
         }
 
         public List<Order> GetAll()
         {
-            List<Order> products = new List<Order>();
-
-            var sql = "SELECT * FROM Orders";
-
             using (var connection = _connectionFactory.GetConnection)
             {
-                connection.Open();
-                var result = connection.QuerySingleOrDefault<Order>(sql);
-                products.Add(result);
-                return products;
+                var sql = "SELECT * FROM Orders";
+                var result = SqlMapper.Query<Order>(connection,sql).ToList();
+                return result;
             }
         }
 

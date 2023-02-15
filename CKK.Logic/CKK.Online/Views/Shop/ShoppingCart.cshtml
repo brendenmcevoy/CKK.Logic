@@ -13,12 +13,11 @@
                     <partial name="_ProductsCard" model="item" />
             }
         </div>
-         <a id="AddBtn" button type="button" class="btn btn-dark" asp-action="Add">Add To Cart</a>
         <a id="CheckoutBtn" asp-controller="Shop" asp-action="CheckOut" asp-route-OrderId= "@Model.Order.OrderId" class="btn btn-success btn-lg btn-block">Check Out - $0.00</a>
         <p>This submit button will send your shopping cart to our server and add you to the queue.</p>
     </form>
 
-    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/bootstrap-input-spinner.js"></script>
     <script>
             $("input[type='number']").inputSpinner();
@@ -29,7 +28,7 @@
             });
 
             function ClickPlus(productId, quantity) {
-                //console.log(productId + " item was clicked. The quantity is: " + quantity);
+                console.log(productId + " item was clicked. The quantity is: " + quantity);
                 $.get(
                     {
                         url: window.location.href + "/Add/" + productId + "?" + "quantity=" + quantity,
@@ -38,5 +37,5 @@
                         }
                     });
             }
-    </script>*@
+    </script>
 
