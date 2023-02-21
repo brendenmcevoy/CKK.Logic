@@ -16,7 +16,7 @@ namespace CKK.Online.Models
             Order.CustomerId= 1;    
             Order.OrderNumber = "1";
             Order.ShoppingCartid = 100;
-            uow.Orders.Add(Order);
+            uow.Orders.AddAsync(Order);
         }
     }
 }

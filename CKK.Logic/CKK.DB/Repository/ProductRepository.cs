@@ -16,26 +16,24 @@ namespace CKK.DB.Repository
             _connectionFactory = Conn;
         }
 
-        public int Add(Product entity)
+        public async Task<int> AddAsync(Product entity)
         {
-            var sql = "INSERT into Products (Price,Quantity,Name) VALUES (@Price,@Quantity,@Name)";
-
             using (var connection = _connectionFactory.GetConnection)
             {
+                var sql = "INSERT into Products (Price,Quantity,Name) VALUES (@Price,@Quantity,@Name)";
                 connection.Open();
-                var result = connection.Execute(sql, entity);
+                var result = await Task.Run(() => connection.Execute(sql, entity));
                 return result;
             }
         }
 
-        public int Delete(int id)
+        public async Task<int> DeleteAsync(int id)
         {
-            var sql = "DELETE FROM Products WHERE Id = @Id";
-
             using (var connection = _connectionFactory.GetConnection)
             {
+                var sql = "DELETE FROM Products WHERE Id = @Id";
                 connection.Open();
-                var result = connection.Execute(sql, new {Id = id });
+                var result = await Task.Run(() => connection.Execute(sql, new {Id = id }));
                 return result;
             }
         }
@@ -51,37 +49,34 @@ namespace CKK.DB.Repository
 
         }
 
-        public Product GetById(int id)
+        public async Task<Product> GetByIdAsync(int id)
         {
-            var sql = "SELECT * FROM Products WHERE Id = @Id";
-
             using (var connection = _connectionFactory.GetConnection)
             {
+                var sql = "SELECT * FROM Products WHERE Id = @Id";
                 connection.Open();
-                var result = connection.QuerySingleOrDefault<Product>(sql, new { Id = id });
+                var result = await Task.Run(() => connection.QuerySingleOrDefault<Product>(sql, new { Id = id }));
                 return result;
             }
         }
 
-        public List<Product> GetByName(string name)
+        public async Task<List<Product>> GetByNameAsync(string name)
         {
-            
-
             using (var connection = _connectionFactory.GetConnection)
             {
                 var sql = "SELECT * FROM Products WHERE Name = @Name";
-                var result = SqlMapper.Query<Product>(connection,sql, new { Name = name}).ToList();
+                var result = await Task.Run(() => SqlMapper.Query<Product>(connection, sql, new { Name = name }).ToList());
                 return result;
             }
         }
 
-        public int Update(Product entity)
+        public async Task<int> UpdateAsync(Product entity)
         {
-            var sql = "UPDATE Products SET Quantity = (Products.Quantity - ShoppingCartItems.Quantity) FROM Products JOIN ShoppingCartItems ON ProductId = ShoppingCartItems.ProductId";
             using (var connection = _connectionFactory.GetConnection)
             {
+                var sql = "UPDATE Products SET Quantity = (Products.Quantity - ShoppingCartItems.Quantity) FROM Products JOIN ShoppingCartItems ON ProductId = ShoppingCartItems.ProductId";
                 connection.Open();
-                var result = connection.Execute(sql, entity);
+                var result = await Task.Run(() => connection.Execute(sql, entity));
                 return result;
             }
         }

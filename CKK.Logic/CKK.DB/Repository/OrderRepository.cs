@@ -16,26 +16,24 @@ namespace CKK.DB.Repository
         {
             _connectionFactory = Conn;
         }
-        public int Add(Order entity)
+        public async Task<int> AddAsync(Order entity)
         {
-            var sql = "INSERT into Orders (OrderId,OrderNumber,CustomerId,ShoppingCartId) VALUES (@OrderId,@OrderNumber,@CustomerId,@ShoppingCartId)";
-
             using (var connection = _connectionFactory.GetConnection)
             {
+                var sql = "INSERT into Orders (OrderId,OrderNumber,CustomerId,ShoppingCartId) VALUES (@OrderId,@OrderNumber,@CustomerId,@ShoppingCartId)";
                 connection.Open();
-                var result = connection.Execute(sql, entity);
+                var result = await Task.Run(() => connection.Execute(sql, entity));
                 return result;
             }
         }
 
-        public int Delete(int id)
+        public async Task<int> DeleteAsync(int id)
         {
-            var sql = "DELETE FROM Orders WHERE OrderId = @OrderId";
-
             using (var connection = _connectionFactory.GetConnection)
             {
+                var sql = "DELETE FROM Orders WHERE OrderId = @OrderId";
                 connection.Open();
-                var result = connection.Execute(sql, new {OrderId = id});
+                var result = await Task.Run(() => connection.Execute(sql, new {OrderId = id}));
                 return result;
             }
         }
@@ -45,43 +43,40 @@ namespace CKK.DB.Repository
             using (var connection = _connectionFactory.GetConnection)
             {
                 var sql = "SELECT * FROM Orders";
-                var result = SqlMapper.Query<Order>(connection,sql).ToList();
+                var result = SqlMapper.Query<Order>(connection, sql).ToList();
                 return result;
             }
         }
 
-        public Order GetById(int id)
+        public async Task<Order> GetByIdAsync(int id)
         {
-            var sql = "SELECT * FROM Orders WHERE OrderId = @OrderId";
-
             using (var connection = _connectionFactory.GetConnection)
             {
+                var sql = "SELECT * FROM Orders WHERE OrderId = @OrderId";
                 connection.Open();
-                var result = connection.QuerySingleOrDefault<Order>(sql, new { OrderId = id });
+                var result = await Task.Run(() => connection.QuerySingleOrDefault<Order>(sql, new { OrderId = id }));
                 return result;
             }
         }
 
-        public Order GetOrderByCustomerId(int id)
+        public async Task<Order> GetOrderByCustomerIdAsync(int id)
         {
-            var sql = "SELECT * FROM Orders WHERE CustomerId = @Id";
-
             using (var connection = _connectionFactory.GetConnection) 
             {
+                var sql = "SELECT * FROM Orders WHERE CustomerId = @Id";
                 connection.Open();
-                var result = connection.QuerySingleOrDefault<Order>(sql, new { Id = id });
+                var result = await Task.Run(() => connection.QuerySingleOrDefault<Order>(sql, new { Id = id }));
                 return result;
             }
         }
 
-        public int Update(Order entity)
+        public async Task<int> UpdateAsync(Order entity)
         {
-            var sql = "UPDATE Orders SET OrderNumber = @OrderNumber, CustomerId = @CustomerId, ShoppingCartId = @ ShoppingCartId VALUES (@OrderNumber,@CustomerId,@ShoppingCartId)";
-
             using (var connection = _connectionFactory.GetConnection)
             {
+                var sql = "UPDATE Orders SET OrderNumber = @OrderNumber, CustomerId = @CustomerId, ShoppingCartId = @ ShoppingCartId VALUES (@OrderNumber,@CustomerId,@ShoppingCartId)";
                 connection.Open();
-                var result = connection.Execute(sql, entity);
+                var result = await Task.Run(() => connection.Execute(sql, entity));
                 return result;
             }
         }

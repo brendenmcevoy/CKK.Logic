@@ -8,6 +8,6 @@ namespace CKK.DB.Interfaces
 {
     public interface IProductRepository<Product>:IGenericRepository<Product>
     {
-        List<Product> GetByName(string name);
+        Task<List<Product>> GetByNameAsync(string name);
     }
 }

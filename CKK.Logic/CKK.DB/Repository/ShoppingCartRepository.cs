@@ -31,11 +31,11 @@ namespace CKK.DB.Repository
 
         public ShoppingCartItem AddToCart(int ShoppingCartId, int ProductId, int quantity)
         {
-            var sql = "INSERT into ShoppingCartItems (ShoppingCartId, ProductId, Quantity) VALUES (@ShoppingCartId, @ProductId, @Quantity)";
-
             using (var connection = _connectionFactory.GetConnection)
             {
+                var sql = "INSERT into ShoppingCartItems (ShoppingCartId, ProductId, Quantity) VALUES (@ShoppingCartId, @ProductId, @Quantity)";
                 connection.Open();
+
                 var result = connection.QueryFirstOrDefault<ShoppingCartItem>(sql, new 
                 {
                     Quantity = quantity, 
@@ -48,10 +48,9 @@ namespace CKK.DB.Repository
 
         public int ClearCart(int shoppingCartId)
         {
-            var sql = "UPDATE ShoppingCartItems SET Quantity = 0 WHERE ShoppingCartId = @shoppingCartId";
-
             using (var connection = _connectionFactory.GetConnection)
             {
+                var sql = "UPDATE ShoppingCartItems SET Quantity = 0 WHERE ShoppingCartId = @shoppingCartId";
                 connection.Open();
                 var result = connection.Execute(sql, new {ShoppingCartId = shoppingCartId });
                 return result;
@@ -70,10 +69,9 @@ namespace CKK.DB.Repository
 
         public decimal GetTotal(int shoppingCartId)
         {
-            var sql = "SELECT sum (Price * ShoppingCartItems.Quantity) FROM Products JOIN ShoppingCartItems On ProductId = Products.Id WHERE ShoppingCartId = @shoppingCartId";
-
             using (var connection = _connectionFactory.GetConnection)
             {
+                var sql = "SELECT sum (Price * ShoppingCartItems.Quantity) FROM Products JOIN ShoppingCartItems On ProductId = Products.Id WHERE ShoppingCartId = @shoppingCartId";
                 connection.Open();
                 var result = connection.QuerySingleOrDefault<decimal>(sql, new {ShoppingCartId = shoppingCartId}); 
                 return result;
@@ -82,10 +80,10 @@ namespace CKK.DB.Repository
 
         public void Ordered(int shoppingCartId)
         {
-            var sql = "DELETE FROM ShoppingCartItems WHERE ShoppingCartId = @ShoppingCartId";
 
             using (var connection = _connectionFactory.GetConnection)
             {
+                var sql = "DELETE FROM ShoppingCartItems WHERE ShoppingCartId = @ShoppingCartId";
                 connection.Open();
                 connection.Execute(sql, new { ShoppingCartId = shoppingCartId });                
             }

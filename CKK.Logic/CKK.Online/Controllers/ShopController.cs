@@ -29,14 +29,14 @@ namespace CKK.Online.Controllers
         public IActionResult CheckOutCustomer([FromQuery]int orderId)
         {
             string statusMessage = "";
-            var order = _uow.Orders.GetById(orderId);
+            var order = _uow.Orders.GetByIdAsync(orderId).Result;
 
             List<ShoppingCartItem> items = _uow.ShoppingCarts.GetProducts(order.ShoppingCartid);
 
             foreach(var i in items)
             {
-                var prod = _uow.Products.GetById(i.ProductId);
-                _uow.Products.Update(prod);
+                var prod = _uow.Products.GetByIdAsync(i.ProductId).Result;
+                _uow.Products.UpdateAsync(prod);
             }
             
             var shoppingCartId = order.ShoppingCartid;
@@ -53,7 +53,7 @@ namespace CKK.Online.Controllers
         [Route("Shop/ShoppingCart/Add/{productId}")]
         public IActionResult Add([FromRoute]int productId, [FromQuery]int quantity)
         {
-            var order = _uow.Orders.GetById(1);
+            var order = _uow.Orders.GetByIdAsync(1).Result;
             var test = _uow.ShoppingCarts.AddToCart(order.ShoppingCartid, productId, quantity);
 
             var total = _uow.ShoppingCarts.GetTotal(order.ShoppingCartid);

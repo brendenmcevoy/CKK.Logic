@@ -26,13 +26,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        
-        <!--<Label Content="Item ID: " Grid.Column="1" Grid.Row="1"
-               FontFamily="Verdana" FontWeight="Bold" FontSize="20" Margin="70,20,0,20" />
-        <TextBox Name="idBox" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="3"
-                 Height="35" Width="350" FontFamily="Verdana" FontSize="20"
-                 BorderThickness="3" Background="#FFC9C1C1" Margin="0,20,0,20"/>-->
-        
+    
         <Label Content="Item Name: " Grid.Column="1" Grid.Row="2"
                FontFamily="Verdana" FontWeight="Bold" FontSize="20" Margin="34,0,0,20"/>
         <TextBox Name="nameBox" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3"

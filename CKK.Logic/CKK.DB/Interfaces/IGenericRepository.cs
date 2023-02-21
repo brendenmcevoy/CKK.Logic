@@ -8,10 +8,10 @@ namespace CKK.DB.Interfaces
 {
     public interface IGenericRepository<T>
     {
-        T GetById(int id);
+        Task<T> GetByIdAsync(int id);
         List<T> GetAll();
-        int Add(T entity);
-        int Update(T entity);
-        int Delete(int id);
+        Task<int> AddAsync(T entity);
+        Task<int> UpdateAsync(T entity);
+        Task<int> DeleteAsync(int id);
     }
 }

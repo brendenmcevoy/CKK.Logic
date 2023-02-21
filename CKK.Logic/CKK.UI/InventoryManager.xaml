@@ -83,7 +83,7 @@
                 Grid.Row="2"
                 Style="{StaticResource smallButton}" 
                 Grid.ColumnSpan="2"
-                Margin="0,0,80,0"
+                Margin="0,0,150,0"
                 Click="searchButton_Click"/>
 
         <ListBox x:Name="lbInventoryList" 
@@ -94,11 +94,6 @@
                  Width="900" 
                  BorderThickness="5" 
                  Margin="5">
-            <!--<ListBox.ItemTemplate>
-                <DataTemplate>
-                    
-                </DataTemplate>
-            </ListBox.ItemTemplate>-->
         </ListBox>
 
         <Button x:Name="sortQ"
@@ -118,6 +113,16 @@
                 Content="Clear Results"
                 Style="{StaticResource buttonStyle}"
                 Grid.Column="5"
-                Grid.Row="2" Click="clearButton_Click"/>
+                Grid.Row="2" 
+                Click="clearButton_Click" 
+                HorizontalAlignment="Right"
+                Margin="0,0,38,0" 
+                Width="130"/>
+
+        <Button x:Name="refreshButton"
+                Content="Refresh"
+                Style="{StaticResource buttonStyle}"
+                Grid.Column="3"
+                Grid.Row="4" Click="refreshButton_Click"/>
     </Grid>
 </Window>

@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CKK.Logic.Models;
 using CKK.Logic.Interfaces;
-//using CKK.Persistance.Models;
 using CKK.Persistance.Interfaces;
 using CKK.DB.UOW;
 
@@ -31,7 +30,7 @@ namespace CKK.UI
 
         private void submitButton_Click(object sender, RoutedEventArgs e)
         {
-            //UnitOfWork tp = (UnitOfWork)Application.Current.FindResource("globStore");
+            
             InventoryManager inv = new InventoryManager();
 
             Product prod = new Product();
@@ -39,11 +38,10 @@ namespace CKK.UI
             prod.Price = int.Parse(priceBox.Text);
             prod.Quantity = int.Parse(quantityBox.Text);
 
-            inv.addItem(prod); //, int.Parse(quantityBox.Text));
-
+            inv.addItem(prod);
+           
             inv.Show();
             this.Close();
-          
         }
     }
 }

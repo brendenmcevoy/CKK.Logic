@@ -8,6 +8,6 @@ namespace CKK.DB.Interfaces
 {
     public interface IOrderRepository<Order> : IGenericRepository<Order>
     {
-        Order GetOrderByCustomerId(int id);
+        Task<Order> GetOrderByCustomerIdAsync(int id);
     }
 }
