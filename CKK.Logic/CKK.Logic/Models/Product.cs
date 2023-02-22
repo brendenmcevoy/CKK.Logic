@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CKK.Logic.Interfaces;
 
 namespace CKK.Logic.Models
 {
@@ -17,7 +16,7 @@ namespace CKK.Logic.Models
 
         public override string ToString()
         {
-            return $"ID: {Id}   NAME: {Name}    QUANTITY: {Quantity}    PRICE: ${Price}";
+            return $"ID: {Id}   NAME: {Name}    QUANTITY: {Quantity}    PRICE: ${Price}"; //Format for displaying in ListBox (CKK.UI)
         }
     }
 }

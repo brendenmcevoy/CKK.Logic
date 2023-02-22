@@ -13,23 +13,23 @@ namespace CKK.DB.Repository
     public class ShoppingCartRepository : IShoppingCartRepository
     {
         private readonly IConnectionFactory _connectionFactory;
-        public ShoppingCartRepository(IConnectionFactory Conn)
+        public ShoppingCartRepository(IConnectionFactory Conn) //Connect to database
         {
             _connectionFactory = Conn;
         }
-        //public int Add(ShoppingCartItem entity)
-        //{
-        //    var sql = "INSERT into ShoppingCartItems (ShoppingCartId, ProductId, Quantity) VALUES (@ShoppingCartId, @ProductId, @Quantity)";
 
-        //    using (var connection = _connectionFactory.GetConnection)
-        //    {
-        //        connection.Open();
-        //        var result = connection.Execute(sql, entity);
-        //        return result;
-        //    }
-        //}
+        public async Task<int> AddAsync(ShoppingCartItem entity) //Add a Shopping Cart
+        {
+            using (var connection = _connectionFactory.GetConnection)
+            {
+                var sql = "INSERT into ShoppingCartItems (ShoppingCartId, ProductId, Quantity) VALUES (@ShoppingCartId, @ProductId, @Quantity)";
+                connection.Open();
+                var result = await connection.ExecuteAsync(sql, entity);
+                return result;
+            }
+        }
 
-        public ShoppingCartItem AddToCart(int ShoppingCartId, int ProductId, int quantity)
+        public ShoppingCartItem AddToCart(int ShoppingCartId, int ProductId, int quantity) //Adds a Product to a Shopping Cart
         {
             using (var connection = _connectionFactory.GetConnection)
             {
@@ -46,7 +46,7 @@ namespace CKK.DB.Repository
             }
         }
 
-        public int ClearCart(int shoppingCartId)
+        public int ClearCart(int shoppingCartId) //Clears ShoppingCartItems quantity of a specific Shopping Cart
         {
             using (var connection = _connectionFactory.GetConnection)
             {
@@ -57,7 +57,7 @@ namespace CKK.DB.Repository
             }
         }
 
-        public List<ShoppingCartItem> GetProducts(int shoppingCartId)
+        public List<ShoppingCartItem> GetProducts(int shoppingCartId) //Get all products from a specific Shopping Cart
         {
             using(var connection = _connectionFactory.GetConnection)
             {
@@ -67,7 +67,7 @@ namespace CKK.DB.Repository
             }
         }
 
-        public decimal GetTotal(int shoppingCartId)
+        public decimal GetTotal(int shoppingCartId) //Get the total price of a Shopping Cart
         {
             using (var connection = _connectionFactory.GetConnection)
             {
@@ -78,7 +78,7 @@ namespace CKK.DB.Repository
             }
         }
 
-        public void Ordered(int shoppingCartId)
+        public void Ordered(int shoppingCartId) //Delete Shopping Cart data after an order is placed
         {
 
             using (var connection = _connectionFactory.GetConnection)
@@ -89,16 +89,15 @@ namespace CKK.DB.Repository
             }
         }
 
-        //public int Update(ShoppingCartItem entity)
-        //{
-        //    var sql = "UPDATE ShoppingCartItems (ShoppingCartId, ProductId, Quantity) VALUES (@ShoppingCartId, @ProductId, @Quantity)";
-
-        //    using (var connection = _connectionFactory.GetConnection)
-        //    {
-        //        connection.Open();
-        //        var result = connection.Execute(sql, entity);
-        //        return result;
-        //    }
-        //}
+        public async Task<int> UpdateAsync(ShoppingCartItem entity) //Update the quantity of Products based on the Products in a specific Shopping Cart
+        {
+            using (var connection = _connectionFactory.GetConnection)
+            {
+                var sql = "UPDATE Products SET Quantity = (Products.Quantity - @Quantity) WHERE Id = @ProductId";
+                connection.Open();
+                var result = await connection.ExecuteAsync(sql, entity);
+                return result;
+            }
+        }
     }
 }

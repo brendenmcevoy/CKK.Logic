@@ -11,9 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using CKK.Logic.Interfaces;
 using CKK.Logic.Models;
-using CKK.Persistance.Interfaces;
 using CKK.DB.UOW;
 
 namespace CKK.UI
@@ -34,12 +32,12 @@ namespace CKK.UI
 
             int id = int.Parse(idBox.Text);
 
-            inv.removeItem(id);
+            inv.removeItem(id); //Remove item from InvMngr
 
-            inv.Show();
+            inv.Show(); //Close this window and open InvMngr window
             this.Close();
         }
-        private void backButton_Click(object sender, RoutedEventArgs e)
+        private void backButton_Click(object sender, RoutedEventArgs e) //Back to InvMngr without saving changes
         {
             InventoryManager inv = new InventoryManager();
 

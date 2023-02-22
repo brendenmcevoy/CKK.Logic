@@ -23,6 +23,6 @@ namespace CKK.Logic.Exceptions
         {
 
         }
-        
+
     }
 }

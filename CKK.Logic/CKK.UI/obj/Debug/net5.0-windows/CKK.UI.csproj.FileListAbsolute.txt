@@ -238,10 +238,8 @@ C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.UI\bin\Deb
 C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.UI\bin\Debug\net5.0-windows\runtimes\win\lib\netstandard2.0\System.Security.AccessControl.dll
 C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.UI\bin\Debug\net5.0-windows\CKK.DB.dll
 C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.UI\bin\Debug\net5.0-windows\CKK.Logic.dll
-C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.UI\bin\Debug\net5.0-windows\CKK.Persistance.dll
 C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.UI\bin\Debug\net5.0-windows\CKK.DB.pdb
 C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.UI\bin\Debug\net5.0-windows\CKK.Logic.pdb
-C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.UI\bin\Debug\net5.0-windows\CKK.Persistance.pdb
 C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.UI\obj\Debug\net5.0-windows\AddItem.baml
 C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.UI\obj\Debug\net5.0-windows\InventoryManager.baml
 C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.UI\obj\Debug\net5.0-windows\Login.baml

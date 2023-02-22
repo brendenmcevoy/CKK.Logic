@@ -12,8 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CKK.Logic.Models;
-using CKK.Logic.Interfaces;
-using CKK.Persistance.Interfaces;
 using CKK.DB.UOW;
 
 namespace CKK.UI
@@ -33,22 +31,22 @@ namespace CKK.UI
             
             InventoryManager inv = new InventoryManager();
 
-            Product prod = new Product();
+            Product prod = new Product(); //Create new Product using values from textboxes
             prod.Name = nameBox.Text;
             prod.Price = int.Parse(priceBox.Text);
             prod.Quantity = int.Parse(quantityBox.Text);
 
-            inv.addItem(prod);
+            inv.addItem(prod); //Add item to InvMngr
            
             inv.Show();
-            this.Close();
+            this.Close(); //Close window and open InvMngr window
         }       
 
-        private void backButton_Click(object sender, RoutedEventArgs e)
+        private void backButton_Click(object sender, RoutedEventArgs e) //Go back to InvMngr without saving changes
         {
             InventoryManager inv = new InventoryManager();
 
-            inv.Show();
+            inv.Show(); 
             this.Close();
         }
 

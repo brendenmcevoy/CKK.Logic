@@ -12,9 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CKK.Logic.Models;
-using CKK.Logic.Interfaces;
-//using CKK.Persistance.Models;
-using CKK.Persistance.Interfaces;
 using CKK.DB.UOW;
 
 namespace CKK.UI
@@ -29,7 +26,7 @@ namespace CKK.UI
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private void btnLogin_Click(object sender, RoutedEventArgs e) //No authentication yet ):
         {
             if (passwordBox.Password == string.Empty || usernameBox.Text == string.Empty)
             {

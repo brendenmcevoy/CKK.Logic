@@ -18,7 +18,7 @@ namespace CKK.DB.UOW
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
 
-        private readonly string connectionString = "Data Source = (localdb)\\MSSQLLocalDB;database = StructuredProjectDB";
+        private readonly string connectionString = "Data Source = (localdb)\\MSSQLLocalDB;database = StructuredProjectDB"; //Strings for my Local DB
 
         public IDbConnection GetConnection
         {

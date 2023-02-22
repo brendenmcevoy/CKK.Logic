@@ -11,12 +11,12 @@ namespace CKK.DB.Repository
     public class ProductRepository<Product> : IProductRepository<Product>
     {
         private readonly IConnectionFactory _connectionFactory;
-        public ProductRepository(IConnectionFactory Conn)
+        public ProductRepository(IConnectionFactory Conn) //Connect to database
         {
             _connectionFactory = Conn;
         }
 
-        public async Task<int> AddAsync(Product entity)
+        public async Task<int> AddAsync(Product entity) //Add a Product
         {
             using (var connection = _connectionFactory.GetConnection)
             {
@@ -27,7 +27,7 @@ namespace CKK.DB.Repository
             }
         }
 
-        public async Task<int> DeleteAsync(int id)
+        public async Task<int> DeleteAsync(int id) //Delete a Product
         {
             using (var connection = _connectionFactory.GetConnection)
             {
@@ -38,18 +38,18 @@ namespace CKK.DB.Repository
             }
         }
         
-        public async Task<List<Product>> GetAllAsync()
+        public async Task<List<Product>> GetAllAsync() //Get all Products
         {
             using (var connection = _connectionFactory.GetConnection)
             {
                 var sql = "SELECT * From Products";
-                var result = SqlMapper.Query<Product>(connection, sql);
+                var result = await SqlMapper.QueryAsync<Product>(connection, sql);
                 return result.ToList();
             }
 
         }
 
-        public async Task<Product> GetByIdAsync(int id)
+        public async Task<Product> GetByIdAsync(int id) //Get specific Product using Product Id
         {
             using (var connection = _connectionFactory.GetConnection)
             {
@@ -60,21 +60,21 @@ namespace CKK.DB.Repository
             }
         }
 
-        public async Task<List<Product>> GetByNameAsync(string name)
+        public async Task<List<Product>> GetByNameAsync(string name) //Get Products using a name (specific product name or keyword)
         {
             using (var connection = _connectionFactory.GetConnection)
             {
                 var sql = "SELECT * FROM Products WHERE Name LIKE @Name"; 
-                var result = SqlMapper.Query<Product>(connection, sql, new { Name = "%" + name + "%" }).ToList();
-                return result;
+                var result = await SqlMapper.QueryAsync<Product>(connection, sql, new { Name = "%" + name + "%" });
+                return result.ToList();
             }
         }
 
-        public async Task<int> UpdateAsync(Product entity)
+        public async Task<int> UpdateAsync(Product entity) //Update Product
         {
             using (var connection = _connectionFactory.GetConnection)
             {
-                var sql = "UPDATE Products SET Quantity = (Products.Quantity - ShoppingCartItems.Quantity) FROM Products JOIN ShoppingCartItems ON ProductId = ShoppingCartItems.ProductId";
+                var sql = "UPDATE Products SET Quantity =(@Quantity), Name = (@Name), Price= (@Price) WHERE Id = @Id";
                 connection.Open();
                 var result = await connection.ExecuteAsync(sql, entity);
                 return result;

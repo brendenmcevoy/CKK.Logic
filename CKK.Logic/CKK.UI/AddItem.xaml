@@ -192,10 +192,9 @@
                     FontSize="18"
                     Foreground="#FDF7FA"
                     Cursor="Hand"                
-                    Grid.Column="1"
-                    Grid.ColumnSpan="2"
+                    Grid.Column="3"
                     Grid.Row="6" 
-                    HorizontalAlignment="Center"
+                    HorizontalAlignment="right"
                     Click="submitButton_Click">
                 <Button.Style>
                     <Style TargetType="Button">
@@ -227,9 +226,11 @@
                     FontSize="18"
                     Foreground="#FDF7FA"
                     Cursor="Hand"                
-                    Grid.Column="3"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
                     Grid.Row="6" 
-                    HorizontalAlignment="Center"
+                    Margin="40,0,0,0"
+                    HorizontalAlignment="right"
                     Click="backButton_Click">
                 <Button.Style>
                     <Style TargetType="Button">

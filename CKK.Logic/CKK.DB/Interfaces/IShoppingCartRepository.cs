@@ -14,7 +14,7 @@ namespace CKK.DB.Interfaces
         decimal GetTotal(int shoppingCartId);
         List<ShoppingCartItem> GetProducts(int shoppingCartId);
         void Ordered(int shoppingCartId);
-        //int Update(ShoppingCartItem entity);
-        //int Add(ShoppingCartItem entity);
+        Task<int> UpdateAsync(ShoppingCartItem entity);
+        Task<int> AddAsync(ShoppingCartItem entity);
     }
 }

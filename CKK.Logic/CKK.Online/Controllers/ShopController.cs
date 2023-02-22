@@ -19,7 +19,7 @@ namespace CKK.Online.Controllers
         public IActionResult Index()
         {
             var model = new ShopModel(_uow);
-            _uow.ShoppingCarts.ClearCart(model.Order.ShoppingCartid);
+            _uow.ShoppingCarts.ClearCart(model.Order.ShoppingCartid); //Start with fresh cart
 
             return View("shoppingCart",model);
         }
@@ -28,30 +28,28 @@ namespace CKK.Online.Controllers
         [Route("/Shop/CheckOut")]
         public IActionResult CheckOutCustomer([FromQuery]int orderId)
         {
-            string statusMessage = "";
-            var order = _uow.Orders.GetByIdAsync(orderId).Result;
+            var order = _uow.Orders.GetByIdAsync(orderId).Result; //Gets Order
 
-            List<ShoppingCartItem> items = _uow.ShoppingCarts.GetProducts(order.ShoppingCartid);
+            List<ShoppingCartItem> items = _uow.ShoppingCarts.GetProducts(order.ShoppingCartid); //Gets all items in Cart
 
-            foreach(var i in items)
+            foreach(var i in items) //Update new quantities inside of DB
             {
-                var prod = _uow.Products.GetByIdAsync(i.ProductId).Result;
-                _uow.Products.UpdateAsync(prod);
+                _uow.ShoppingCarts.UpdateAsync(i);
             }
             
             var shoppingCartId = order.ShoppingCartid;
 
-            _uow.ShoppingCarts.Ordered(shoppingCartId);
+            _uow.ShoppingCarts.Ordered(shoppingCartId); //Delete Shopping Cart
 
-            statusMessage = "Order Placed Successfully";
+            string statusMessage = "Order Placed Successfully";
 
-            var model = new CheckOutModel { StatusMessage = statusMessage.Trim('\0') };
+            var model = new CheckOutModel { StatusMessage = statusMessage.Trim('\0') }; //Show user statusMessage
             return View("CheckOut",model);
         }
 
         [HttpGet]
         [Route("Shop/ShoppingCart/Add/{productId}")]
-        public IActionResult Add([FromRoute]int productId, [FromQuery]int quantity)
+        public IActionResult Add([FromRoute]int productId, [FromQuery]int quantity) //Adds items to the shopping cart and updates total on '+' button click
         {
             var order = _uow.Orders.GetByIdAsync(1).Result;
             var test = _uow.ShoppingCarts.AddToCart(order.ShoppingCartid, productId, quantity);

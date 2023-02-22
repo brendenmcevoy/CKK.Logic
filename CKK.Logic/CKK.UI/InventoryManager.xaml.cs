@@ -13,9 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CKK.Logic.Models;
-using CKK.Logic.Interfaces;
 using System.Collections.ObjectModel;
-using CKK.Persistance.Interfaces;
 using CKK.DB.UOW;
 using CKK.DB.Interfaces;
 
@@ -40,17 +38,17 @@ namespace CKK.UI
             RefreshList();
         }
 
-        private void RefreshList()
+        private async void RefreshList() //Delete and Reload all Products in DB
         {
             _Items.Clear();
 
-            foreach (Product p in new ObservableCollection<Product>(uow.Products.GetAllAsync().Result))
+            foreach (Product p in new ObservableCollection<Product>(await Task.Run(() => uow.Products.GetAllAsync().Result)))
             {
-                 _Items.Add(p);
+                _Items.Add(p);
             };
         }
 
-        private void addButton_Click(object sender, RoutedEventArgs e)
+        private void addButton_Click(object sender, RoutedEventArgs e) //Opens Add Item window
         {
             AddItem add = new AddItem();
 
@@ -61,17 +59,17 @@ namespace CKK.UI
 
         public void addItem(Product prod)
         {
-            uow.Products.AddAsync(prod);
+            uow.Products.AddAsync(prod); //Adds item to the DB
             RefreshList();
         }
 
-        public void removeItem(int id)
+        public void removeItem(int id) //Remove Item from DB
         {
             uow.Products.DeleteAsync(id);
             RefreshList();
         }
 
-        private void removeButton_Click(object sender, RoutedEventArgs e)
+        private void removeButton_Click(object sender, RoutedEventArgs e) //Opens Remove Item window
         {
             RemoveItem remove = new RemoveItem();
 
@@ -79,34 +77,34 @@ namespace CKK.UI
             this.Close();
         }
 
-        private void sortQ_Click(object sender, RoutedEventArgs e)
+        private async void sortQ_Click(object sender, RoutedEventArgs e) //Sort Products by Quantity ascending
         {
-            List<Product> qList = uow.Products.GetAllAsync().Result;
+            List<Product> qList = await Task.Run(() => uow.Products.GetAllAsync().Result);
 
             var list = qList.OrderBy(x => x.Quantity).ToList();
 
             lbInventoryList.ItemsSource = list;
         }
 
-        private void sortP_Click(object sender, RoutedEventArgs e)
+        private async void sortP_Click(object sender, RoutedEventArgs e) //Sort Products by Price ascending
         {
-            List<Product> qList = uow.Products.GetAllAsync().Result;
+            List<Product> qList = await Task.Run(() => uow.Products.GetAllAsync().Result);
 
             var list = qList.OrderBy(x => x.Price).ToList();
 
             lbInventoryList.ItemsSource = list;
         }
 
-        private void searchButton_Click(object sender, RoutedEventArgs e)
+        private void searchButton_Click(object sender, RoutedEventArgs e) //Search DB for Products using keyword, makes a new list with results and Refreshes list.
         {           
             lbInventoryList.ItemsSource = uow.Products.GetByNameAsync(searchBox.Text).Result;
             RefreshList();
             searchBox.Text = string.Empty;
         }
 
-        private void refreshButton_Click(object sender, RoutedEventArgs e)
+        private async void refreshButton_Click(object sender, RoutedEventArgs e) //Refresh list manually
         {
-            lbInventoryList.ItemsSource = uow.Products.GetAllAsync().Result;
+            lbInventoryList.ItemsSource = await Task.Run(() => uow.Products.GetAllAsync().Result);
             RefreshList();
         }
 

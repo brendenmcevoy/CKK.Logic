@@ -12,11 +12,12 @@ namespace CKK.DB.Repository
     public class OrderRepository<Order> : IOrderRepository<Order>
     {
         private readonly IConnectionFactory _connectionFactory;
-        public OrderRepository(IConnectionFactory Conn) 
+        public OrderRepository(IConnectionFactory Conn) //Connect to database
         {
             _connectionFactory = Conn;
         }
-        public async Task<int> AddAsync(Order entity)
+
+        public async Task<int> AddAsync(Order entity) //Adds an Order
         {
             using (var connection = _connectionFactory.GetConnection)
             {
@@ -27,7 +28,7 @@ namespace CKK.DB.Repository
             }
         }
 
-        public async Task<int> DeleteAsync(int id)
+        public async Task<int> DeleteAsync(int id) //Deletes an Order
         {
             using (var connection = _connectionFactory.GetConnection)
             {
@@ -38,7 +39,7 @@ namespace CKK.DB.Repository
             }
         }
 
-        public async Task<List<Order>> GetAllAsync()
+        public async Task<List<Order>> GetAllAsync() //Get all Orders
         {
             using (var connection = _connectionFactory.GetConnection)
             {
@@ -48,7 +49,7 @@ namespace CKK.DB.Repository
             }
         }
 
-        public async Task<Order> GetByIdAsync(int id)
+        public async Task<Order> GetByIdAsync(int id) //Get specific Order using Order Id
         {
             using (var connection = _connectionFactory.GetConnection)
             {
@@ -59,7 +60,7 @@ namespace CKK.DB.Repository
             }
         }
 
-        public async Task<Order> GetOrderByCustomerIdAsync(int id)
+        public async Task<Order> GetOrderByCustomerIdAsync(int id) //Get specific Order by Customer Id
         {
             using (var connection = _connectionFactory.GetConnection) 
             {
@@ -70,7 +71,7 @@ namespace CKK.DB.Repository
             }
         }
 
-        public async Task<int> UpdateAsync(Order entity)
+        public async Task<int> UpdateAsync(Order entity) //Update and Order
         {
             using (var connection = _connectionFactory.GetConnection)
             {
