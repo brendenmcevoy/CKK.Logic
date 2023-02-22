@@ -81,27 +81,32 @@ namespace CKK.UI
 
         private void sortQ_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            List<Product> qList = uow.Products.GetAllAsync().Result;
+
+            var list = qList.OrderBy(x => x.Quantity).ToList();
+
+            lbInventoryList.ItemsSource = list;
         }
 
         private void sortP_Click(object sender, RoutedEventArgs e)
-        {    
-            throw new NotImplementedException();
+        {
+            List<Product> qList = uow.Products.GetAllAsync().Result;
+
+            var list = qList.OrderBy(x => x.Price).ToList();
+
+            lbInventoryList.ItemsSource = list;
         }
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void clearButton_Click(object sender, RoutedEventArgs e)
-        {
-            lbInventoryList.ItemsSource = _Items;
+        {           
+            lbInventoryList.ItemsSource = uow.Products.GetByNameAsync(searchBox.Text).Result;
             RefreshList();
+            searchBox.Text = string.Empty;
         }
 
         private void refreshButton_Click(object sender, RoutedEventArgs e)
         {
+            lbInventoryList.ItemsSource = uow.Products.GetAllAsync().Result;
             RefreshList();
         }
 
@@ -122,5 +127,7 @@ namespace CKK.UI
         {
             Application.Current.Shutdown();
         }
+
+        
     }
 }

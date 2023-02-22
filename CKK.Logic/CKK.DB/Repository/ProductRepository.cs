@@ -64,9 +64,9 @@ namespace CKK.DB.Repository
         {
             using (var connection = _connectionFactory.GetConnection)
             {
-                var sql = "SELECT * FROM Products WHERE Name = @Name";
-                var result = await SqlMapper.QueryAsync<Product>(connection, sql, new { Name = name });
-                return result.ToList();
+                var sql = "SELECT * FROM Products WHERE Name LIKE @Name"; 
+                var result = SqlMapper.Query<Product>(connection, sql, new { Name = "%" + name + "%" }).ToList();
+                return result;
             }
         }
 
