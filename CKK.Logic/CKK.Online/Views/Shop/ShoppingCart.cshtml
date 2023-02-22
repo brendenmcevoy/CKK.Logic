@@ -8,7 +8,7 @@
     <form method="post">
         <input type="hidden" value= "@Model.Order.OrderId" />
         <div class="row">
-            @foreach (var item in Model.UOW.Products.GetAll())
+            @foreach (var item in Model.UOW.Products.GetAllAsync().Result)
             {
                     <partial name="_ProductsCard" model="item" />
             }

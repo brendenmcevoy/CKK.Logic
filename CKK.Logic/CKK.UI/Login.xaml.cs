@@ -29,21 +29,36 @@ namespace CKK.UI
             InitializeComponent();
         }
 
-        private void loginButton_Click(object sender, RoutedEventArgs e)
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (passwordBox.Password == string.Empty)
+            if (passwordBox.Password == string.Empty || usernameBox.Text == string.Empty)
             {
-                MessageBox.Show("Must enter a password");
+                MessageBox.Show("Must enter a username and password");
             }
             else
             {
-                //UnitOfWork tp = (UnitOfWork)Application.Current.FindResource("globStore");
                 InventoryManager inv = new();
                 inv.Show();
                 this.Close();
             }
-            
-            
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState= WindowState.Minimized;
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

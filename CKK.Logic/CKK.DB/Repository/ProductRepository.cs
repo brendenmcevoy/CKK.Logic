@@ -22,7 +22,7 @@ namespace CKK.DB.Repository
             {
                 var sql = "INSERT into Products (Price,Quantity,Name) VALUES (@Price,@Quantity,@Name)";
                 connection.Open();
-                var result = await Task.Run(() => connection.Execute(sql, entity));
+                var result = await connection.ExecuteAsync(sql, entity);
                 return result;
             }
         }
@@ -33,18 +33,18 @@ namespace CKK.DB.Repository
             {
                 var sql = "DELETE FROM Products WHERE Id = @Id";
                 connection.Open();
-                var result = await Task.Run(() => connection.Execute(sql, new {Id = id }));
+                var result = await connection.ExecuteAsync(sql, new {Id = id });
                 return result;
             }
         }
-
-        public List<Product> GetAll()
+        
+        public async Task<List<Product>> GetAllAsync()
         {
             using (var connection = _connectionFactory.GetConnection)
             {
                 var sql = "SELECT * From Products";
-                var result = SqlMapper.Query<Product>(connection,sql).ToList();
-                return result;
+                var result = SqlMapper.Query<Product>(connection, sql);
+                return result.ToList();
             }
 
         }
@@ -55,7 +55,7 @@ namespace CKK.DB.Repository
             {
                 var sql = "SELECT * FROM Products WHERE Id = @Id";
                 connection.Open();
-                var result = await Task.Run(() => connection.QuerySingleOrDefault<Product>(sql, new { Id = id }));
+                var result = await connection.QuerySingleOrDefaultAsync<Product>(sql, new { Id = id }); //.ConfigureAwait(false);
                 return result;
             }
         }
@@ -65,8 +65,8 @@ namespace CKK.DB.Repository
             using (var connection = _connectionFactory.GetConnection)
             {
                 var sql = "SELECT * FROM Products WHERE Name = @Name";
-                var result = await Task.Run(() => SqlMapper.Query<Product>(connection, sql, new { Name = name }).ToList());
-                return result;
+                var result = await SqlMapper.QueryAsync<Product>(connection, sql, new { Name = name });
+                return result.ToList();
             }
         }
 
@@ -76,7 +76,7 @@ namespace CKK.DB.Repository
             {
                 var sql = "UPDATE Products SET Quantity = (Products.Quantity - ShoppingCartItems.Quantity) FROM Products JOIN ShoppingCartItems ON ProductId = ShoppingCartItems.ProductId";
                 connection.Open();
-                var result = await Task.Run(() => connection.Execute(sql, entity));
+                var result = await connection.ExecuteAsync(sql, entity);
                 return result;
             }
         }

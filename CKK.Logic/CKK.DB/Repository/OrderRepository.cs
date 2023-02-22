@@ -38,12 +38,12 @@ namespace CKK.DB.Repository
             }
         }
 
-        public List<Order> GetAll()
+        public async Task<List<Order>> GetAllAsync()
         {
             using (var connection = _connectionFactory.GetConnection)
             {
                 var sql = "SELECT * FROM Orders";
-                var result = SqlMapper.Query<Order>(connection, sql).ToList();
+                var result = await Task.Run(() => SqlMapper.Query<Order>(connection, sql).ToList());
                 return result;
             }
         }

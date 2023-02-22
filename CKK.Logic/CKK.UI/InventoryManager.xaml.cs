@@ -44,10 +44,10 @@ namespace CKK.UI
         {
             _Items.Clear();
 
-            foreach (Product p in new ObservableCollection<Product>(uow.Products.GetAll()))
+            foreach (Product p in new ObservableCollection<Product>(uow.Products.GetAllAsync().Result))
             {
-                _Items.Add(p);
-            }
+                 _Items.Add(p);
+            };
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)
@@ -79,11 +79,6 @@ namespace CKK.UI
             this.Close();
         }
 
-        private void exitButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void sortQ_Click(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
@@ -108,6 +103,24 @@ namespace CKK.UI
         private void refreshButton_Click(object sender, RoutedEventArgs e)
         {
             RefreshList();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState= WindowState.Minimized;
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

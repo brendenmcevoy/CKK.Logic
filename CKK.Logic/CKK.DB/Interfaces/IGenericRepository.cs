@@ -9,7 +9,7 @@ namespace CKK.DB.Interfaces
     public interface IGenericRepository<T>
     {
         Task<T> GetByIdAsync(int id);
-        List<T> GetAll();
+        Task<List<T>> GetAllAsync();
         Task<int> AddAsync(T entity);
         Task<int> UpdateAsync(T entity);
         Task<int> DeleteAsync(int id);

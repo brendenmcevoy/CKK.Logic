@@ -7,9 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\pass.png" />
+    <None Remove="Images\username.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CKK.DB\CKK.DB.csproj" />
     <ProjectReference Include="..\CKK.Logic\CKK.Logic.csproj" />
     <ProjectReference Include="..\CKK.Per\CKK.Persistance.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\pass.png" />
+    <Resource Include="Images\username.png" />
   </ItemGroup>
 
 </Project>

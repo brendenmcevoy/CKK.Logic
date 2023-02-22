@@ -5,9 +5,275 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CKK.UI"
         mc:Ignorable="d"
-        Title="InventoryManager" Height="661" Width="950" FontFamily="Verdana" 
-        FontSize="14" FontWeight="Bold">
-    <Window.Resources>
+        Title="InventoryManager" Height="650" Width="950" 
+        WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" 
+        Background="Transparent" AllowsTransparency="True" MouseDown="Window_MouseDown" 
+        FontSize="14">
+    <Border CornerRadius="5" BorderThickness="2.5">
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#13505B" Offset="0"/>
+                <GradientStop Color="Black" Offset="0.75"/>
+                <GradientStop Color="#50A2A7" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                <GradientStop Color="#13505B" Offset="0"/>
+                <GradientStop Color="Black" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="450"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="61"/>
+                <ColumnDefinition Width="162"/>
+                <ColumnDefinition Width="175"/>
+                <ColumnDefinition Width="107"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="70"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="INV MNGR"
+                       Foreground="DarkGray"
+                       FontSize="10"
+                       FontFamily="Verdana"
+                       VerticalAlignment="Center"
+                       Grid.Column="0"
+                       Margin="5,0,0,0" Height="12"/>
+
+            <Button x:Name="btnMinimize"
+                        BorderThickness="0"
+                        Content="-"
+                        Foreground="#FDF7FA"
+                        FontFamily="Verdana"
+                        Cursor="Hand"
+                        Grid.Column="7"
+                        Grid.Row="0"
+                        Padding="0,0,10,0"
+                        Click="btnMinimize_Click" Margin="72,0,-72,0">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#987284"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#0E273C"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="18" Height="18"
+                                    CornerRadius="9"
+                                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+
+            <Button x:Name="btnClose"
+                        BorderThickness="0"
+                        Content="x"
+                        Foreground="#FDF7FA"
+                        FontFamily="Verdana"
+                        Cursor="Hand"
+                        Grid.Column="7"
+                        Grid.Row="0"
+                        Margin="98,0,-90,0"
+                        Click="btnClose_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#50A2A7"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#0E273C"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="18" Height="18"
+                                    CornerRadius="9"
+                                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="Add Item" 
+                    x:Name="addButton"
+                    FontFamily="Verdana"
+                    FontWeight="Medium"
+                    FontSize="18"
+                    Foreground="#FDF7FA"
+                    Cursor="Hand"
+                    Click="addButton_Click"                
+                    Grid.Column="1"
+                    Grid.Row="1" 
+                    HorizontalAlignment="Center">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#13505B"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#987284"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="150" Height="40"
+                                CornerRadius="20"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"/>
+                        </Border>
+
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Content="Remove Item" 
+                    x:Name="removeButton"
+                    FontFamily="Verdana"
+                    FontWeight="Medium"
+                    FontSize="18"
+                    Foreground="#FDF7FA"
+                    Cursor="Hand"
+                    Click="addButton_Click"                
+                    Grid.Column="2"
+                    Grid.Row="1" 
+                    HorizontalAlignment="Center">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#13505B"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#987284"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="150" Height="40"
+                                CornerRadius="20"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"/>
+                        </Border>
+
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <ListBox x:Name="lbInventoryList"
+                     Grid.Row="2"
+                     Grid.Column="1"
+                     Grid.ColumnSpan="5"
+                     BorderThickness="3"
+                     Margin="0,10,0,0">
+                <ListBox.Style>
+                    <Style TargetType="ListBox">
+                        <Setter Property="Background" Value="#FFF9FB"/>
+                    </Style>
+                </ListBox.Style>
+            </ListBox>
+            <TextBox x:Name="searchBox"
+                       Grid.Column="4"
+                       Grid.Row="1"
+                     FontSize="13"
+                     FontWeight="Medium"
+                     FontFamily="Verdana"
+                     Background="#FFF9FB"
+                     Foreground="White"
+                     CaretBrush="LightGray"
+                     BorderBrush="LightGray"
+                     BorderThickness="0,0,0,1"
+                     Height="28"
+                     VerticalContentAlignment="Center"/>
+            <Button x:Name="searchButton"
+                    Content="Search"
+                    Grid.Column="5"
+                    Grid.Row="1">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#13505B"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#987284"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="80" Height="40"
+                                CornerRadius="20"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"/>
+                        </Border>
+
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <!-->
+
+
+            <Button x:Name="sortQ"
+                    Content="Quantity Sort"
+                    Style="{StaticResource buttonStyle}"
+                    Grid.Column="1"
+                    Grid.Row="4" Click="sortQ_Click" Margin="151,0,92,0"/>
+
+            <Button x:Name="sortP"
+                    Content="Price Sort"
+                    Style="{StaticResource buttonStyle}"
+                    Grid.Column="2"
+                    Grid.Row="4"
+                    Click="sortP_Click" Grid.ColumnSpan="2" Margin="0,0,70,0"/>
+
+            <Button x:Name="clearButton"
+                    Content="Clear Results"
+                    Style="{StaticResource buttonStyle}"
+                    Grid.Column="4"
+                    Grid.Row="2" 
+                    Click="clearButton_Click" 
+                    HorizontalAlignment="Right"
+                    Margin="0,0,38,2" 
+                    Width="130" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+
+            <Button x:Name="refreshButton"
+                    Content="Refresh"
+                    Style="{StaticResource buttonStyle}"
+                    Grid.Column="3"
+                    Grid.Row="4" Click="refreshButton_Click" Grid.ColumnSpan="2" Margin="0,0,70,0"/>-->
+        </Grid>
+    </Border>
+    <!--<Window.Resources>
         <Style x:Key="buttonStyle" TargetType="Button">
             <Setter Property="Width" Value="130"/>
             <Setter Property="Height" Value="50"/>
@@ -124,5 +390,5 @@
                 Style="{StaticResource buttonStyle}"
                 Grid.Column="3"
                 Grid.Row="4" Click="refreshButton_Click"/>
-    </Grid>
+    </Grid>-->
 </Window>
