@@ -52,7 +52,8 @@ namespace CKK.Online.Controllers
         public IActionResult Add([FromRoute]int productId, [FromQuery]int quantity) //Adds items to the shopping cart and updates total on '+' button click
         {
             var order = _uow.Orders.GetByIdAsync(1).Result;
-            var test = _uow.ShoppingCarts.AddToCart(order.ShoppingCartid, productId, quantity);
+
+            _uow.ShoppingCarts.AddToCart(order.ShoppingCartid, productId, quantity);
 
             var total = _uow.ShoppingCarts.GetTotal(order.ShoppingCartid);
 

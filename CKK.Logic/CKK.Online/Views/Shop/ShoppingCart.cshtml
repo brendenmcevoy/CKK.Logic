@@ -3,7 +3,7 @@
     ViewData["Title"] = "Shopping Cart";
 }
     <div class="text-center">
-        <h1 class="display-4">Shopping Cart!</h1>
+        <h1 class="display-4">Shopping Cart</h1>
     </div>
     <form method="post">
         <input type="hidden" value= "@Model.Order.OrderId" />
@@ -13,7 +13,7 @@
                     <partial name="_ProductsCard" model="item" />
             }
         </div>
-        <a id="CheckoutBtn" asp-controller="Shop" asp-action="CheckOut" asp-route-OrderId= "@Model.Order.OrderId" class="btn btn-success btn-lg btn-block">Check Out - $0.00</a>
+        <a id="CheckoutBtn" asp-controller="Shop" asp-action="CheckOut" asp-route-OrderId= "@Model.Order.OrderId" class="btn btn-dark btn-lg btn-block">Check Out - $0.00</a>
         <p>This submit button will send your shopping cart to our server and add you to the queue.</p>
     </form>
 
