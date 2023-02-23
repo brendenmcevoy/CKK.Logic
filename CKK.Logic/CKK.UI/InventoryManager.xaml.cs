@@ -31,14 +31,15 @@ namespace CKK.UI
         public InventoryManager()
         {
             conn = new DatabaseConnectionFactory();
-             uow = new UnitOfWork(conn);
+            uow = new UnitOfWork(conn);
             InitializeComponent();
             _Items = new ObservableCollection<Product>();
             lbInventoryList.ItemsSource = _Items;
-            RefreshList();
+            RefreshListAsync();
         }
 
-        private async void RefreshList() //Delete and Reload all Products in DB
+
+        private async void RefreshListAsync() //Delete and Reload all Products in DB
         {
             _Items.Clear();
 
@@ -60,13 +61,13 @@ namespace CKK.UI
         public void addItem(Product prod)
         {
             uow.Products.AddAsync(prod); //Adds item to the DB
-            RefreshList();
+            RefreshListAsync();
         }
 
         public void removeItem(int id) //Remove Item from DB
         {
             uow.Products.DeleteAsync(id);
-            RefreshList();
+            RefreshListAsync();
         }
 
         private void removeButton_Click(object sender, RoutedEventArgs e) //Opens Remove Item window
@@ -100,14 +101,14 @@ namespace CKK.UI
             var searchString = searchBox.Text;
             var task = await Task.Run(() => uow.Products.GetByNameAsync(searchString).Result);
             lbInventoryList.ItemsSource = task;
-            RefreshList();
+            RefreshListAsync();
             searchBox.Text = string.Empty;
         }
 
         private async void refreshButton_Click(object sender, RoutedEventArgs e) //Refresh list manually
         {
             lbInventoryList.ItemsSource = await Task.Run(() => uow.Products.GetAllAsync().Result);
-            RefreshList();
+            RefreshListAsync();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

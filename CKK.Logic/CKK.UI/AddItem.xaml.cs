@@ -28,14 +28,12 @@ namespace CKK.UI
 
         private void submitButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            InventoryManager inv = new InventoryManager();
-
             Product prod = new Product(); //Create new Product using values from textboxes
             prod.Name = nameBox.Text;
             prod.Price = int.Parse(priceBox.Text);
             prod.Quantity = int.Parse(quantityBox.Text);
 
+            InventoryManager inv = new InventoryManager();
             inv.addItem(prod); //Add item to InvMngr
            
             inv.Show();
