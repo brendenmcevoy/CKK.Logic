@@ -51,11 +51,12 @@ namespace CKK.UI
 
         private void addButton_Click(object sender, RoutedEventArgs e) //Opens Add Item window
         {
-            AddItem add = new AddItem();
+            lbInventoryList.ItemsSource = _Items; // Added incase sorting methods were used, resets the listbox binding to an unsorted list
 
-            add.Show();
-            this.Close();
+            InventoryManager inventory = this;
+            AddItem add = new AddItem(inventory);
 
+            add.Show();;
         }
 
         public void addItem(Product prod)
@@ -66,34 +67,35 @@ namespace CKK.UI
 
         public void removeItem(int id) //Remove Item from DB
         {
+ 
             uow.Products.DeleteAsync(id);
             RefreshListAsync();
         }
 
         private void removeButton_Click(object sender, RoutedEventArgs e) //Opens Remove Item window
         {
-            RemoveItem remove = new RemoveItem();
+            lbInventoryList.ItemsSource = _Items; // Added incase sorting methods were used, resets the listbox binding to an unsorted list
+
+            InventoryManager inventory = this;
+            RemoveItem remove = new RemoveItem(inventory);
 
             remove.Show();
-            this.Close();
         }
 
-        private async void sortQ_Click(object sender, RoutedEventArgs e) //Sort Products by Quantity ascending
+        private void sortQ_Click(object sender, RoutedEventArgs e) //Sort Products by Quantity ascending
         {
-            List<Product> qList = await Task.Run(() => uow.Products.GetAllAsync().Result);
+            var sortList = _Items.OrderBy(x => x.Quantity);
 
-            var list = qList.OrderBy(x => x.Quantity).ToList();
-
-            lbInventoryList.ItemsSource = list;
+            lbInventoryList.ItemsSource = sortList;
+            RefreshListAsync();
         }
 
-        private async void sortP_Click(object sender, RoutedEventArgs e) //Sort Products by Price ascending
-        {
-            List<Product> qList = await Task.Run(() => uow.Products.GetAllAsync().Result);
+        private void sortP_Click(object sender, RoutedEventArgs e) //Sort Products by Price ascending
+        {           
+            var sortList = _Items.OrderBy(x => x.Price);
 
-            var list = qList.OrderBy(x => x.Price).ToList();
-
-            lbInventoryList.ItemsSource = list;
+            lbInventoryList.ItemsSource = sortList;
+            RefreshListAsync();
         }
 
         private async void searchButton_Click(object sender, RoutedEventArgs e) //Search DB for Products using keyword, makes a new list with results and Refreshes list.

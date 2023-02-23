@@ -40,9 +40,9 @@
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="ADD ITEM"
+            <TextBlock Text="REMOVE ITEM"
                        Foreground="DarkGray"
-                       FontSize="10"
+                       FontSize="7"
                        FontFamily="Verdana"
                        VerticalAlignment="Center"
                        Grid.Column="0"

@@ -21,9 +21,11 @@ namespace CKK.UI
     /// </summary>
     public partial class AddItem : Window
     {
-        public AddItem()
+        InventoryManager inv;
+        public AddItem(InventoryManager inventory)
         {
             InitializeComponent();
+            inv = inventory;
         }
 
         private void submitButton_Click(object sender, RoutedEventArgs e)
@@ -33,18 +35,15 @@ namespace CKK.UI
             prod.Price = int.Parse(priceBox.Text);
             prod.Quantity = int.Parse(quantityBox.Text);
 
-            InventoryManager inv = new InventoryManager();
+            //InventoryManager inv = new InventoryManager();
             inv.addItem(prod); //Add item to InvMngr
            
-            inv.Show();
+            //inv.Show();
             this.Close(); //Close window and open InvMngr window
         }       
 
         private void backButton_Click(object sender, RoutedEventArgs e) //Go back to InvMngr without saving changes
-        {
-            InventoryManager inv = new InventoryManager();
-
-            inv.Show(); 
+        {            
             this.Close();
         }
 
@@ -56,8 +55,8 @@ namespace CKK.UI
             }
         }
         private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
+        {           
+            this.Close();
         }
 
         private void btnMinimize_Click(object sender, RoutedEventArgs e)

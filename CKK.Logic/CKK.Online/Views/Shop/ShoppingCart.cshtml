@@ -13,6 +13,7 @@
                     <partial name="_ProductsCard" model="item" />
             }
         </div>
+        <br />
         <a id="CheckoutBtn" asp-controller="Shop" asp-action="CheckOut" asp-route-OrderId= "@Model.Order.OrderId" class="btn btn-dark btn-lg btn-block">Check Out - $0.00</a>
         <p>This submit button will send your shopping cart to our server and add you to the queue.</p>
     </form>
@@ -33,7 +34,7 @@
                     {
                         url: window.location.href + "/Add/" + productId + "?" + "quantity=" + quantity,
                         success: function (result) {
-                            $("#CheckoutBtn").text("Check Out - " + result);
+                            $("#CheckoutBtn").text("Check Out - $" + result);
                         }
                     });
             }

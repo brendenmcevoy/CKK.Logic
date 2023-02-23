@@ -21,27 +21,22 @@ namespace CKK.UI
     /// </summary>
     public partial class RemoveItem : Window
     {
-        public RemoveItem()
+        InventoryManager inv;
+        public RemoveItem(InventoryManager inventory)
         {
             InitializeComponent();
+            inv= inventory;
         }
 
         private void submitButton_Click(object sender, RoutedEventArgs e)
         {
-            InventoryManager inv = new InventoryManager();
-
             int id = int.Parse(idBox.Text);
 
-            inv.removeItem(id); //Remove item from InvMngr
-
-            inv.Show(); //Close this window and open InvMngr window
+            inv.removeItem(id);
             this.Close();
         }
         private void backButton_Click(object sender, RoutedEventArgs e) //Back to InvMngr without saving changes
         {
-            InventoryManager inv = new InventoryManager();
-
-            inv.Show();
             this.Close();
         }
                 
@@ -60,7 +55,7 @@ namespace CKK.UI
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            this.Close();
         }
 
         
