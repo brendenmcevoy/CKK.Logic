@@ -95,9 +95,11 @@ namespace CKK.UI
             lbInventoryList.ItemsSource = list;
         }
 
-        private void searchButton_Click(object sender, RoutedEventArgs e) //Search DB for Products using keyword, makes a new list with results and Refreshes list.
-        {           
-            lbInventoryList.ItemsSource = uow.Products.GetByNameAsync(searchBox.Text).Result;
+        private async void searchButton_Click(object sender, RoutedEventArgs e) //Search DB for Products using keyword, makes a new list with results and Refreshes list.
+        {  
+            var searchString = searchBox.Text;
+            var task = await Task.Run(() => uow.Products.GetByNameAsync(searchString).Result);
+            lbInventoryList.ItemsSource = task;
             RefreshList();
             searchBox.Text = string.Empty;
         }
