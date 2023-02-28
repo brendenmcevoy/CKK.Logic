@@ -31,9 +31,13 @@ namespace CKK.UI
 
         private void submitButton_Click(object sender, RoutedEventArgs e)
         {
-            int id = int.Parse(idBox.Text);
-
-            inv.removeItem(id);
+            try
+            {
+                int id = int.Parse(idBox.Text);
+                inv.removeItem(id);
+            }
+            catch(FormatException) { MessageBox.Show("Must enter a valid Id."); }
+   
             if ((bool)multipleBox.IsChecked) 
             {
                 idBox.Text = string.Empty;

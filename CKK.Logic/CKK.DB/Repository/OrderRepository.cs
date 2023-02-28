@@ -1,10 +1,7 @@
 ﻿using CKK.DB.Interfaces;
-using CKK.Logic.Models;
 using Dapper;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CKK.DB.Repository
@@ -34,7 +31,7 @@ namespace CKK.DB.Repository
             {
                 var sql = "DELETE FROM Orders WHERE OrderId = @OrderId";
                 connection.Open();
-                var result = await Task.Run(() => connection.Execute(sql, new {OrderId = id}));
+                var result = await Task.Run(() => connection.Execute(sql, new { OrderId = id }));
                 return result;
             }
         }
@@ -62,7 +59,7 @@ namespace CKK.DB.Repository
 
         public async Task<Order> GetOrderByCustomerIdAsync(int id) //Get specific Order by Customer Id
         {
-            using (var connection = _connectionFactory.GetConnection) 
+            using (var connection = _connectionFactory.GetConnection)
             {
                 var sql = "SELECT * FROM Orders WHERE CustomerId = @Id";
                 connection.Open();

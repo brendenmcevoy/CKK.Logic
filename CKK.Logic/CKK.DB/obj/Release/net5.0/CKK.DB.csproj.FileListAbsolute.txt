@@ -1,0 +1,15 @@
+C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.DB\bin\Release\net5.0\CKK.DB.deps.json
+C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.DB\bin\Release\net5.0\CKK.DB.dll
+C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.DB\bin\Release\net5.0\CKK.DB.pdb
+C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.DB\bin\Release\net5.0\CKK.Logic.dll
+C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.DB\bin\Release\net5.0\CKK.Logic.pdb
+C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.DB\obj\Release\net5.0\CKK.DB.csproj.AssemblyReference.cache
+C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.DB\obj\Release\net5.0\CKK.DB.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.DB\obj\Release\net5.0\CKK.DB.AssemblyInfoInputs.cache
+C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.DB\obj\Release\net5.0\CKK.DB.AssemblyInfo.cs
+C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.DB\obj\Release\net5.0\CKK.DB.csproj.CoreCompileInputs.cache
+C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.DB\obj\Release\net5.0\CKK.DB.csproj.CopyComplete
+C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.DB\obj\Release\net5.0\CKK.DB.dll
+C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.DB\obj\Release\net5.0\refint\CKK.DB.dll
+C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.DB\obj\Release\net5.0\CKK.DB.pdb
+C:\Users\beanwater\Source\Repos\brendenmcevoy\CKK.Logic\CKK.Logic\CKK.DB\obj\Release\net5.0\ref\CKK.DB.dll

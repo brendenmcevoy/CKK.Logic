@@ -31,12 +31,17 @@ namespace CKK.UI
 
         private void submitButton_Click(object sender, RoutedEventArgs e)
         {
-            Product prod = new Product(); //Create new Product using values from textboxes
-            prod.Name = nameBox.Text;
-            prod.Price = int.Parse(priceBox.Text);
-            prod.Quantity = int.Parse(quantityBox.Text);
+            try
+            {
+                Product prod = new Product(); //Create new Product using values from textboxes
+                prod.Name = nameBox.Text;
+                prod.Price = int.Parse(priceBox.Text);
+                prod.Quantity = int.Parse(quantityBox.Text);
 
-            inv.addItem(prod); //Add item to InvMngr
+                inv.addItem(prod); //Add item to InvMngr
+            }
+            catch (FormatException) { MessageBox.Show("Must enter a valid Name,Price, and Quantity."); }
+            
 
             if ((bool)multipleBox.IsChecked)
             {

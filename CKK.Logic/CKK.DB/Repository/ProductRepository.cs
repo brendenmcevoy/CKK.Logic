@@ -1,9 +1,7 @@
 ﻿using CKK.DB.Interfaces;
 using Dapper;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CKK.DB.Repository
@@ -33,11 +31,11 @@ namespace CKK.DB.Repository
             {
                 var sql = "DELETE FROM Products WHERE Id = @Id";
                 connection.Open();
-                var result = await connection.ExecuteAsync(sql, new {Id = id });
+                var result = await connection.ExecuteAsync(sql, new { Id = id });
                 return result;
             }
         }
-        
+
         public async Task<List<Product>> GetAllAsync() //Get all Products
         {
             using (var connection = _connectionFactory.GetConnection)
@@ -64,7 +62,7 @@ namespace CKK.DB.Repository
         {
             using (var connection = _connectionFactory.GetConnection)
             {
-                var sql = "SELECT * FROM Products WHERE Name LIKE @Name"; 
+                var sql = "SELECT * FROM Products WHERE Name LIKE @Name";
                 var result = await SqlMapper.QueryAsync<Product>(connection, sql, new { Name = "%" + name + "%" });
                 return result.ToList();
             }
