@@ -26,6 +26,7 @@ namespace CKK.UI
         {
             InitializeComponent();
             inv = inventory;
+            nameBox.Focus();
         }
 
         private void submitButton_Click(object sender, RoutedEventArgs e)
@@ -35,14 +36,23 @@ namespace CKK.UI
             prod.Price = int.Parse(priceBox.Text);
             prod.Quantity = int.Parse(quantityBox.Text);
 
-            //InventoryManager inv = new InventoryManager();
             inv.addItem(prod); //Add item to InvMngr
-           
-            //inv.Show();
-            this.Close(); //Close window and open InvMngr window
+
+            if ((bool)multipleBox.IsChecked)
+            {
+                nameBox.Text = String.Empty; 
+                priceBox.Text=String.Empty; 
+                quantityBox.Text=String.Empty;
+                nameBox.Focus();
+            }
+            else
+            {
+                this.Close(); //Close window and open InvMngr window
+            } 
+
         }       
 
-        private void backButton_Click(object sender, RoutedEventArgs e) //Go back to InvMngr without saving changes
+        private void backButton_Click(object sender, RoutedEventArgs e) //Go back to InvMngr
         {            
             this.Close();
         }

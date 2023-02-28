@@ -26,6 +26,7 @@ namespace CKK.UI
         {
             InitializeComponent();
             inv= inventory;
+            idBox.Focus();
         }
 
         private void submitButton_Click(object sender, RoutedEventArgs e)
@@ -33,9 +34,18 @@ namespace CKK.UI
             int id = int.Parse(idBox.Text);
 
             inv.removeItem(id);
-            this.Close();
+            if ((bool)multipleBox.IsChecked) 
+            {
+                idBox.Text = string.Empty;
+                idBox.Focus();
+            }
+            else
+            {
+                this.Close();
+            }
+            
         }
-        private void backButton_Click(object sender, RoutedEventArgs e) //Back to InvMngr without saving changes
+        private void backButton_Click(object sender, RoutedEventArgs e) //Back to InvMngr
         {
             this.Close();
         }

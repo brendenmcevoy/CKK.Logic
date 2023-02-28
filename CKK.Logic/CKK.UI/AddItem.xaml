@@ -112,6 +112,13 @@
                 </Button.Template>
             </Button>
 
+            <CheckBox x:Name="multipleBox"
+                      Grid.Column="3"
+                      Grid.Row="1"
+                      Content="Add Multiple Products"
+                      Foreground="White"
+                      FontFamily="Verdana"/>
+
             <TextBlock Text="Item Name:"
                        Grid.Column="2"
                        Grid.Row="2"

@@ -24,6 +24,7 @@ namespace CKK.UI
         public Login()
         {
             InitializeComponent();
+            usernameBox.Focus();
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e) //No authentication yet ):

@@ -109,6 +109,16 @@
                 </Button.Template>
             </Button>
 
+            <CheckBox x:Name="multipleBox"
+                      Grid.Column="1"
+                      Grid.Row="1"
+                      Grid.ColumnSpan="2"
+                      Margin="115,0,0,0"
+                      Content="Remove Multiple Products"
+                      Foreground="White"
+                      FontFamily="Verdana"/>
+
+
             <TextBlock Text="Item ID:"
                        Grid.Column="1"
                        Grid.Row="2"
